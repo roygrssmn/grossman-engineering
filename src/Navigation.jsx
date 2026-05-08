@@ -3,7 +3,7 @@ export default function Navigation({ view, navigate, language, toggleLanguage, i
     return (
         <nav className="fixed top-0 w-full z-40 px-6 py-5 md:px-12 lg:px-24 border-b border-stone-200 dark:border-zinc-800 backdrop-blur-md bg-white/80 dark:bg-zinc-950/80 flex justify-between items-center">
             <a href="/" onClick={(e) => navigate('/', e)} className="font-serif text-xl tracking-tight font-medium hover:opacity-80 transition-opacity">
-                TheQualityArchitect.io
+                AgenticArchitect.io
             </a>
             <div className="flex items-center gap-6">
                 {view === 'main' && (

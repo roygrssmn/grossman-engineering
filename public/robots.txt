@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://thequalityarchitect.io/sitemap.xml
+Sitemap: https://agenticarchitect.io/sitemap.xml

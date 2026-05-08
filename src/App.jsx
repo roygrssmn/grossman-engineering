@@ -74,7 +74,7 @@ export default function App() {
             canonicalLink.setAttribute("rel", "canonical");
             document.head.appendChild(canonicalLink);
         }
-        canonicalLink.setAttribute("href", `https://thequalityarchitect.io${currentPath}`);
+        canonicalLink.setAttribute("href", `https://agenticarchitect.io${currentPath}`);
     }, [currentPath, language]);
 
     const toggleDarkMode = () => setIsDarkMode(!isDarkMode);

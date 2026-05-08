@@ -1,4 +1,4 @@
-# The Quality Architect
+# The Agentic Architect
 
 Personal portfolio website for Roey Grossman. Built with React 19, Vite, and Tailwind CSS v4. The site features a clean, responsive design, dark mode, English/German bilingual support, and a custom lightweight single-page routing system optimized for static hosting on Cloudflare Pages.
 
