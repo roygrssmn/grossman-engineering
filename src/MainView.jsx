@@ -1,4 +1,4 @@
-import { competenciesData } from './core_competencies/competencies.jsx';
+import { competenciesData } from './areas_of_expertise/competencies.jsx';
 import { contactInfo } from './contactInfo.jsx';
 import { Cpu, Layers, Users } from 'lucide-react';
 

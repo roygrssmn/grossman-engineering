@@ -30,11 +30,11 @@ Ensure you have [Node.js](https://nodejs.org/) installed.
 the-quality-architect/
 ├── public/                     # Static assets (favicon, robots.txt, sitemap.xml, _redirects)
 ├── src/
-│   ├── case_studies/           # Case study data and content
+│   ├── selected_impact/           # Case study data and content
 │   │   ├── projects.jsx        # Index file exporting all case studies
 │   │   ├── rag.jsx             # Individual case study content
 │   │   └── ...
-│   ├── core_competencies/      # Core competencies data
+│   ├── areas_of_expertise/     # Core competencies data
 │   │   └── competencies.jsx    # Translations and content for the Expertise section
 │   ├── App.jsx                 # Main application orchestrator & router
 │   ├── MainView.jsx            # Homepage view component
@@ -51,14 +51,14 @@ the-quality-architect/
 To quickly update the content of your site without digging through complex UI code, modify these central files:
 
 * **Personal Info & Social Links:** Edit `src/contactInfo.jsx`. This will automatically update your email, address, GitHub, and LinkedIn links everywhere across the site (including the Impressum and Privacy Policy).
-* **Core Competencies:** Edit `src/core_competencies/competencies.jsx` to update the titles and descriptions (both EN and DE) of your main skills.
+* **Core Competencies:** Edit `src/areas_of_expertise/competencies.jsx` to update the titles and descriptions (both EN and DE) of your main skills.
 * **Translations:** Most static text translations (like headings and buttons) are handled inline using ternary operators (e.g., `language === 'en' ? 'English' : 'German'`) inside components like `MainView.jsx`, `Footer.jsx`, and `Modals.jsx`.
 
 ## ➕ How to Add a New Case Study
 
 Case studies are highly modular. To add a new one, follow these 3 steps:
 
-1. **Create the file:** Inside the `src/case_studies/` folder, create a new `.jsx` file (e.g., `my-project.jsx`).
+1. **Create the file:** Inside the `src/selected_impact/` folder, create a new `.jsx` file (e.g., `my-project.jsx`).
 2. **Define the data:** Export a case study object. You can use the following template:
 
    ```jsx
@@ -83,7 +83,7 @@ Case studies are highly modular. To add a new one, follow these 3 steps:
    };
    ```
 
-3. **Register the project:** Open `src/case_studies/projects.jsx`, import your new file, and add it to the exported `projectData` object:
+3. **Register the project:** Open `src/selected_impact/projects.jsx`, import your new file, and add it to the exported `projectData` object:
 
    ```jsx
    import { myProject } from './my-project.jsx';
