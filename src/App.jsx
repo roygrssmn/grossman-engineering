@@ -42,12 +42,12 @@ export default function App() {
 
     // SEO: Dynamic Title, Meta Description & Canonical URL
     useEffect(() => {
-        let title = 'Roey Grossman | The Quality Architect';
-        let desc = 'I build reliable AI systems and lead high-performance engineering teams. Bridging the gap between Quality Assurance, technical strategy, and AI.';
+        let title = 'Roey Grossman | The Agentic Architect';
+        let desc = 'The Quality-First Agentic Architect: Building for Enterprise-Grade AI Reliability. Bridging the gap between Quality Assurance, technical strategy, and AI.';
         
         if (language === 'de') {
-            title = 'Roey Grossman | Der Qualitätsarchitekt';
-            desc = 'Ich baue zuverlässige KI-Systeme und leite hochleistungsfähige Engineering-Teams. Ich schließe die Lücke zwischen Qualitätssicherung, technischer Strategie und KI.';
+            title = 'Roey Grossman | Der Agentic Architect';
+            desc = 'Der qualitätsorientierte Agentic Architect: Aufbau von auf Unternehmensniveau zuverlässiger KI. Ich schließe die Lücke zwischen Qualitätssicherung, technischer Strategie und KI.';
         }
 
         if (currentPath.startsWith('/project/')) {
@@ -67,6 +67,18 @@ export default function App() {
         
         const ogDesc = document.querySelector('meta[property="og:description"]');
         if (ogDesc) ogDesc.setAttribute('content', desc);
+
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        if (ogTitle) ogTitle.setAttribute('content', title);
+
+        const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+        if (twitterTitle) twitterTitle.setAttribute('content', title);
+
+        const twitterDesc = document.querySelector('meta[name="twitter:description"]');
+        if (twitterDesc) twitterDesc.setAttribute('content', desc);
+
+        const ogUrl = document.querySelector('meta[property="og:url"]');
+        if (ogUrl) ogUrl.setAttribute('content', `https://agenticarchitect.io${currentPath}`);
 
         let canonicalLink = document.querySelector("link[rel='canonical']");
         if (!canonicalLink) {
