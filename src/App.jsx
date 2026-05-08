@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { projectData } from './projects.jsx';
+import { projectData } from './core_competencies/projects.jsx';
 import Navigation from './Navigation.jsx';
 import MainView from './MainView.jsx';
 import ProjectView from './ProjectView.jsx';

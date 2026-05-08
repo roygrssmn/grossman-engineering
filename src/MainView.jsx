@@ -1,4 +1,5 @@
 import React from 'react';
+import { competenciesData } from './core_competencies/competencies.jsx';
 
 export default function MainView({ language, projectData, openProject }) {
     return (
@@ -20,24 +21,14 @@ export default function MainView({ language, projectData, openProject }) {
             <section id="expertise" className="mb-32">
                 <h2 className="font-serif text-3xl mb-12 border-b border-stone-200 dark:border-zinc-800 pb-4 text-zinc-900 dark:text-zinc-50">Core Competencies</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                    <div>
-                        <h3 className="font-medium text-lg mb-3 text-zinc-900 dark:text-zinc-50">AI Engineering</h3>
-                        <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
-                            Designing and implementing Agentic workflows and RAG pipelines. Focusing on system reliability, prompt evaluation, and eliminating model hallucinations in production environments.
-                        </p>
-                    </div>
-                    <div>
-                        <h3 className="font-medium text-lg mb-3 text-zinc-900 dark:text-zinc-50">Quality Architecture</h3>
-                        <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
-                            Establishing comprehensive testing frameworks and CI/CD automation. Shifting quality left to ensure robust software delivery cycles and scalable infrastructure.
-                        </p>
-                    </div>
-                    <div>
-                        <h3 className="font-medium text-lg mb-3 text-zinc-900 dark:text-zinc-50">Technical Leadership</h3>
-                        <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
-                            Mentoring engineers, aligning technical initiatives with business goals, and fostering a culture of ownership. Experienced in managing both people and complex projects.
-                        </p>
-                    </div>
+                    {competenciesData.map(comp => (
+                        <div key={comp.id}>
+                            <h3 className="font-medium text-lg mb-3 text-zinc-900 dark:text-zinc-50">{comp.title}</h3>
+                            <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                                {comp.description}
+                            </p>
+                        </div>
+                    ))}
                 </div>
             </section>
 
@@ -51,9 +42,7 @@ export default function MainView({ language, projectData, openProject }) {
                                 <span className="text-xs font-medium px-3 py-1 bg-stone-50 dark:bg-zinc-950 border border-stone-200 dark:border-zinc-800 rounded-full text-zinc-900 dark:text-zinc-50 whitespace-nowrap ml-4">{project.role}</span>
                             </div>
                             <p className="text-zinc-600 dark:text-zinc-300 mb-8 leading-relaxed flex-grow">
-                                {key === 'rag' && "Designed a Retrieval-Augmented Generation system to query complex documentation. Implemented automated evaluation guardrails to ensure high-fidelity outputs."}
-                                {key === 'framework' && "Architected an end-to-end testing framework from the ground up. This initiative significantly reduced manual regression time and accelerated the release cycle."}
-                                {key === 'homelab' && "Engineered a personal infrastructure environment utilizing Raspberry Pi and NAS systems. Features automated backups, network blocking, and secure remote tunneling."}
+                                {project.summary}
                             </p>
                             <div className="flex flex-wrap gap-2 mt-auto">
                                 {project.tags.slice(0, 3).map(tag => (
