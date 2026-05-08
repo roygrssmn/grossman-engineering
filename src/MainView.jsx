@@ -18,13 +18,15 @@ export default function MainView({ language, projectData, navigate }) {
             </header>
 
             <section id="expertise" className="mb-32">
-                <h2 className="font-serif text-3xl mb-12 border-b border-stone-200 dark:border-zinc-800 pb-4 text-zinc-900 dark:text-zinc-50">Core Competencies</h2>
+                <h2 className="font-serif text-3xl mb-12 border-b border-stone-200 dark:border-zinc-800 pb-4 text-zinc-900 dark:text-zinc-50">
+                    {language === 'en' ? 'Core Competencies' : 'Kernkompetenzen'}
+                </h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                     {competenciesData.map(comp => (
                         <div key={comp.id}>
-                            <h3 className="font-medium text-lg mb-3 text-zinc-900 dark:text-zinc-50">{comp.title}</h3>
+                            <h3 className="font-medium text-lg mb-3 text-zinc-900 dark:text-zinc-50">{comp.title[language]}</h3>
                             <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
-                                {comp.description}
+                                {comp.description[language]}
                             </p>
                         </div>
                     ))}
@@ -32,7 +34,9 @@ export default function MainView({ language, projectData, navigate }) {
             </section>
 
             <section id="portfolio" className="mb-32">
-                <h2 className="font-serif text-3xl mb-12 border-b border-stone-200 dark:border-zinc-800 pb-4 text-zinc-900 dark:text-zinc-50">Selected Case Studies</h2>
+                <h2 className="font-serif text-3xl mb-12 border-b border-stone-200 dark:border-zinc-800 pb-4 text-zinc-900 dark:text-zinc-50">
+                    {language === 'en' ? 'Selected Case Studies' : 'Ausgewählte Fallstudien'}
+                </h2>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {Object.entries(projectData).map(([key, project]) => (
                         <a key={key} href={`/project/${key}`} onClick={(e) => navigate(`/project/${key}`, e)} className="group bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 p-8 md:p-10 rounded-xl hover:border-zinc-400 dark:hover:border-zinc-500 transition-all cursor-pointer shadow-sm hover:shadow-md flex flex-col">
@@ -55,13 +59,21 @@ export default function MainView({ language, projectData, navigate }) {
 
             <section id="contact" className="pb-16">
                 <div className="bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 p-10 md:p-16 rounded-2xl text-center max-w-3xl mx-auto">
-                    <h2 className="font-serif text-3xl md:text-4xl mb-4 text-zinc-900 dark:text-zinc-50">Ready to build something reliable?</h2>
+                    <h2 className="font-serif text-3xl md:text-4xl mb-4 text-zinc-900 dark:text-zinc-50">
+                        {language === 'en' ? 'Ready to build something reliable?' : 'Bereit, etwas Zuverlässiges zu bauen?'}
+                    </h2>
                     <p className="text-zinc-600 dark:text-zinc-300 mb-8 max-w-xl mx-auto leading-relaxed">
-                        I am actively exploring new opportunities in technical leadership and AI engineering. Let us discuss how I can bring structure and quality to your next big initiative.
+                        {language === 'en'
+                            ? 'I am actively exploring new opportunities in technical leadership and AI engineering. Let us discuss how I can bring structure and quality to your next big initiative.'
+                            : 'Ich bin aktiv auf der Suche nach neuen Möglichkeiten in der technischen Führung und im KI-Engineering. Lassen Sie uns besprechen, wie ich Struktur und Qualität in Ihre nächste große Initiative bringen kann.'}
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="mailto:hello@thequalityarchitect.io" className="inline-flex justify-center items-center px-6 py-3 bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 font-medium rounded-lg hover:opacity-90 transition-opacity shadow-sm">Send an Email</a>
-                        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="inline-flex justify-center items-center px-6 py-3 border border-stone-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-50 font-medium rounded-lg hover:bg-stone-50 dark:hover:bg-zinc-800 transition-colors">Connect on LinkedIn</a>
+                        <a href="mailto:hello@thequalityarchitect.io" className="inline-flex justify-center items-center px-6 py-3 bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 font-medium rounded-lg hover:opacity-90 transition-opacity shadow-sm">
+                            {language === 'en' ? 'Send an Email' : 'E-Mail senden'}
+                        </a>
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="inline-flex justify-center items-center px-6 py-3 border border-stone-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-50 font-medium rounded-lg hover:bg-stone-50 dark:hover:bg-zinc-800 transition-colors">
+                            {language === 'en' ? 'Connect on LinkedIn' : 'Auf LinkedIn vernetzen'}
+                        </a>
                     </div>
                 </div>
             </section>
