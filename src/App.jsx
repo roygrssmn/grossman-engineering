@@ -5,6 +5,7 @@ import MainView from './MainView.jsx';
 import ProjectView from './ProjectView.jsx';
 import Footer from './Footer.jsx';
 import Modals from './Modals.jsx';
+import NotFoundView from './NotFoundView.jsx';
 
 export default function App() {
     const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -50,10 +51,22 @@ export default function App() {
 
     const currentYear = new Date().getFullYear();
     
-    const isProjectView = currentPath.startsWith('/project/');
-    const activeProjectKey = isProjectView ? currentPath.replace('/project/', '') : null;
-    const activeProject = activeProjectKey ? projectData[activeProjectKey] : null;
-    const view = isProjectView && activeProject ? 'project' : 'main';
+    let view;
+    let activeProject = null;
+
+    if (currentPath === '/') {
+        view = 'main';
+    } else if (currentPath.startsWith('/project/')) {
+        const key = currentPath.replace('/project/', '');
+        if (projectData[key]) {
+            activeProject = projectData[key];
+            view = 'project';
+        } else {
+            view = '404';
+        }
+    } else {
+        view = '404';
+    }
 
     return (
         <div className="font-sans antialiased min-h-screen flex flex-col bg-[#fcfbf9] text-zinc-900 dark:bg-[#09090b] dark:text-zinc-50 selection:bg-stone-300 selection:text-black dark:selection:bg-stone-700 dark:selection:text-white transition-colors duration-300">
@@ -69,6 +82,8 @@ export default function App() {
             {view === 'main' && <MainView language={language} projectData={projectData} navigate={navigate} />}
             
             {view === 'project' && activeProject && <ProjectView activeProject={activeProject} navigate={navigate} />}
+            
+            {view === '404' && <NotFoundView navigate={navigate} />}
             
             <Footer currentYear={currentYear} setActiveModal={setActiveModal} language={language} />
             
