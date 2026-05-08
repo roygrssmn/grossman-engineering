@@ -8,14 +8,14 @@ export default function ProjectView({ activeProject, navigate }) {
             </a>
             
             <div className="flex items-center gap-4 mb-6">
-                <span className="text-xs font-medium px-3 py-1 bg-stone-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 rounded-full">{activeProject.role}</span>
+                <span className="text-xs font-semibold px-3 py-1 bg-stone-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-100 rounded-full">{activeProject.role}</span>
             </div>
             
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight mb-8 text-zinc-900 dark:text-zinc-50">{activeProject.title}</h1>
             
             <div className="flex flex-wrap gap-2 mb-12 border-b border-stone-200 dark:border-zinc-800 pb-12">
                 {activeProject.tags.map(tag => (
-                    <span key={tag} className="text-xs font-medium px-3 py-1 bg-stone-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 rounded">{tag}</span>
+                    <span key={tag} className="text-xs font-semibold px-3 py-1 bg-stone-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-100 rounded">{tag}</span>
                 ))}
             </div>
             <article className="text-zinc-600 dark:text-zinc-300 leading-relaxed max-w-none text-lg">

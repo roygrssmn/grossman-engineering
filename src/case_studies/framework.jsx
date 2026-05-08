@@ -1,12 +1,12 @@
 
 export const framework = {
-    title: 'Enterprise QA Automation',
+    title: 'Enterprise QA Transformation',
     role: 'Leadership & QA',
     tags: ['Playwright', 'TypeScript', 'CI/CD', 'Strategy'],
     links: [
         { type: 'github', url: 'https://github.com/yourusername/qa-framework', label: 'View Repository' }
     ],
-    summary: 'Architected an end-to-end testing framework from the ground up. This initiative significantly reduced manual regression time and accelerated the release cycle.',
+    summary: 'Scaled quality operations from manual bottlenecks to a fully automated CI/CD pipeline, reducing release cycles by 40%.',
     content: (
         <>
             <h2 className="font-serif text-2xl mt-8 mb-4 font-medium text-zinc-900 dark:text-zinc-50">The Challenge</h2>

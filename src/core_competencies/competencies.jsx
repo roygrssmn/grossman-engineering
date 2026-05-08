@@ -6,8 +6,8 @@ export const competenciesData = [
             de: 'KI-Engineering'
         },
         description: {
-            en: 'Designing and implementing Agentic workflows and RAG pipelines. Focusing on system reliability, prompt evaluation, and eliminating model hallucinations in production environments.',
-            de: 'Entwicklung und Implementierung von Agenten-Workflows und RAG-Pipelines. Fokus auf Systemzuverlässigkeit, Prompt-Evaluierung und die Vermeidung von Modell-Halluzinationen in Produktionsumgebungen.'
+            en: 'Maximizing reliability in Agentic workflows and RAG pipelines. Focusing on prompt evaluation and eliminating model hallucinations in production environments.',
+            de: 'Maximierung der Zuverlässigkeit in Agentic-Workflows und RAG-Pipelines. Fokus auf Prompt-Evaluierung und die Vermeidung von Modell-Halluzinationen in Produktionsumgebungen.'
         }
     },
     {
@@ -28,8 +28,8 @@ export const competenciesData = [
             de: 'Technische Führung'
         },
         description: {
-            en: 'Mentoring engineers, aligning technical initiatives with business goals, and fostering a culture of ownership. Experienced in managing both people and complex projects.',
-            de: 'Mentoring von Ingenieuren, Ausrichtung technischer Initiativen an Geschäftszielen und Förderung einer Kultur der Eigenverantwortung. Erfahren in der Führung von Mitarbeitern und komplexen Projekten.'
+            en: '15+ years of experience mentoring engineers, driving strategic roadmap execution, and aligning technical initiatives with business goals to foster a culture of ownership.',
+            de: '15+ Jahre Erfahrung im Mentoring von Ingenieuren, Vorantreiben der strategischen Roadmap-Umsetzung und Ausrichtung technischer Initiativen an Geschäftszielen.'
         }
     }
 ];
