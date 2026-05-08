@@ -3,7 +3,10 @@ export const rag = {
     title: 'Agentic RAG Pipeline',
     role: 'AI Architecture',
     tags: ['Python', 'LangChain', 'Vector DB', 'Prompt Engineering'],
-    github: 'https://github.com/yourusername/rag-pipeline',
+    links: [
+        { type: 'github', url: 'https://github.com/yourusername/rag-pipeline', label: 'View Repository' },
+        { type: 'reference', url: '#', label: 'Architecture Doc' }
+    ],
     summary: 'Designed a Retrieval-Augmented Generation system to query complex documentation. Implemented automated evaluation guardrails to ensure high-fidelity outputs.',
     content: (
         <>

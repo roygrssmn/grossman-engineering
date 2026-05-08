@@ -3,7 +3,10 @@ export const homelab = {
     title: 'Infrastructure Homelab',
     role: 'DevOps & Systems',
     tags: ['Raspberry Pi', 'Docker', 'Linux', 'Networking'],
-    github: 'https://github.com/yourusername/homelab-config',
+    links: [
+        { type: 'github', url: 'https://github.com/yourusername/homelab-config', label: 'View Repository' },
+        { type: 'reference', url: '#', label: 'Live Dashboard' }
+    ],
     summary: 'Engineered a personal infrastructure environment utilizing Raspberry Pi and NAS systems. Features automated backups, network blocking, and secure remote tunneling.',
     content: (
         <>
