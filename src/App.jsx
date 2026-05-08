@@ -11,13 +11,20 @@ export default function App() {
         const saved = localStorage.getItem('darkMode');
         return saved !== null ? JSON.parse(saved) : true;
     });
-    const [view, setView] = useState('main'); // 'main' or 'project'
 
-    const [activeProjectKey, setActiveProjectKey] = useState(null);
     const [activeModal, setActiveModal] = useState(null); // 'impressum', 'privacy', or null
     const [language, setLanguage] = useState(() => {
         return localStorage.getItem('language') || 'en';
     });
+
+    const [currentPath, setCurrentPath] = useState(window.location.pathname);
+
+    useEffect(() => {
+        const onLocationChange = () => setCurrentPath(window.location.pathname);
+        window.addEventListener('popstate', onLocationChange);
+        return () => window.removeEventListener('popstate', onLocationChange);
+    }, []);
+
     useEffect(() => {
         if (isDarkMode) {
             document.documentElement.classList.add('dark');
@@ -34,36 +41,34 @@ export default function App() {
     const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
     const toggleLanguage = () => setLanguage(lang => lang === 'en' ? 'de' : 'en');
     
-    const openProject = (key) => {
-        setActiveProjectKey(key);
-        setView('project');
-        window.scrollTo(0, 0);
-    };
-
-    const showMainPage = (e) => {
+    const navigate = (path, e) => {
         if (e) e.preventDefault();
-        setView('main');
-        setActiveProjectKey(null);
+        window.history.pushState({}, '', path);
+        setCurrentPath(path);
         window.scrollTo(0, 0);
     };
 
     const currentYear = new Date().getFullYear();
+    
+    const isProjectView = currentPath.startsWith('/project/');
+    const activeProjectKey = isProjectView ? currentPath.replace('/project/', '') : null;
     const activeProject = activeProjectKey ? projectData[activeProjectKey] : null;
+    const view = isProjectView && activeProject ? 'project' : 'main';
 
     return (
         <div className="font-sans antialiased min-h-screen flex flex-col bg-[#fcfbf9] text-zinc-900 dark:bg-[#09090b] dark:text-zinc-50 selection:bg-stone-300 selection:text-black dark:selection:bg-stone-700 dark:selection:text-white transition-colors duration-300">
             <Navigation 
                 view={view} 
-                showMainPage={showMainPage} 
+                navigate={navigate} 
                 language={language} 
                 toggleLanguage={toggleLanguage} 
                 isDarkMode={isDarkMode} 
                 toggleDarkMode={toggleDarkMode} 
             />
             
-            {view === 'main' && <MainView language={language} projectData={projectData} openProject={openProject} />}
+            {view === 'main' && <MainView language={language} projectData={projectData} navigate={navigate} />}
             
-            {view === 'project' && activeProject && <ProjectView activeProject={activeProject} showMainPage={showMainPage} />}
+            {view === 'project' && activeProject && <ProjectView activeProject={activeProject} navigate={navigate} />}
             
             <Footer currentYear={currentYear} setActiveModal={setActiveModal} language={language} />
             

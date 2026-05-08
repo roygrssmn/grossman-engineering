@@ -1,11 +1,11 @@
 
-export default function ProjectView({ activeProject, showMainPage }) {
+export default function ProjectView({ activeProject, navigate }) {
     return (
         <main className="flex-grow flex-col pt-32 px-6 md:px-12 lg:px-24 pb-16 md:pb-32 max-w-4xl mx-auto w-full">
-            <button onClick={showMainPage} className="mb-12 text-sm font-medium text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors flex items-center gap-2 group w-fit">
+            <a href="/" onClick={(e) => navigate('/', e)} className="mb-12 text-sm font-medium text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors flex items-center gap-2 group w-fit">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:-translate-x-1 transition-transform"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
                 Back to Overview
-            </button>
+            </a>
             
             <div className="flex items-center gap-4 mb-6">
                 <span className="text-xs font-medium px-3 py-1 bg-stone-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 rounded-full">{activeProject.role}</span>
