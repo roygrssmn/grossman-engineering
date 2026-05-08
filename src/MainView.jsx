@@ -1,5 +1,5 @@
-import { competenciesData } from './areas_of_expertise/competencies.jsx';
-import { contactInfo } from './contactInfo.jsx';
+import { competenciesData } from './areas_of_expertise/competencies.js';
+import { contactInfo } from './contactInfo.js';
 import { Cpu, Layers, Users } from 'lucide-react';
 
 export default function MainView({ language, projectData, navigate }) {

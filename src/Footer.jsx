@@ -1,4 +1,4 @@
-import { contactInfo } from './contactInfo.jsx';
+import { contactInfo } from './contactInfo.js';
 
 export default function Footer({ currentYear, setActiveModal, language }) {
     return (

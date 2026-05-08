@@ -8,8 +8,6 @@ export default function Navigation({ view, navigate, language, toggleLanguage, i
             <div className="flex items-center gap-6">
                 {view === 'main' && (
                     <div className="hidden md:flex gap-6 text-sm font-medium text-zinc-600 dark:text-zinc-300">
-                        {/* <a href="#expertise" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Expertise</a> */}
-                        {/* <a href="#portfolio" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Portfolio</a> */}
                         <a href="#contact" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Contact</a>
                     </div>
                 )}

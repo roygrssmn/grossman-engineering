@@ -1,4 +1,4 @@
-import { contactInfo } from './contactInfo.jsx';
+import { contactInfo } from './contactInfo.js';
 
 export default function Modals({ activeModal, setActiveModal, language }) {
     if (!activeModal) return null;
