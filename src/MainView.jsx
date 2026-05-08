@@ -1,4 +1,3 @@
-import React from 'react';
 import { competenciesData } from './core_competencies/competencies.jsx';
 
 export default function MainView({ language, projectData, openProject }) {

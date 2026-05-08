@@ -1,4 +1,3 @@
-import React from 'react';
 
 export default function Modals({ activeModal, setActiveModal, language }) {
     if (!activeModal) return null;

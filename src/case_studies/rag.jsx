@@ -1,4 +1,3 @@
-import React from 'react';
 
 export const rag = {
     title: 'Agentic RAG Pipeline',

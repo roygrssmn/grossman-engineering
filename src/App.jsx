@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { projectData } from './case_studies/projects.jsx';
 import Navigation from './Navigation.jsx';
 import MainView from './MainView.jsx';
