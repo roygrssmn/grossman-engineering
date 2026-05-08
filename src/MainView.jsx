@@ -71,7 +71,7 @@ export default function MainView({ language, projectData, navigate }) {
                         <a href="mailto:hello@thequalityarchitect.io" className="inline-flex justify-center items-center px-6 py-3 bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 font-medium rounded-lg hover:opacity-90 transition-opacity shadow-sm">
                             {language === 'en' ? 'Send an Email' : 'E-Mail senden'}
                         </a>
-                        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="inline-flex justify-center items-center px-6 py-3 border border-stone-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-50 font-medium rounded-lg hover:bg-stone-50 dark:hover:bg-zinc-800 transition-colors">
+                        <a href="https://linkedin.com/in/roygrssmn" target="_blank" rel="noopener noreferrer" className="inline-flex justify-center items-center px-6 py-3 border border-stone-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-50 font-medium rounded-lg hover:bg-stone-50 dark:hover:bg-zinc-800 transition-colors">
                             {language === 'en' ? 'Connect on LinkedIn' : 'Auf LinkedIn vernetzen'}
                         </a>
                     </div>

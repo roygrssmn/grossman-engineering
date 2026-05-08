@@ -37,7 +37,45 @@ export default function App() {
 
     useEffect(() => {
         localStorage.setItem('language', language);
+        document.documentElement.lang = language;
     }, [language]);
+
+    // SEO: Dynamic Title, Meta Description & Canonical URL
+    useEffect(() => {
+        let title = 'Roey Grossman | The Quality Architect';
+        let desc = 'I build reliable AI systems and lead high-performance engineering teams. Bridging the gap between Quality Assurance, technical strategy, and AI.';
+        
+        if (language === 'de') {
+            title = 'Roey Grossman | Der Qualitätsarchitekt';
+            desc = 'Ich baue zuverlässige KI-Systeme und leite hochleistungsfähige Engineering-Teams. Ich schließe die Lücke zwischen Qualitätssicherung, technischer Strategie und KI.';
+        }
+
+        if (currentPath.startsWith('/project/')) {
+            const key = currentPath.replace('/project/', '');
+            if (projectData[key]) {
+                title = `${projectData[key].title} | Roey Grossman`;
+                desc = projectData[key].summary;
+            }
+        } else if (currentPath !== '/') {
+            title = 'Page Not Found | Roey Grossman';
+        }
+        
+        document.title = title;
+        
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) metaDesc.setAttribute('content', desc);
+        
+        const ogDesc = document.querySelector('meta[property="og:description"]');
+        if (ogDesc) ogDesc.setAttribute('content', desc);
+
+        let canonicalLink = document.querySelector("link[rel='canonical']");
+        if (!canonicalLink) {
+            canonicalLink = document.createElement("link");
+            canonicalLink.setAttribute("rel", "canonical");
+            document.head.appendChild(canonicalLink);
+        }
+        canonicalLink.setAttribute("href", `https://thequalityarchitect.io${currentPath}`);
+    }, [currentPath, language]);
 
     const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
     const toggleLanguage = () => setLanguage(lang => lang === 'en' ? 'de' : 'en');
