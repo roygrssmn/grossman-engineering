@@ -1,8 +1,14 @@
+'use client';
+import Link from 'next/link';
+import { useApp } from './context/AppContext';
 import { competenciesData } from './core_competencies/competencies.jsx';
 import { contactInfo } from './contactInfo.jsx';
+import { projectData } from './case_studies/projects.jsx';
 import { Cpu, Layers, Users } from 'lucide-react';
 
-export default function MainView({ language, projectData, navigate }) {
+export default function MainView() {
+    const { language } = useApp();
+
     return (
         <main className="flex-grow flex flex-col pt-32 px-6 md:px-12 lg:px-24 pb-16 md:pb-32 max-w-7xl mx-auto w-full">
             <header className="max-w-4xl mb-32 mt-12">
@@ -10,7 +16,7 @@ export default function MainView({ language, projectData, navigate }) {
                     Roey Grossman, Berlin
                 </p>
                 <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight mb-8 text-zinc-900 dark:text-zinc-50">
-                    {language === 'en' 
+                    {language === 'en'
                         ? 'I build reliable AI systems and lead high-performance engineering teams'
                         : 'Ich baue zuverlässige KI-Systeme und leite hochleistungsfähige Engineering-Teams'}
                 </h1>
@@ -23,7 +29,7 @@ export default function MainView({ language, projectData, navigate }) {
 
             <section id="expertise" className="mb-32">
                 <h2 className="font-serif text-3xl mb-12 border-b border-stone-200 dark:border-zinc-800 pb-4 text-zinc-900 dark:text-zinc-50">
-                {language === 'en' ? 'Areas of Expertise' : 'Fachgebiete'}
+                    {language === 'en' ? 'Areas of Expertise' : 'Fachgebiete'}
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                     {competenciesData.map(comp => (
@@ -42,11 +48,11 @@ export default function MainView({ language, projectData, navigate }) {
 
             <section id="portfolio" className="mb-32">
                 <h2 className="font-serif text-3xl mb-12 border-b border-stone-200 dark:border-zinc-800 pb-4 text-zinc-900 dark:text-zinc-50">
-                {language === 'en' ? 'Selected Impact' : 'Ausgewählte Erfolge'}
+                    {language === 'en' ? 'Selected Impact' : 'Ausgewählte Erfolge'}
                 </h2>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {Object.entries(projectData).map(([key, project]) => (
-                        <a key={key} href={`/project/${key}`} onClick={(e) => navigate(`/project/${key}`, e)} className="group bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 p-8 md:p-10 rounded-xl hover:border-zinc-400 dark:hover:border-zinc-500 transition-all cursor-pointer shadow-sm hover:shadow-md flex flex-col">
+                        <Link key={key} href={`/project/${key}`} className="group bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 p-8 md:p-10 rounded-xl hover:border-zinc-400 dark:hover:border-zinc-500 transition-all cursor-pointer shadow-sm hover:shadow-md flex flex-col">
                             <div className="flex justify-between items-start mb-6">
                                 <h3 className="font-serif text-2xl text-zinc-900 dark:text-zinc-50 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{project.title}</h3>
                                 <span className="text-xs font-semibold px-3 py-1 bg-stone-50 dark:bg-zinc-950 border border-stone-200 dark:border-zinc-800 rounded-full text-zinc-900 dark:text-zinc-50 whitespace-nowrap ml-4">{project.role}</span>
@@ -71,7 +77,7 @@ export default function MainView({ language, projectData, navigate }) {
                                     </span>
                                 </div>
                             </div>
-                        </a>
+                        </Link>
                     ))}
                 </div>
             </section>

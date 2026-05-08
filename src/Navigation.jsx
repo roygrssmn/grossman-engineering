@@ -1,15 +1,21 @@
+'use client';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useApp } from './context/AppContext';
 
-export default function Navigation({ view, navigate, language, toggleLanguage, isDarkMode, toggleDarkMode }) {
+export default function Navigation() {
+    const { language, toggleLanguage, isDarkMode, toggleDarkMode } = useApp();
+    const pathname = usePathname();
+    const isMain = pathname === '/';
+
     return (
         <nav className="fixed top-0 w-full z-40 px-6 py-5 md:px-12 lg:px-24 border-b border-stone-200 dark:border-zinc-800 backdrop-blur-md bg-white/80 dark:bg-zinc-950/80 flex justify-between items-center">
-            <a href="/" onClick={(e) => navigate('/', e)} className="font-serif text-xl tracking-tight font-medium hover:opacity-80 transition-opacity">
+            <Link href="/" className="font-serif text-xl tracking-tight font-medium hover:opacity-80 transition-opacity">
                 AgenticArchitect.io
-            </a>
+            </Link>
             <div className="flex items-center gap-6">
-                {view === 'main' && (
+                {isMain && (
                     <div className="hidden md:flex gap-6 text-sm font-medium text-zinc-600 dark:text-zinc-300">
-                        {/* <a href="#expertise" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Expertise</a> */}
-                        {/* <a href="#portfolio" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Portfolio</a> */}
                         <a href="#contact" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Contact</a>
                     </div>
                 )}

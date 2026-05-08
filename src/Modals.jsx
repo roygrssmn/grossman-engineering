@@ -1,6 +1,10 @@
+'use client';
+import { useApp } from './context/AppContext';
 import { contactInfo } from './contactInfo.jsx';
 
-export default function Modals({ activeModal, setActiveModal, language }) {
+export default function Modals() {
+    const { activeModal, setActiveModal, language } = useApp();
+
     if (!activeModal) return null;
 
     return (
@@ -8,8 +12,8 @@ export default function Modals({ activeModal, setActiveModal, language }) {
             <div className="bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 p-8 md:p-12 max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl rounded-2xl relative" onClick={e => e.stopPropagation()}>
                 <button onClick={() => setActiveModal(null)} className="absolute top-6 right-6 text-xl hover:text-zinc-500 text-zinc-900 dark:text-zinc-50" aria-label={language === 'en' ? 'Close modal' : 'Modal schließen'}>&times;</button>
                 <h2 className="font-serif text-3xl mb-6 text-zinc-900 dark:text-zinc-50">
-                    {activeModal === 'impressum' 
-                        ? 'Impressum' 
+                    {activeModal === 'impressum'
+                        ? 'Impressum'
                         : (language === 'en' ? 'Privacy Policy' : 'Datenschutzerklärung')}
                 </h2>
                 <div className="space-y-4 text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">

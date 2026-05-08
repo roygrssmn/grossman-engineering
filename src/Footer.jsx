@@ -1,6 +1,11 @@
+'use client';
+import { useApp } from './context/AppContext';
 import { contactInfo } from './contactInfo.jsx';
 
-export default function Footer({ currentYear, setActiveModal, language }) {
+export default function Footer() {
+    const { language, setActiveModal } = useApp();
+    const currentYear = new Date().getFullYear();
+
     return (
         <footer className="px-6 py-8 md:px-12 lg:px-24 border-t border-stone-200 dark:border-zinc-800 text-xs text-zinc-600 dark:text-zinc-300 flex flex-col md:flex-row justify-between items-center gap-4 bg-stone-50 dark:bg-zinc-950 mt-auto">
             <div>
