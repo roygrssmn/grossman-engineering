@@ -1,0 +1,82 @@
+import React from 'react';
+
+export default function MainView({ language, projectData, openProject }) {
+    return (
+        <main className="flex-grow flex flex-col pt-32 px-6 md:px-12 lg:px-24 pb-16 md:pb-32 max-w-7xl mx-auto w-full">
+            <header className="max-w-4xl mb-32 mt-12">
+                <p className="text-sm font-medium tracking-wide text-zinc-600 dark:text-zinc-300 uppercase mb-4">Roey Grossman, Berlin</p>
+                <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight mb-8 text-zinc-900 dark:text-zinc-50">
+                    {language === 'en' 
+                        ? 'I build reliable AI systems and lead high-performance engineering teams.'
+                        : 'Ich baue zuverlässige KI-Systeme und leite hochleistungsfähige Engineering-Teams.'}
+                </h1>
+                <p className="text-xl text-zinc-600 dark:text-zinc-300 font-light leading-relaxed max-w-2xl">
+                    {language === 'en'
+                        ? 'Bridging the gap between Quality Assurance, technical strategy, and Artificial Intelligence to deliver scalable solutions that work in production.'
+                        : 'Ich schließe die Lücke zwischen Qualitätssicherung, technischer Strategie und Künstlicher Intelligenz, um skalierbare Lösungen zu liefern, die in der Produktion funktionieren.'}
+                </p>
+            </header>
+
+            <section id="expertise" className="mb-32">
+                <h2 className="font-serif text-3xl mb-12 border-b border-stone-200 dark:border-zinc-800 pb-4 text-zinc-900 dark:text-zinc-50">Core Competencies</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <div>
+                        <h3 className="font-medium text-lg mb-3 text-zinc-900 dark:text-zinc-50">AI Engineering</h3>
+                        <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                            Designing and implementing Agentic workflows and RAG pipelines. Focusing on system reliability, prompt evaluation, and eliminating model hallucinations in production environments.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 className="font-medium text-lg mb-3 text-zinc-900 dark:text-zinc-50">Quality Architecture</h3>
+                        <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                            Establishing comprehensive testing frameworks and CI/CD automation. Shifting quality left to ensure robust software delivery cycles and scalable infrastructure.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 className="font-medium text-lg mb-3 text-zinc-900 dark:text-zinc-50">Technical Leadership</h3>
+                        <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                            Mentoring engineers, aligning technical initiatives with business goals, and fostering a culture of ownership. Experienced in managing both people and complex projects.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="portfolio" className="mb-32">
+                <h2 className="font-serif text-3xl mb-12 border-b border-stone-200 dark:border-zinc-800 pb-4 text-zinc-900 dark:text-zinc-50">Selected Case Studies</h2>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    {Object.entries(projectData).map(([key, project]) => (
+                        <div key={key} onClick={() => openProject(key)} className="group bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 p-8 md:p-10 rounded-xl hover:border-zinc-400 dark:hover:border-zinc-500 transition-all cursor-pointer shadow-sm hover:shadow-md flex flex-col">
+                            <div className="flex justify-between items-start mb-6">
+                                <h3 className="font-serif text-2xl text-zinc-900 dark:text-zinc-50 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{project.title}</h3>
+                                <span className="text-xs font-medium px-3 py-1 bg-stone-50 dark:bg-zinc-950 border border-stone-200 dark:border-zinc-800 rounded-full text-zinc-900 dark:text-zinc-50 whitespace-nowrap ml-4">{project.role}</span>
+                            </div>
+                            <p className="text-zinc-600 dark:text-zinc-300 mb-8 leading-relaxed flex-grow">
+                                {key === 'rag' && "Designed a Retrieval-Augmented Generation system to query complex documentation. Implemented automated evaluation guardrails to ensure high-fidelity outputs."}
+                                {key === 'framework' && "Architected an end-to-end testing framework from the ground up. This initiative significantly reduced manual regression time and accelerated the release cycle."}
+                                {key === 'homelab' && "Engineered a personal infrastructure environment utilizing Raspberry Pi and NAS systems. Features automated backups, network blocking, and secure remote tunneling."}
+                            </p>
+                            <div className="flex flex-wrap gap-2 mt-auto">
+                                {project.tags.slice(0, 3).map(tag => (
+                                    <span key={tag} className="text-xs font-medium text-zinc-600 dark:text-zinc-300 bg-stone-100 dark:bg-zinc-800 px-2 py-1 rounded">{tag}</span>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            <section id="contact" className="pb-16">
+                <div className="bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 p-10 md:p-16 rounded-2xl text-center max-w-3xl mx-auto">
+                    <h2 className="font-serif text-3xl md:text-4xl mb-4 text-zinc-900 dark:text-zinc-50">Ready to build something reliable?</h2>
+                    <p className="text-zinc-600 dark:text-zinc-300 mb-8 max-w-xl mx-auto leading-relaxed">
+                        I am actively exploring new opportunities in technical leadership and AI engineering. Let us discuss how I can bring structure and quality to your next big initiative.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="mailto:hello@thequalityarchitect.io" className="inline-flex justify-center items-center px-6 py-3 bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 font-medium rounded-lg hover:opacity-90 transition-opacity shadow-sm">Send an Email</a>
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="inline-flex justify-center items-center px-6 py-3 border border-stone-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-50 font-medium rounded-lg hover:bg-stone-50 dark:hover:bg-zinc-800 transition-colors">Connect on LinkedIn</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    );
+}
