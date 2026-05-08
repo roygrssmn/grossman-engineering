@@ -1,3 +1,4 @@
+import ReactMarkdown from 'react-markdown';
 
 export default function ProjectView({ activeProject, navigate }) {
     return (
@@ -19,7 +20,18 @@ export default function ProjectView({ activeProject, navigate }) {
                 ))}
             </div>
             <article className="text-zinc-600 dark:text-zinc-300 leading-relaxed max-w-none text-lg">
-                {activeProject.content}
+                <ReactMarkdown
+                    components={{
+                        h2: ({node, ...props}) => <h2 className="font-serif text-2xl mt-8 mb-4 font-medium text-zinc-900 dark:text-zinc-50" {...props} />,
+                        p: ({node, ...props}) => <p className="mb-4" {...props} />,
+                        h3: ({node, ...props}) => <h3 className="font-mono text-lg font-medium mb-4 text-zinc-900 dark:text-zinc-50 border-b border-stone-200 dark:border-zinc-800 pb-2" {...props} />,
+                        ul: ({node, ...props}) => <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-4 text-sm text-zinc-600 dark:text-zinc-400" {...props} />,
+                        strong: ({node, ...props}) => <strong className="text-zinc-900 dark:text-zinc-100" {...props} />,
+                        blockquote: ({node, ...props}) => <div className="mt-12 p-6 bg-stone-50 dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 rounded-xl" {...props} />
+                    }}
+                >
+                    {activeProject.content}
+                </ReactMarkdown>
             </article>
             {activeProject.links && activeProject.links.length > 0 && (
                 <div className="mt-16 pt-8 border-t border-stone-200 dark:border-zinc-800 flex flex-wrap gap-4">
