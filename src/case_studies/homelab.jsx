@@ -10,16 +10,12 @@ export const homelab = {
     summary: 'Building my own infrastructure environment utilizing Raspberry Pi, Nvidia Spark, NAS systems, and Cloud providers. Features automated backups, network blocking, and secure remote tunneling.',
     content: (
         <>
-            <h2 className="font-serif text-2xl mt-8 mb-4 font-medium text-zinc-900 dark:text-zinc-50">The Challenge</h2>
-            <p className="mb-4">To maintain a sharp understanding of infrastructure and operations, I required a hands-on environment to test networking configurations, container orchestration, and automated backups.</p>
-            <h2 className="font-serif text-2xl mt-8 mb-4 font-medium text-zinc-900 dark:text-zinc-50">The Solution</h2>
-            <p className="mb-4">I built a highly available homelab utilizing Raspberry Pi clusters and a dedicated NAS. The entire environment is managed via Docker, ensuring consistency and rapid disaster recovery.</p>
-            <h2 className="font-serif text-2xl mt-8 mb-4 font-medium text-zinc-900 dark:text-zinc-50">Business Impact</h2>
-            <ul className="list-disc pl-6 mb-6">
-                <li className="mb-2">Automated local media management and critical data backups.</li>
-                <li className="mb-2">Implemented network-wide ad blocking and secure VPN access.</li>
-                <li className="mb-2">Maintained hands-on expertise with Linux system administration and deployment strategies.</li>
-            </ul>
+            <h2 className="font-serif text-2xl mt-8 mb-4 font-medium text-zinc-900 dark:text-zinc-50">The Backstory</h2>
+            <p className="mb-4">To maintain a sharp understanding of infrastructure and operations, I needed a hands-on environment to test networking configurations, container orchestration, and automated backups outside of the constraints of my daily enterprise work.</p>
+            <h2 className="font-serif text-2xl mt-8 mb-4 font-medium text-zinc-900 dark:text-zinc-50">My Philosophy in Action</h2>
+            <p className="mb-4">I built a highly available homelab utilizing Raspberry Pi clusters, Nvidia Spark, and a dedicated NAS. The entire environment is managed via Docker, ensuring consistency and rapid disaster recovery. An architect should never lose touch with the metal; understanding the low-level infrastructure constraints makes for much more resilient high-level designs.</p>
+            <h2 className="font-serif text-2xl mt-8 mb-4 font-medium text-zinc-900 dark:text-zinc-50">The Hard Truths</h2>
+            <p className="mb-4">Running enterprise-grade configurations on consumer hardware quickly reveals the limitations of edge compute. I spent weeks fighting network latency and SD card corruption before realizing I needed to shift stateful data entirely to the NAS. It was a humbling reminder that complexity doesn't always equal reliability.</p>
             
             <div className="mt-12 p-6 bg-stone-50 dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 rounded-xl">
                 <h3 className="font-mono text-lg font-medium mb-4 text-zinc-900 dark:text-zinc-50 border-b border-stone-200 dark:border-zinc-800 pb-2">Lab Specifications</h3>

@@ -54,10 +54,16 @@ export default function MainView({ language, projectData, navigate }) {
                             <p className="text-zinc-600 dark:text-zinc-300 mb-8 leading-relaxed flex-grow">
                                 {project.summary}
                             </p>
-                            <div className="flex flex-wrap gap-2 mt-auto">
-                                {project.tags.slice(0, 3).map(tag => (
-                                    <span key={tag} className="text-xs font-semibold text-zinc-800 dark:text-zinc-100 bg-stone-100 dark:bg-zinc-800 px-2 py-1 rounded">{tag}</span>
-                                ))}
+                            <div className="flex items-center justify-between mt-auto pt-4 gap-4">
+                                <div className="flex flex-wrap gap-2">
+                                    {project.tags.slice(0, 3).map(tag => (
+                                        <span key={tag} className="text-xs font-semibold text-zinc-800 dark:text-zinc-100 bg-stone-100 dark:bg-zinc-800 px-2 py-1 rounded">{tag}</span>
+                                    ))}
+                            </div>
+                                <span className="text-sm font-medium text-zinc-900 dark:text-zinc-50 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-1 whitespace-nowrap">
+                                    {language === 'en' ? 'Read Story' : 'Story lesen'}
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                </span>
                             </div>
                         </a>
                     ))}
