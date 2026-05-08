@@ -6,7 +6,7 @@ export default function Modals({ activeModal, setActiveModal, language }) {
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm" onClick={() => setActiveModal(null)}>
             <div className="bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 p-8 md:p-12 max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl rounded-2xl relative" onClick={e => e.stopPropagation()}>
-                <button onClick={() => setActiveModal(null)} className="absolute top-6 right-6 text-xl hover:text-zinc-500 text-zinc-900 dark:text-zinc-50">&times;</button>
+                <button onClick={() => setActiveModal(null)} className="absolute top-6 right-6 text-xl hover:text-zinc-500 text-zinc-900 dark:text-zinc-50" aria-label={language === 'en' ? 'Close modal' : 'Modal schließen'}>&times;</button>
                 <h2 className="font-serif text-3xl mb-6 text-zinc-900 dark:text-zinc-50">
                     {activeModal === 'impressum' 
                         ? 'Impressum' 
