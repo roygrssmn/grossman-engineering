@@ -64,23 +64,29 @@ const projectData = {
 };
 
 export default function App() {
-    const [isDarkMode, setIsDarkMode] = useState(true);
+    const [isDarkMode, setIsDarkMode] = useState(() => {
+        const saved = localStorage.getItem('darkMode');
+        return saved !== null ? JSON.parse(saved) : true;
+    });
     const [view, setView] = useState('main'); // 'main' or 'project'
+
     const [activeProjectKey, setActiveProjectKey] = useState(null);
     const [activeModal, setActiveModal] = useState(null); // 'impressum', 'privacy', or null
-    const [language, setLanguage] = useState('en'); // 'en' or 'de'
-
+    const [language, setLanguage] = useState(() => {
+        return localStorage.getItem('language') || 'en';
+    });
     useEffect(() => {
         if (isDarkMode) {
             document.documentElement.classList.add('dark');
-            document.documentElement.style.backgroundColor = '#09090b';
-            document.documentElement.style.color = '#f4f4f5';
         } else {
             document.documentElement.classList.remove('dark');
-            document.documentElement.style.backgroundColor = '#fcfbf9';
-            document.documentElement.style.color = '#18181b';
         }
+        localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
     }, [isDarkMode]);
+
+    useEffect(() => {
+        localStorage.setItem('language', language);
+    }, [language]);
 
     const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
     const toggleLanguage = () => setLanguage(lang => lang === 'en' ? 'de' : 'en');
@@ -102,7 +108,7 @@ export default function App() {
     const activeProject = activeProjectKey ? projectData[activeProjectKey] : null;
 
     return (
-        <div className="font-sans antialiased min-h-screen flex flex-col selection:bg-stone-300 selection:text-black dark:selection:bg-stone-700 dark:selection:text-white">
+        <div className="font-sans antialiased min-h-screen flex flex-col bg-[#fcfbf9] text-zinc-900 dark:bg-[#09090b] dark:text-zinc-50 selection:bg-stone-300 selection:text-black dark:selection:bg-stone-700 dark:selection:text-white transition-colors duration-300">
             {/* Sticky Navigation */}
             <nav className="fixed top-0 w-full z-40 px-6 py-5 md:px-12 lg:px-24 border-b border-stone-200 dark:border-zinc-800 backdrop-blur-md bg-white/80 dark:bg-zinc-950/80 flex justify-between items-center">
                 <a href="#" onClick={showMainPage} className="font-serif text-xl tracking-tight font-medium hover:opacity-80 transition-opacity">
