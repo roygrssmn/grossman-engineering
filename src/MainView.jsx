@@ -46,7 +46,7 @@ export default function MainView({ language, projectData, navigate }) {
                 </h2>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {Object.entries(projectData).map(([key, project]) => (
-                        <a key={key} href={`/project/${key}`} onClick={(e) => navigate(`/project/${key}`, e)} className="group bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 p-8 md:p-10 rounded-xl hover:border-zinc-400 dark:hover:border-zinc-500 transition-all cursor-pointer shadow-sm hover:shadow-md flex flex-col">
+                        <a key={key} href={`/${language}/project/${key}`} onClick={(e) => navigate(`/project/${key}`, e)} className="group bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 p-8 md:p-10 rounded-xl hover:border-zinc-400 dark:hover:border-zinc-500 transition-all cursor-pointer shadow-sm hover:shadow-md flex flex-col">
                             <div className="flex justify-between items-start mb-6">
                                 <h3 className="font-serif text-2xl text-zinc-900 dark:text-zinc-50 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{project.title}</h3>
                                 <span className="text-xs font-semibold px-3 py-1 bg-stone-50 dark:bg-zinc-950 border border-stone-200 dark:border-zinc-800 rounded-full text-zinc-900 dark:text-zinc-50 whitespace-nowrap ml-4">{project.role}</span>

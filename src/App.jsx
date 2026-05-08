@@ -14,17 +14,39 @@ export default function App() {
     });
 
     const [activeModal, setActiveModal] = useState(null); // 'impressum', 'privacy', or null
-    const [language, setLanguage] = useState(() => {
-        return localStorage.getItem('language') || 'en';
-    });
 
     const [currentPath, setCurrentPath] = useState(window.location.pathname);
 
+    const [language, setLanguage] = useState(() => {
+        const parts = window.location.pathname.split('/').filter(Boolean);
+        if (parts[0] === 'en' || parts[0] === 'de') {
+            return parts[0];
+        }
+        return localStorage.getItem('language') || 'en';
+    });
+
     useEffect(() => {
-        const onLocationChange = () => setCurrentPath(window.location.pathname);
+        const onLocationChange = () => {
+            const path = window.location.pathname;
+            setCurrentPath(path);
+            const parts = path.split('/').filter(Boolean);
+            if (parts[0] === 'en' || parts[0] === 'de') {
+                setLanguage(parts[0]);
+            }
+        };
         window.addEventListener('popstate', onLocationChange);
         return () => window.removeEventListener('popstate', onLocationChange);
     }, []);
+
+    // Redirect to language-prefixed URL if missing
+    useEffect(() => {
+        const parts = currentPath.split('/').filter(Boolean);
+        if (parts[0] !== 'en' && parts[0] !== 'de') {
+            const newPath = `/${language}${currentPath === '/' ? '' : currentPath}`;
+            window.history.replaceState({}, '', newPath);
+            setCurrentPath(newPath);
+        }
+    }, [currentPath, language]);
 
     useEffect(() => {
         if (isDarkMode) {
@@ -40,45 +62,59 @@ export default function App() {
         document.documentElement.lang = language;
     }, [language]);
 
+    // Compute route path without language prefix
+    let routePath = currentPath;
+    const parts = currentPath.split('/').filter(Boolean);
+    if (parts[0] === 'en' || parts[0] === 'de') {
+        routePath = '/' + parts.slice(1).join('/');
+    }
+
     // SEO: Dynamic Title, Meta Description & Canonical URL
     useEffect(() => {
         let title = 'Roey Grossman | The Agentic Architect';
         let desc = 'The Quality-First Agentic Architect: Building for Enterprise-Grade AI Reliability. Bridging the gap between Quality Assurance, technical strategy, and AI.';
+        let ogType = 'website';
         
         if (language === 'de') {
             title = 'Roey Grossman | Der Agentic Architect';
             desc = 'Der qualitätsorientierte Agentic Architect: Aufbau von auf Unternehmensniveau zuverlässiger KI. Ich schließe die Lücke zwischen Qualitätssicherung, technischer Strategie und KI.';
         }
 
-        if (currentPath.startsWith('/project/')) {
-            const key = currentPath.replace('/project/', '');
+        if (routePath.startsWith('/project/')) {
+            const key = routePath.replace('/project/', '');
             if (projectData[key]) {
                 title = `${projectData[key].title} | Roey Grossman`;
                 desc = projectData[key].summary;
+                    ogType = 'article';
             }
-        } else if (currentPath !== '/') {
+        } else if (routePath !== '/') {
             title = 'Page Not Found | Roey Grossman';
         }
         
         document.title = title;
         
-        const metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc) metaDesc.setAttribute('content', desc);
+        // Helper to safely update or create meta tags
+        const setMetaTag = (attr, key, content) => {
+            let tag = document.querySelector(`meta[${attr}="${key}"]`);
+            if (!tag) {
+                tag = document.createElement('meta');
+                tag.setAttribute(attr, key);
+                document.head.appendChild(tag);
+            }
+            tag.setAttribute('content', content);
+        };
         
-        const ogDesc = document.querySelector('meta[property="og:description"]');
-        if (ogDesc) ogDesc.setAttribute('content', desc);
+        setMetaTag('name', 'description', desc);
+        setMetaTag('property', 'og:title', title);
+        setMetaTag('property', 'og:description', desc);
+        setMetaTag('property', 'og:type', ogType);
+        setMetaTag('property', 'og:url', `https://agenticarchitect.io${currentPath}`);
+        setMetaTag('property', 'og:image', 'https://agenticarchitect.io/og-image.jpg'); // Ensure you upload an og-image.jpg to your public folder
 
-        const ogTitle = document.querySelector('meta[property="og:title"]');
-        if (ogTitle) ogTitle.setAttribute('content', title);
-
-        const twitterTitle = document.querySelector('meta[name="twitter:title"]');
-        if (twitterTitle) twitterTitle.setAttribute('content', title);
-
-        const twitterDesc = document.querySelector('meta[name="twitter:description"]');
-        if (twitterDesc) twitterDesc.setAttribute('content', desc);
-
-        const ogUrl = document.querySelector('meta[property="og:url"]');
-        if (ogUrl) ogUrl.setAttribute('content', `https://agenticarchitect.io${currentPath}`);
+        setMetaTag('name', 'twitter:card', 'summary_large_image');
+        setMetaTag('name', 'twitter:title', title);
+        setMetaTag('name', 'twitter:description', desc);
+        setMetaTag('name', 'twitter:image', 'https://agenticarchitect.io/og-image.jpg');
 
         let canonicalLink = document.querySelector("link[rel='canonical']");
         if (!canonicalLink) {
@@ -87,15 +123,47 @@ export default function App() {
             document.head.appendChild(canonicalLink);
         }
         canonicalLink.setAttribute("href", `https://agenticarchitect.io${currentPath}`);
-    }, [currentPath, language]);
+
+        // Add alternate language tags for SEO
+        const addAlternateLink = (lang, path) => {
+            let link = document.querySelector(`link[hreflang="${lang}"]`);
+            if (!link) {
+                link = document.createElement("link");
+                link.setAttribute("rel", "alternate");
+                link.setAttribute("hreflang", lang);
+                document.head.appendChild(link);
+            }
+            link.setAttribute("href", `https://agenticarchitect.io${path}`);
+        };
+        addAlternateLink('en', `/en${routePath === '/' ? '' : routePath}`);
+        addAlternateLink('de', `/de${routePath === '/' ? '' : routePath}`);
+        addAlternateLink('x-default', `/en${routePath === '/' ? '' : routePath}`);
+
+    }, [currentPath, language, routePath]);
 
     const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
-    const toggleLanguage = () => setLanguage(lang => lang === 'en' ? 'de' : 'en');
+    
+    const toggleLanguage = () => {
+        const newLang = language === 'en' ? 'de' : 'en';
+        setLanguage(newLang);
+        
+        let path = currentPath;
+        const currentParts = path.split('/').filter(Boolean);
+        if (currentParts[0] === 'en' || currentParts[0] === 'de') {
+            currentParts[0] = newLang;
+            path = '/' + currentParts.join('/');
+        } else {
+            path = `/${newLang}${path === '/' ? '' : path}`;
+        }
+        window.history.pushState({}, '', path);
+        setCurrentPath(path);
+    };
     
     const navigate = (path, e) => {
         if (e) e.preventDefault();
-        window.history.pushState({}, '', path);
-        setCurrentPath(path);
+        const newPath = `/${language}${path === '/' ? '' : path}`;
+        window.history.pushState({}, '', newPath);
+        setCurrentPath(newPath);
         window.scrollTo(0, 0);
     };
 
@@ -104,10 +172,10 @@ export default function App() {
     let view;
     let activeProject = null;
 
-    if (currentPath === '/') {
+    if (routePath === '/') {
         view = 'main';
-    } else if (currentPath.startsWith('/project/')) {
-        const key = currentPath.replace('/project/', '');
+    } else if (routePath.startsWith('/project/')) {
+        const key = routePath.replace('/project/', '');
         if (projectData[key]) {
             activeProject = projectData[key];
             view = 'project';
@@ -131,9 +199,9 @@ export default function App() {
             
             {view === 'main' && <MainView language={language} projectData={projectData} navigate={navigate} />}
             
-            {view === 'project' && activeProject && <ProjectView activeProject={activeProject} navigate={navigate} />}
+            {view === 'project' && activeProject && <ProjectView activeProject={activeProject} navigate={navigate} language={language} />}
             
-            {view === '404' && <NotFoundView navigate={navigate} />}
+            {view === '404' && <NotFoundView navigate={navigate} language={language} />}
             
             <Footer currentYear={currentYear} setActiveModal={setActiveModal} language={language} />
             
