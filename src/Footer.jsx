@@ -1,3 +1,4 @@
+import { contactInfo } from './contactInfo.jsx';
 
 export default function Footer({ currentYear, setActiveModal, language }) {
     return (
@@ -6,7 +7,7 @@ export default function Footer({ currentYear, setActiveModal, language }) {
                 &copy; {currentYear} Roey Grossman. {language === 'en' ? 'All rights reserved.' : 'Alle Rechte vorbehalten.'}
             </div>
             <div className="flex gap-4 items-center">
-                <a href="https://github.com/roygrssmn" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors">GitHub</a>
+                <a href={contactInfo.github} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors">GitHub</a>
                 <span className="text-stone-300 dark:text-zinc-700">|</span>
                 <button onClick={() => setActiveModal('impressum')} className="hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors">Impressum</button>
                 <button onClick={() => setActiveModal('privacy')} className="hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors">
