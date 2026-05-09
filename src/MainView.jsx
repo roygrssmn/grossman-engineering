@@ -142,7 +142,7 @@ export default function MainView({ language, projectData, navigate }) {
 
     return (
         <main className="flex-grow flex flex-col pt-32 px-6 md:px-12 lg:px-24 pb-16 md:pb-32 max-w-7xl mx-auto w-full">
-            <header className="max-w-4xl mb-32 mt-12">
+            <header className="max-w-4xl mb-20 md:mb-32 mt-12">
                 <p className="text-sm font-medium tracking-wide text-zinc-600 dark:text-zinc-300 uppercase mb-4">
                     Roey Grossman, Berlin
                 </p>
@@ -158,8 +158,8 @@ export default function MainView({ language, projectData, navigate }) {
                 </p>
             </header>
 
-            <section id="expertise" className="mb-32">
-                <h2 className="font-serif text-3xl mb-12 border-b border-stone-200 dark:border-zinc-800 pb-4 text-zinc-900 dark:text-zinc-50">
+            <section id="expertise" className="mb-20 md:mb-32">
+                <h2 className="font-serif text-3xl mb-8 md:mb-12 border-b border-stone-200 dark:border-zinc-800 pb-4 text-zinc-900 dark:text-zinc-50">
                 {language === 'en' ? 'Areas of Expertise' : 'Fachgebiete'}
                 </h2>
                 
@@ -231,8 +231,8 @@ export default function MainView({ language, projectData, navigate }) {
                 </div>
             </section>
 
-            <section id="portfolio" className="mb-32">
-                <h2 className="font-serif text-3xl mb-12 border-b border-stone-200 dark:border-zinc-800 pb-4 text-zinc-900 dark:text-zinc-50">
+            <section id="portfolio" className="mb-20 md:mb-32">
+                <h2 className="font-serif text-3xl mb-8 md:mb-12 border-b border-stone-200 dark:border-zinc-800 pb-4 text-zinc-900 dark:text-zinc-50">
                 {language === 'en' ? 'Selected Impact' : 'Ausgewählte Erfolge'}
                 </h2>
                 
