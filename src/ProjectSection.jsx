@@ -1,11 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import ProjectCard from './ProjectCard.jsx';
 
 export default function ProjectSection({ language, projectData, navigate }) {
     const [currentProjectMobile, setCurrentProjectMobile] = useState(0);
     const [currentProjectWeb, setCurrentProjectWeb] = useState(0);
-    const [projectScrollCount, setProjectScrollCount] = useState(0);
-    const [isProjectAutoPlay, setIsProjectAutoPlay] = useState(true);
     const projectScrollRefMobile = useRef(null);
     const projectScrollRefWeb = useRef(null);
 
@@ -19,38 +17,6 @@ export default function ProjectSection({ language, projectData, navigate }) {
     for (let i = 0; i < projectEntries.length; i += 4) {
         webChunks.push(projectEntries.slice(i, i + 4));
     }
-
-    useEffect(() => {
-        if (!isProjectAutoPlay || projectScrollCount >= 6 || projectEntries.length === 0) return;
-
-        const interval = setInterval(() => {
-            setCurrentProjectMobile(prevIndex => {
-                const nextIndex = (prevIndex + 1) % mobileChunks.length;
-                if (nextIndex === 0) setProjectScrollCount(prev => prev + 1);
-                if (projectScrollRefMobile.current) {
-                    const itemWidth = projectScrollRefMobile.current.children[0]?.offsetWidth || 0;
-                    projectScrollRefMobile.current.scrollTo({
-                        left: itemWidth * nextIndex,
-                        behavior: 'smooth'
-                    });
-                }
-                return nextIndex;
-            });
-            setCurrentProjectWeb(prevIndex => {
-                const nextIndex = (prevIndex + 1) % webChunks.length;
-                if (projectScrollRefWeb.current) {
-                    const itemWidth = projectScrollRefWeb.current.children[0]?.offsetWidth || 0;
-                    projectScrollRefWeb.current.scrollTo({
-                        left: itemWidth * nextIndex,
-                        behavior: 'smooth'
-                    });
-                }
-                return nextIndex;
-            });
-        }, 5000);
-
-        return () => clearInterval(interval);
-    }, [isProjectAutoPlay, projectScrollCount, mobileChunks.length, webChunks.length, projectEntries.length]);
 
     const handleProjectScrollMobile = () => {
         if (projectScrollRefMobile.current) {
@@ -81,8 +47,6 @@ export default function ProjectSection({ language, projectData, navigate }) {
                 <div 
                     ref={projectScrollRefMobile}
                     onScroll={handleProjectScrollMobile}
-                    onTouchStart={() => setIsProjectAutoPlay(false)}
-                    onMouseDown={() => setIsProjectAutoPlay(false)}
                     className="overflow-x-auto snap-x snap-mandatory scroll-smooth flex pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
                 >
                     {mobileChunks.map((chunk, pageIdx) => (
@@ -100,7 +64,6 @@ export default function ProjectSection({ language, projectData, navigate }) {
                             <button
                                 key={idx}
                                 onClick={() => {
-                                    setIsProjectAutoPlay(false);
                                     setCurrentProjectMobile(idx);
                                     if (projectScrollRefMobile.current) {
                                         const itemWidth = projectScrollRefMobile.current.children[0]?.offsetWidth || 0;
@@ -127,8 +90,6 @@ export default function ProjectSection({ language, projectData, navigate }) {
                 <div 
                     ref={projectScrollRefWeb}
                     onScroll={handleProjectScrollWeb}
-                    onTouchStart={() => setIsProjectAutoPlay(false)}
-                    onMouseDown={() => setIsProjectAutoPlay(false)}
                     className="overflow-x-auto snap-x snap-mandatory scroll-smooth flex pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
                 >
                     {webChunks.map((chunk, pageIdx) => (
@@ -148,7 +109,6 @@ export default function ProjectSection({ language, projectData, navigate }) {
                             <button
                                 key={idx}
                                 onClick={() => {
-                                    setIsProjectAutoPlay(false);
                                     setCurrentProjectWeb(idx);
                                     if (projectScrollRefWeb.current) {
                                         const itemWidth = projectScrollRefWeb.current.children[0]?.offsetWidth || 0;
