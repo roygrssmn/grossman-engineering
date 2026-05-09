@@ -6,10 +6,11 @@ import { Cpu, Layers, Users } from 'lucide-react';
 export default function MainView({ language, projectData, navigate }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [scrollCount, setScrollCount] = useState(0);
+    const [isAutoPlay, setIsAutoPlay] = useState(true);
     const scrollContainerRef = useRef(null);
 
     useEffect(() => {
-        if (scrollCount >= 6) return;
+        if (!isAutoPlay || scrollCount >= 6) return;
 
         const interval = setInterval(() => {
             setCurrentIndex(prevIndex => {
@@ -17,23 +18,29 @@ export default function MainView({ language, projectData, navigate }) {
                 if (nextIndex === 0) {
                     setScrollCount(prev => prev + 1);
                 }
+                if (scrollContainerRef.current) {
+                    const itemWidth = scrollContainerRef.current.children[0]?.offsetWidth || 0;
+                    scrollContainerRef.current.scrollTo({
+                        left: itemWidth * nextIndex,
+                        behavior: 'smooth'
+                    });
+                }
                 return nextIndex;
             });
-        }, 3000);
+        }, 5000);
 
         return () => clearInterval(interval);
-    }, [scrollCount]);
+    }, [scrollCount, isAutoPlay]);
 
-    useEffect(() => {
+    const handleScroll = () => {
         if (scrollContainerRef.current) {
-            const itemWidth = scrollContainerRef.current.children[0]?.offsetWidth || 0;
-            const scrollAmount = itemWidth * currentIndex;
-            scrollContainerRef.current.scrollTo({
-                left: scrollAmount,
-                behavior: 'smooth'
-            });
+            const scrollLeft = scrollContainerRef.current.scrollLeft;
+            const itemWidth = scrollContainerRef.current.children[0]?.offsetWidth || 1;
+            const newIndex = Math.round(scrollLeft / itemWidth);
+            setCurrentIndex(newIndex);
         }
-    }, [currentIndex]);
+    };
+
     return (
         <main className="flex-grow flex flex-col pt-32 px-6 md:px-12 lg:px-24 pb-16 md:pb-32 max-w-7xl mx-auto w-full">
             <header className="max-w-4xl mb-32 mt-12">
@@ -59,7 +66,13 @@ export default function MainView({ language, projectData, navigate }) {
                 
                 {/* Mobile: Scrollable carousel */}
                 <div className="md:hidden -mx-6 mt-5">
-                    <div ref={scrollContainerRef} className="overflow-x-auto snap-x snap-mandatory scroll-smooth flex">
+                    <div 
+                        ref={scrollContainerRef} 
+                        onScroll={handleScroll} 
+                        onTouchStart={() => setIsAutoPlay(false)}
+                        onMouseDown={() => setIsAutoPlay(false)}
+                        className="overflow-x-auto snap-x snap-mandatory scroll-smooth flex pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+                    >
                         {competenciesData.map(comp => (
                             <div key={comp.id} className="flex-shrink-0 w-full snap-start px-6">
                                 <div className="text-left">
@@ -72,6 +85,31 @@ export default function MainView({ language, projectData, navigate }) {
                                     </p>
                                 </div>
                             </div>
+                        ))}
+                    </div>
+                    {/* Dots indicator */}
+                    <div className="flex justify-center gap-2 mt-2">
+                        {competenciesData.map((_, idx) => (
+                            <button
+                                key={idx}
+                                onClick={() => {
+                                    setIsAutoPlay(false);
+                                    setCurrentIndex(idx);
+                                    if (scrollContainerRef.current) {
+                                        const itemWidth = scrollContainerRef.current.children[0]?.offsetWidth || 0;
+                                        scrollContainerRef.current.scrollTo({
+                                            left: itemWidth * idx,
+                                            behavior: 'smooth'
+                                        });
+                                    }
+                                }}
+                                aria-label={`Go to slide ${idx + 1}`}
+                                className={`w-2 h-2 rounded-full transition-colors ${
+                                    currentIndex === idx 
+                                        ? 'bg-zinc-800 dark:bg-zinc-200' 
+                                        : 'bg-zinc-300 dark:bg-zinc-700'
+                                }`}
+                            />
                         ))}
                     </div>
                 </div>
