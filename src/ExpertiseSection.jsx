@@ -53,10 +53,10 @@ export default function ExpertiseSection({ language }) {
                     onScroll={handleScroll} 
                     onTouchStart={() => setIsAutoPlay(false)}
                     onMouseDown={() => setIsAutoPlay(false)}
-                    className="overflow-x-auto snap-x snap-mandatory scroll-smooth flex pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+                    className="overflow-x-auto snap-x snap-mandatory flex pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
                 >
                     {competenciesData.map(comp => (
-                        <div key={comp.id} className="flex-shrink-0 w-full snap-start px-6">
+                        <div key={comp.id} className="flex-shrink-0 w-full snap-start snap-always px-6">
                             <div className="text-left">
                                 {comp.id === 'ai-engineering' && <Cpu className="w-6 h-6 mb-4 text-zinc-900 dark:text-zinc-50" strokeWidth={1.5} />}
                                 {comp.id === 'quality-architecture' && <Layers className="w-6 h-6 mb-4 text-zinc-900 dark:text-zinc-50" strokeWidth={1.5} />}

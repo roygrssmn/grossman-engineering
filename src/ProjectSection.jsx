@@ -47,10 +47,10 @@ export default function ProjectSection({ language, projectData, navigate }) {
                 <div 
                     ref={projectScrollRefMobile}
                     onScroll={handleProjectScrollMobile}
-                    className="overflow-x-auto snap-x snap-mandatory scroll-smooth flex pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+                    className="overflow-x-auto snap-x snap-mandatory flex pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
                 >
                     {mobileChunks.map((chunk, pageIdx) => (
-                        <div key={pageIdx} className="flex-shrink-0 w-full snap-start px-6 flex flex-col gap-6">
+                        <div key={pageIdx} className="flex-shrink-0 w-full snap-start snap-always px-6 flex flex-col gap-6">
                             {chunk.map(([key, project]) => (
                                 <ProjectCard key={key} projectKey={key} project={project} language={language} navigate={navigate} />
                             ))}
@@ -90,10 +90,10 @@ export default function ProjectSection({ language, projectData, navigate }) {
                 <div 
                     ref={projectScrollRefWeb}
                     onScroll={handleProjectScrollWeb}
-                    className="overflow-x-auto snap-x snap-mandatory scroll-smooth flex pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+                    className="overflow-x-auto snap-x snap-mandatory flex pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
                 >
                     {webChunks.map((chunk, pageIdx) => (
-                        <div key={pageIdx} className="flex-shrink-0 w-full snap-start px-6">
+                        <div key={pageIdx} className="flex-shrink-0 w-full snap-start snap-always px-6">
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                                 {chunk.map(([key, project]) => (
                                     <ProjectCard key={key} projectKey={key} project={project} language={language} navigate={navigate} />
