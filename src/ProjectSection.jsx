@@ -10,8 +10,8 @@ export default function ProjectSection({ language, projectData, navigate }) {
     // Prepare project chunks for pagination
     const projectEntries = Object.entries(projectData);
     const mobileChunks = [];
-    for (let i = 0; i < projectEntries.length; i += 2) {
-        mobileChunks.push(projectEntries.slice(i, i + 2));
+    for (let i = 0; i < projectEntries.length; i += 1) {
+        mobileChunks.push(projectEntries.slice(i, i + 1));
     }
     const webChunks = [];
     for (let i = 0; i < projectEntries.length; i += 4) {
@@ -42,7 +42,7 @@ export default function ProjectSection({ language, projectData, navigate }) {
                 {language === 'en' ? 'Selected Impact' : 'Ausgewählte Erfolge'}
             </h2>
             
-            {/* Mobile: 2 items per page */}
+            {/* Mobile: 1 item per page */}
             <div className="md:hidden -mx-6">
                 <div 
                     ref={projectScrollRefMobile}
