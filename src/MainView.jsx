@@ -1,8 +1,39 @@
+import { useState, useEffect, useRef } from 'react';
 import { competenciesData } from './areas_of_expertise/competencies.js';
 import { contactInfo } from './contactInfo.js';
 import { Cpu, Layers, Users } from 'lucide-react';
 
 export default function MainView({ language, projectData, navigate }) {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [scrollCount, setScrollCount] = useState(0);
+    const scrollContainerRef = useRef(null);
+
+    useEffect(() => {
+        if (scrollCount >= 6) return;
+
+        const interval = setInterval(() => {
+            setCurrentIndex(prevIndex => {
+                const nextIndex = (prevIndex + 1) % competenciesData.length;
+                if (nextIndex === 0) {
+                    setScrollCount(prev => prev + 1);
+                }
+                return nextIndex;
+            });
+        }, 3000);
+
+        return () => clearInterval(interval);
+    }, [scrollCount]);
+
+    useEffect(() => {
+        if (scrollContainerRef.current) {
+            const itemWidth = scrollContainerRef.current.children[0]?.offsetWidth || 0;
+            const scrollAmount = itemWidth * currentIndex;
+            scrollContainerRef.current.scrollTo({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+    }, [currentIndex]);
     return (
         <main className="flex-grow flex flex-col pt-32 px-6 md:px-12 lg:px-24 pb-16 md:pb-32 max-w-7xl mx-auto w-full">
             <header className="max-w-4xl mb-32 mt-12">
@@ -25,18 +56,41 @@ export default function MainView({ language, projectData, navigate }) {
                 <h2 className="font-serif text-3xl mb-12 border-b border-stone-200 dark:border-zinc-800 pb-4 text-zinc-900 dark:text-zinc-50">
                 {language === 'en' ? 'Areas of Expertise' : 'Fachgebiete'}
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                    {competenciesData.map(comp => (
-                        <div key={comp.id}>
-                            {comp.id === 'ai-engineering' && <Cpu className="w-6 h-6 mb-4 text-zinc-900 dark:text-zinc-50" strokeWidth={1.5} />}
-                            {comp.id === 'quality-architecture' && <Layers className="w-6 h-6 mb-4 text-zinc-900 dark:text-zinc-50" strokeWidth={1.5} />}
-                            {comp.id === 'technical-leadership' && <Users className="w-6 h-6 mb-4 text-zinc-900 dark:text-zinc-50" strokeWidth={1.5} />}
-                            <h3 className="font-medium text-lg mb-3 text-zinc-900 dark:text-zinc-50">{comp.title[language]}</h3>
-                            <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
-                                {comp.description[language]}
-                            </p>
-                        </div>
-                    ))}
+                
+                {/* Mobile: Scrollable carousel */}
+                <div className="md:hidden -mx-6 mt-5">
+                    <div ref={scrollContainerRef} className="overflow-x-auto snap-x snap-mandatory scroll-smooth flex">
+                        {competenciesData.map(comp => (
+                            <div key={comp.id} className="flex-shrink-0 w-full snap-start px-6">
+                                <div className="text-left">
+                                    {comp.id === 'ai-engineering' && <Cpu className="w-6 h-6 mb-4 text-zinc-900 dark:text-zinc-50" strokeWidth={1.5} />}
+                                    {comp.id === 'quality-architecture' && <Layers className="w-6 h-6 mb-4 text-zinc-900 dark:text-zinc-50" strokeWidth={1.5} />}
+                                    {comp.id === 'technical-leadership' && <Users className="w-6 h-6 mb-4 text-zinc-900 dark:text-zinc-50" strokeWidth={1.5} />}
+                                    <h3 className="font-medium text-lg mb-3 text-zinc-900 dark:text-zinc-50">{comp.title[language]}</h3>
+                                    <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                                        {comp.description[language]}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Desktop: 3-column grid */}
+                <div className="hidden md:block">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                        {competenciesData.map(comp => (
+                            <div key={comp.id}>
+                                {comp.id === 'ai-engineering' && <Cpu className="w-6 h-6 mb-4 text-zinc-900 dark:text-zinc-50" strokeWidth={1.5} />}
+                                {comp.id === 'quality-architecture' && <Layers className="w-6 h-6 mb-4 text-zinc-900 dark:text-zinc-50" strokeWidth={1.5} />}
+                                {comp.id === 'technical-leadership' && <Users className="w-6 h-6 mb-4 text-zinc-900 dark:text-zinc-50" strokeWidth={1.5} />}
+                                <h3 className="font-medium text-lg mb-3 text-zinc-900 dark:text-zinc-50">{comp.title[language]}</h3>
+                                <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                                    {comp.description[language]}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </section>
 
