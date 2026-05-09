@@ -3,11 +3,60 @@ import { competenciesData } from './areas_of_expertise/competencies.js';
 import { contactInfo } from './contactInfo.js';
 import { Cpu, Layers, Users } from 'lucide-react';
 
+function ProjectCard({ projectKey, project, language, navigate }) {
+    return (
+        <a href={`/${language}/project/${projectKey}`} onClick={(e) => navigate(`/project/${projectKey}`, e)} className="group bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 p-8 md:p-10 rounded-xl hover:border-zinc-400 dark:hover:border-zinc-500 transition-all cursor-pointer shadow-sm hover:shadow-md flex flex-col h-full">
+            <div className="flex justify-between items-start mb-6">
+                <h3 className="font-serif text-2xl text-zinc-900 dark:text-zinc-50 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{project.title}</h3>
+                <span className="text-xs font-semibold px-3 py-1 bg-stone-50 dark:bg-zinc-950 border border-stone-200 dark:border-zinc-800 rounded-full text-zinc-900 dark:text-zinc-50 whitespace-nowrap ml-4">{project.role}</span>
+            </div>
+            <p className="text-zinc-600 dark:text-zinc-300 mb-8 leading-relaxed flex-grow">
+                {project.summary}
+            </p>
+            <div className="flex items-center justify-between mt-auto pt-4 gap-4">
+                <div className="flex flex-wrap gap-2">
+                    {project.tags.slice(0, 3).map(tag => (
+                        <span key={tag} className="text-xs font-semibold text-zinc-800 dark:text-zinc-100 bg-stone-100 dark:bg-zinc-800 px-2 py-1 rounded">{tag}</span>
+                    ))}
+                </div>
+                <div className="flex flex-col items-end gap-1">
+                    <span className="text-[13px] font-medium text-zinc-900 dark:text-zinc-50 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-1 whitespace-nowrap">
+                        Story
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </span>
+                    <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400 flex items-center gap-1 whitespace-nowrap">
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        {language === 'en' ? '3 min read' : '3 Min. Lesezeit'}
+                    </span>
+                </div>
+            </div>
+        </a>
+    );
+}
+
 export default function MainView({ language, projectData, navigate }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [scrollCount, setScrollCount] = useState(0);
     const [isAutoPlay, setIsAutoPlay] = useState(true);
     const scrollContainerRef = useRef(null);
+
+    const [currentProjectMobile, setCurrentProjectMobile] = useState(0);
+    const [currentProjectWeb, setCurrentProjectWeb] = useState(0);
+    const [projectScrollCount, setProjectScrollCount] = useState(0);
+    const [isProjectAutoPlay, setIsProjectAutoPlay] = useState(true);
+    const projectScrollRefMobile = useRef(null);
+    const projectScrollRefWeb = useRef(null);
+
+    // Prepare project chunks for pagination
+    const projectEntries = Object.entries(projectData);
+    const mobileChunks = [];
+    for (let i = 0; i < projectEntries.length; i += 2) {
+        mobileChunks.push(projectEntries.slice(i, i + 2));
+    }
+    const webChunks = [];
+    for (let i = 0; i < projectEntries.length; i += 4) {
+        webChunks.push(projectEntries.slice(i, i + 4));
+    }
 
     useEffect(() => {
         if (!isAutoPlay || scrollCount >= 6) return;
@@ -32,12 +81,62 @@ export default function MainView({ language, projectData, navigate }) {
         return () => clearInterval(interval);
     }, [scrollCount, isAutoPlay]);
 
+    useEffect(() => {
+        if (!isProjectAutoPlay || projectScrollCount >= 6 || projectEntries.length === 0) return;
+
+        const interval = setInterval(() => {
+            setCurrentProjectMobile(prevIndex => {
+                const nextIndex = (prevIndex + 1) % mobileChunks.length;
+                if (nextIndex === 0) setProjectScrollCount(prev => prev + 1);
+                if (projectScrollRefMobile.current) {
+                    const itemWidth = projectScrollRefMobile.current.children[0]?.offsetWidth || 0;
+                    projectScrollRefMobile.current.scrollTo({
+                        left: itemWidth * nextIndex,
+                        behavior: 'smooth'
+                    });
+                }
+                return nextIndex;
+            });
+            setCurrentProjectWeb(prevIndex => {
+                const nextIndex = (prevIndex + 1) % webChunks.length;
+                if (projectScrollRefWeb.current) {
+                    const itemWidth = projectScrollRefWeb.current.children[0]?.offsetWidth || 0;
+                    projectScrollRefWeb.current.scrollTo({
+                        left: itemWidth * nextIndex,
+                        behavior: 'smooth'
+                    });
+                }
+                return nextIndex;
+            });
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, [isProjectAutoPlay, projectScrollCount, mobileChunks.length, webChunks.length, projectEntries.length]);
+
     const handleScroll = () => {
         if (scrollContainerRef.current) {
             const scrollLeft = scrollContainerRef.current.scrollLeft;
             const itemWidth = scrollContainerRef.current.children[0]?.offsetWidth || 1;
             const newIndex = Math.round(scrollLeft / itemWidth);
             setCurrentIndex(newIndex);
+        }
+    };
+
+    const handleProjectScrollMobile = () => {
+        if (projectScrollRefMobile.current) {
+            const scrollLeft = projectScrollRefMobile.current.scrollLeft;
+            const itemWidth = projectScrollRefMobile.current.children[0]?.offsetWidth || 1;
+            const newIndex = Math.round(scrollLeft / itemWidth);
+            setCurrentProjectMobile(newIndex);
+        }
+    };
+
+    const handleProjectScrollWeb = () => {
+        if (projectScrollRefWeb.current) {
+            const scrollLeft = projectScrollRefWeb.current.scrollLeft;
+            const itemWidth = projectScrollRefWeb.current.children[0]?.offsetWidth || 1;
+            const newIndex = Math.round(scrollLeft / itemWidth);
+            setCurrentProjectWeb(newIndex);
         }
     };
 
@@ -136,35 +235,99 @@ export default function MainView({ language, projectData, navigate }) {
                 <h2 className="font-serif text-3xl mb-12 border-b border-stone-200 dark:border-zinc-800 pb-4 text-zinc-900 dark:text-zinc-50">
                 {language === 'en' ? 'Selected Impact' : 'Ausgewählte Erfolge'}
                 </h2>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    {Object.entries(projectData).map(([key, project]) => (
-                        <a key={key} href={`/${language}/project/${key}`} onClick={(e) => navigate(`/project/${key}`, e)} className="group bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 p-8 md:p-10 rounded-xl hover:border-zinc-400 dark:hover:border-zinc-500 transition-all cursor-pointer shadow-sm hover:shadow-md flex flex-col">
-                            <div className="flex justify-between items-start mb-6">
-                                <h3 className="font-serif text-2xl text-zinc-900 dark:text-zinc-50 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{project.title}</h3>
-                                <span className="text-xs font-semibold px-3 py-1 bg-stone-50 dark:bg-zinc-950 border border-stone-200 dark:border-zinc-800 rounded-full text-zinc-900 dark:text-zinc-50 whitespace-nowrap ml-4">{project.role}</span>
+                
+                {/* Mobile: 2 items per page */}
+                <div className="md:hidden -mx-6">
+                    <div 
+                        ref={projectScrollRefMobile}
+                        onScroll={handleProjectScrollMobile}
+                        onTouchStart={() => setIsProjectAutoPlay(false)}
+                        onMouseDown={() => setIsProjectAutoPlay(false)}
+                        className="overflow-x-auto snap-x snap-mandatory scroll-smooth flex pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+                    >
+                        {mobileChunks.map((chunk, pageIdx) => (
+                            <div key={pageIdx} className="flex-shrink-0 w-full snap-start px-6 flex flex-col gap-6">
+                                {chunk.map(([key, project]) => (
+                                    <ProjectCard key={key} projectKey={key} project={project} language={language} navigate={navigate} />
+                                ))}
                             </div>
-                            <p className="text-zinc-600 dark:text-zinc-300 mb-8 leading-relaxed flex-grow">
-                                {project.summary}
-                            </p>
-                            <div className="flex items-center justify-between mt-auto pt-4 gap-4">
-                                <div className="flex flex-wrap gap-2">
-                                    {project.tags.slice(0, 3).map(tag => (
-                                        <span key={tag} className="text-xs font-semibold text-zinc-800 dark:text-zinc-100 bg-stone-100 dark:bg-zinc-800 px-2 py-1 rounded">{tag}</span>
+                        ))}
+                    </div>
+                    {/* Dots indicator for mobile */}
+                    {mobileChunks.length > 1 && (
+                        <div className="flex justify-center gap-2 mt-2">
+                            {mobileChunks.map((_, idx) => (
+                                <button
+                                    key={idx}
+                                    onClick={() => {
+                                        setIsProjectAutoPlay(false);
+                                        setCurrentProjectMobile(idx);
+                                        if (projectScrollRefMobile.current) {
+                                            const itemWidth = projectScrollRefMobile.current.children[0]?.offsetWidth || 0;
+                                            projectScrollRefMobile.current.scrollTo({
+                                                left: itemWidth * idx,
+                                                behavior: 'smooth'
+                                            });
+                                        }
+                                    }}
+                                    aria-label={`Go to page ${idx + 1}`}
+                                    className={`w-2 h-2 rounded-full transition-colors ${
+                                        currentProjectMobile === idx 
+                                            ? 'bg-zinc-800 dark:bg-zinc-200' 
+                                            : 'bg-zinc-300 dark:bg-zinc-700'
+                                    }`}
+                                />
+                            ))}
+                        </div>
+                    )}
+                </div>
+
+                {/* Web: 4 items per page */}
+                <div className="hidden md:block -mx-6">
+                    <div 
+                        ref={projectScrollRefWeb}
+                        onScroll={handleProjectScrollWeb}
+                        onTouchStart={() => setIsProjectAutoPlay(false)}
+                        onMouseDown={() => setIsProjectAutoPlay(false)}
+                        className="overflow-x-auto snap-x snap-mandatory scroll-smooth flex pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+                    >
+                        {webChunks.map((chunk, pageIdx) => (
+                            <div key={pageIdx} className="flex-shrink-0 w-full snap-start px-6">
+                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                                    {chunk.map(([key, project]) => (
+                                        <ProjectCard key={key} projectKey={key} project={project} language={language} navigate={navigate} />
                                     ))}
                                 </div>
-                                <div className="flex flex-col items-end gap-1">
-                                    <span className="text-[13px] font-medium text-zinc-900 dark:text-zinc-50 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-1 whitespace-nowrap">
-                                        Story
-                                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                                    </span>
-                                    <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400 flex items-center gap-1 whitespace-nowrap">
-                                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                                        {language === 'en' ? '3 min read' : '3 Min. Lesezeit'}
-                                    </span>
-                                </div>
                             </div>
-                        </a>
-                    ))}
+                        ))}
+                    </div>
+                    {/* Dots indicator for web */}
+                    {webChunks.length > 1 && (
+                        <div className="flex justify-center gap-2 mt-4">
+                            {webChunks.map((_, idx) => (
+                                <button
+                                    key={idx}
+                                    onClick={() => {
+                                        setIsProjectAutoPlay(false);
+                                        setCurrentProjectWeb(idx);
+                                        if (projectScrollRefWeb.current) {
+                                            const itemWidth = projectScrollRefWeb.current.children[0]?.offsetWidth || 0;
+                                            projectScrollRefWeb.current.scrollTo({
+                                                left: itemWidth * idx,
+                                                behavior: 'smooth'
+                                            });
+                                        }
+                                    }}
+                                    aria-label={`Go to page ${idx + 1}`}
+                                    className={`w-2 h-2 rounded-full transition-colors ${
+                                        currentProjectWeb === idx 
+                                            ? 'bg-zinc-800 dark:bg-zinc-200' 
+                                            : 'bg-zinc-300 dark:bg-zinc-700'
+                                    }`}
+                                />
+                            ))}
+                        </div>
+                    )}
                 </div>
             </section>
 
