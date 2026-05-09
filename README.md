@@ -27,7 +27,7 @@ Ensure you have [Node.js](https://nodejs.org/) installed.
 ## 📁 Project Structure
 
 ```text
-the-quality-architect/
+agentic-architect/
 ├── public/                     # Static assets (favicon, robots.txt, sitemap.xml, _redirects)
 ├── src/
 │   ├── selected_impact/           # Case study data and content
