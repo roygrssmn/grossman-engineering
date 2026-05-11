@@ -11,8 +11,8 @@ export default function HeroSection({ language }) {
             </h1>
             <p className="text-xl text-zinc-600 dark:text-zinc-300 font-light leading-relaxed max-w-2xl">
                 {language === 'en'
-                    ? 'Bridging the gap between Quality Assurance, technical strategy, and Artificial Intelligence to deliver scalable solutions that work in production.'
-                    : 'Ich schließe die Lücke zwischen Qualitätssicherung, technischer Strategie und Künstlicher Intelligenz, um skalierbare Lösungen zu liefern, die in der Produktion funktionieren.'}
+                    ? 'Bridging the gap between stakeholders, technical strategy, and Artificial Intelligence. I build scalable, agentic AI solutions that prioritize production-grade reliability over experimental hype.'
+                    : 'Ich schlage die Brücke zwischen Stakeholdern, technischer Strategie und Künstlicher Intelligenz. Ich entwickle skalierbare, agentische KI-Lösungen, die produktionsreife Zuverlässigkeit über experimentellen Hype stellen.'}
             </p>
         </header>
     );

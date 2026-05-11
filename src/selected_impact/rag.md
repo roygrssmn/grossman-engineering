@@ -1,11 +1,11 @@
 ## The Backstory
 
-Building an AI system is simple, but building a reliable one is complex. The organization needed a Retrieval-Augmented Generation (RAG) system that could query technical documentation without hallucinating facts or providing outdated data. Previous attempts had failed to establish trust with the end-users.
+In 2024, the potential of Retrieval-Augmented Generation (RAG) was clear, but the implementation was still in its infancy. I led a Proof of Concept (PoC) to explore how AI could interact with internal technical documentation. The goal was to demonstrate capabilities and identify the gaps between experimental AI and enterprise-grade reliability.
 
 ## My Philosophy in Action
 
-I architected a pipeline utilizing LangChain to connect a vector database with a large language model. By treating the AI system like traditional software, I implemented strict guardrails and automated evaluation criteria for the output. Quality cannot be an afterthought in AI; it must be built into the orchestration layer.
+I approached this PoC as a "stress test" for the technology. Instead of just showing what worked, I focused on identifying where the system failed. By applying a QA mindset to the AI orchestration layer, I established early guardrails to measure the accuracy of the outputs. This experiment served as a strategic guide for future AI investments.
 
 ## The Hard Truths
 
-Initially, we relied too heavily on generic chunking strategies for the vector database, which degraded context retrieval. If I were to rebuild it today, I would implement semantic chunking from day one and spend more time optimizing the embedding models rather than just tweaking the LLM prompts.
+Back in 2024, the ecosystem was significantly less stable than it is today in 2026. We struggled with inconsistent context retrieval and model hallucinations that were difficult to mitigate with the tools available at the time. This PoC taught us that **while the "hype" was high, the architecture required for true production-grade reliability was not yet mature.**

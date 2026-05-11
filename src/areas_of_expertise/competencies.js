@@ -6,8 +6,8 @@ export const competenciesData = [
             de: 'KI-Engineering'
         },
         description: {
-            en: 'Maximizing reliability in Agentic workflows and RAG pipelines. Focusing on prompt evaluation and eliminating model hallucinations in production environments.',
-            de: 'Maximierung der Zuverlässigkeit in Agentic-Workflows und RAG-Pipelines. Fokus auf Prompt-Evaluierung und die Vermeidung von Modell-Halluzinationen in Produktionsumgebungen.'
+            en: 'Applying rigorous verification logic to AI workflows, prioritizing production-grade reliability and security over experimental hype to ensure solutions actually work in enterprise environments.',
+            de: 'Anwendung präziser Verifizierungslogik auf KI-Workflows. Ich stelle produktionsreife Zuverlässigkeit und Sicherheit über experimentellen Hype, um funktionale Lösungen in Unternehmensumgebungen zu garantieren.'
         }
     },
     {
@@ -17,8 +17,8 @@ export const competenciesData = [
             de: 'Qualitätsarchitektur'
         },
         description: {
-            en: 'Establishing comprehensive testing frameworks and CI/CD automation. Shifting quality left to ensure robust software delivery cycles and scalable infrastructure.',
-            de: 'Aufbau umfassender Test-Frameworks und CI/CD-Automatisierung. "Shift-Left" der Qualitätssicherung, um robuste Software-Auslieferungszyklen und eine skalierbare Infrastruktur zu gewährleisten.'
+            en: 'By advocating for \'Shift Left\', comprehensive test automation, and rapid CI/CD, I ensure scalable infrastructure remains robust under rapid deployment.',
+            de: 'Durch "Shift-Left", umfassende Testautomatisierung und schnelles CI/CD sorge ich dafür, dass skalierbare Infrastrukturen auch bei rapiden Deployments robust bleiben.'
         }
     },
     {
@@ -28,8 +28,8 @@ export const competenciesData = [
             de: 'Technische Führung'
         },
         description: {
-            en: '15+ years of experience mentoring engineers, driving strategic roadmap execution, and aligning technical initiatives with business goals to foster a culture of ownership.',
-            de: '15+ Jahre Erfahrung im Mentoring von Ingenieuren, Vorantreiben der strategischen Roadmap-Umsetzung und Ausrichtung technischer Initiativen an Geschäftszielen.'
+            en: '15+ years of experience leading engineering organizations by aligning technical roadmaps with stakeholder objectives. I foster a culture of ownership and mentorship, scaling high-performing teams that deliver measurable business impact.',
+            de: '15+ Jahre Erfahrung in der Leitung von Engineering-Organisationen durch die Ausrichtung technischer Roadmaps an Stakeholder-Zielen. Ich fördere eine Kultur der Eigenverantwortung und Mentoring, skaliere leistungsstarke Teams und erziele messbaren Geschäftserfolg.'
         }
     }
 ];

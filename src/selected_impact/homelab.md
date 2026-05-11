@@ -1,18 +1,18 @@
 ## The Backstory
 
-To maintain a sharp understanding of infrastructure and operations, I needed a hands-on environment to test networking configurations, container orchestration, and automated backups outside of the constraints of my daily enterprise work.
+I have always been a tinkerer, but my homelab evolved into a mission for digital sovereignty. In an era of centralized clouds, I wanted to prove that I could maintain full control over my data, storage, and AI workflows. This lab is my playground for testing the limits of self-hosting and automation.
 
 ## My Philosophy in Action
 
-I built a highly available homelab utilizing Raspberry Pi clusters, Nvidia Spark, and a dedicated NAS. The entire environment is managed via Docker, ensuring consistency and rapid disaster recovery. An architect should never lose touch with the metal; understanding the low-level infrastructure constraints makes for much more resilient high-level designs.
+I built and manage this entire environment solo, treating it with the same rigor as a professional data center. From a Synology NAS for secure storage to Raspberry Pi clusters for home automation, everything is containerized via Docker. By running local LLMs on NVIDIA and Apple hardware, I ensure that my AI experiments remain private and independent of third-party providers.
 
 ## The Hard Truths
 
-Running enterprise-grade configurations on consumer hardware quickly reveals the limitations of edge compute. I spent weeks fighting network latency and SD card corruption before realizing I needed to shift stateful data entirely to the NAS. It was a humbling reminder that complexity doesn't always equal reliability.
+Sovereignty comes with the price of responsibility. Managing your own "high-availability" setup means there is no support ticket to open when a volume fails at 2 AM. I have learned that while automation saves time, it also adds complexity that requires disciplined maintenance to keep the "lights on" without turning the hobby into a second full-time job.
 
 > ### Lab Specifications
 > 
-> * **Compute:** Raspberry Pi, Nvidia Spark, and Cloud providers
-> * **Storage:** Synology NAS (16TB RAID 1)
-> * **Orchestration:** Docker Swarm & Portainer
-> * **Networking:** Pi-hole, WireGuard VPN, Nginx
+> * **Compute:** Raspberry Pi, Nvidia Spark, Apple Hardware, and Cloud providers
+> * **Storage:** Synology NAS x3
+> * **Orchestration:** Docker Compose & Portainer
+> * **Networking:** Cloudflair, Tailscale, Nginx

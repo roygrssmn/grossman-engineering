@@ -1,11 +1,11 @@
 ## The Backstory
 
-Manual testing processes were creating severe bottlenecks in the deployment pipeline. The engineering team needed a scalable way to ensure quality without slowing down feature delivery. Morale was low because releases were constantly delayed by regression testing.
+At previous organizations, legacy processes or a lack of automation created significant bottlenecks. We were catching bugs too late—often after they reached production. These long cycles made it impossible to scale, keeping the organization trapped in four-week release windows that slowed down product evolution.
 
 ## My Philosophy in Action
 
-I designed and led the implementation of an end-to-end automation framework using Playwright and TypeScript. Beyond just writing code, this required shifting the culture. I mentored the team to treat test code with the same rigor as production code and integrated the new tools directly into our CI/CD pipelines to create immediate feedback loops.
+I led the build-out of modern automation frameworks designed to support both development and production environments. By moving testing into the earliest stages of the lifecycle ("Shift Left"), we ensured that bugs were identified long before deployment. This wasn't just about writing code; it was about creating a technical safety net that empowered developers to ship with confidence.
 
 ## The Hard Truths
 
-We spent too much time trying to automate 100% of the legacy test cases. This led to flaky tests and maintenance overhead. The ultimate lesson was that throwing out bad tests is just as important as writing new ones. Automation should focus on critical user journeys, not exhaustive coverage.
+The real success wasn't the number of tests, but the impact on the business: we successfully cut our release cycles in half, from four weeks down to two. Developers had trust in the system, customer support too. I learned that the hardest part isn't the framework itself, but shifting the mindset to treat automation as a core part of the product rather than a final hurdle.
