@@ -8,11 +8,8 @@ export const projectData = {
         title: 'RAG Pipeline',
         role: 'AI Architecture',
         tags: ['RAG', 'Dify', 'Prompt Engineering'],
-        links: [
-            { type: 'github', url: 'https://github.com/yourusername/rag-pipeline', label: 'View Repository' },
-            { type: 'reference', url: '#', label: 'Architecture Doc' }
-        ],
-        summary: 'Architected an experimental AI Proof of Concept to evaluate the reliability of RAG for technical documentation. Implemented quality guardrails to identify the gap between experimental results and production-grade stability.',
+        links: [],
+        summary: 'Architected an AI Proof of Concept to evaluate RAG reliability for technical documentation. Implemented guardrails to quantify the delta between experimental AI and enterprise-grade stability.',
         content: ragContent
     },
     framework: {
@@ -20,9 +17,9 @@ export const projectData = {
         role: 'Tech Leadership & QA',
         tags: ['End-to-End Automation', 'CI/CD', 'Shift Left'],
         links: [
-            { type: 'github', url: 'https://github.com/yourusername/qa-framework', label: 'View Repository' }
+          //  { type: 'github', url: 'https://github.com/yourusername/qa-framework', label: 'View Repository' }
         ],
-        summary: 'Architected scalable automation frameworks for high-traffic platforms to replace legacy manual processes. Catch bugs and regressions early and cut release cycles by 50%.',
+        summary: 'Engineered scalable automation frameworks to replace legacy manual processes. Integrated \'Shift Left\' strategies to identify regressions early, successfully reducing release cycles by 50%.',
         content: frameworkContent
     },
     homelab: {
@@ -30,10 +27,10 @@ export const projectData = {
         role: 'DevOps & Systems',
         tags: ['LLMs', 'Docker', 'Linux', 'Networking'],
         links: [
-            { type: 'github', url: 'https://github.com/yourusername/homelab-config', label: 'View Repository' },
-            { type: 'reference', url: '#', label: 'Live Dashboard' }
+            //{ type: 'github', url: 'https://github.com/yourusername/homelab-config', label: 'View Repository' },
+            // { type: 'reference', url: '#', label: 'Live Dashboard' }
         ],
-        summary: 'Building my own infrastructure environment to achieve total sovereignty over data and AI. Managed a Raspberry Pi cluster and NAS via Docker to automate home operations.',
+        summary: 'Building a local-first infrastructure to achieve sovereignty over data and AI workflows. Creating a self-hosted environment with Docker, Linux, and LLMs to ensure high-grade reliability.',
         content: homelabContent
     },
     leadership: {
@@ -41,7 +38,7 @@ export const projectData = {
         role: 'Strategy & Management',
         tags: ['Team Building', 'Strategy', 'Agile', 'Scaling'],
         links: [],
-        summary: 'Grew and mentored cross-functional engineering teams. Led the strategic roadmap execution to align technical delivery with business goals.',
+        summary: 'Scaled and mentored cross-functional engineering teams through technical ownership. Aligned technical roadmaps with stakeholder objectives to drive measurable delivery impact.',
         content: leadershipContent
     }
 };

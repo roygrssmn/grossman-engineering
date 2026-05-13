@@ -5,12 +5,12 @@ export default function ContactSection({ language }) {
         <section id="contact" className="pb-16">
             <div className="bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 p-10 md:p-16 rounded-2xl text-center max-w-3xl mx-auto">
                 <h2 className="font-serif text-3xl md:text-4xl mb-4 text-zinc-900 dark:text-zinc-50">
-                    {language === 'en' ? 'Ready to build something reliable?' : 'Bereit, etwas Zuverlässiges zu bauen?'}
+                    {language === 'en' ? 'Ready to scale with confidence?' : 'Bereit für skalierbare Innovation?'}
                 </h2>
                 <p className="text-zinc-600 dark:text-zinc-300 mb-8 max-w-xl mx-auto leading-relaxed">
                     {language === 'en'
-                        ? 'I am actively exploring new opportunities in technical leadership and AI engineering. Let us discuss how I can bring structure and quality to your next big initiative.'
-                        : 'Ich bin aktiv auf der Suche nach neuen Möglichkeiten in der technischen Führung und im KI-Engineering. Lassen Sie uns besprechen, wie ich Struktur und Qualität in Ihre nächste große Initiative bringen kann.'}
+                        ? 'I am currently open to leadership and engineering roles focused on production-grade AI. Let’s discuss how I can help architect and lead your next high-impact initiative.'
+                        : 'Ich stehe derzeit für neue Herausforderungen in der technischen Leitung und im KI-Engineering zur Verfügung. Lassen Sie uns besprechen, wie ich Ihre nächste Initiative durch Architektur und Leadership zum Erfolg führen kann.'}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <a href={contactInfo.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex justify-center items-center px-6 py-3 bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 font-medium rounded-lg hover:opacity-90 transition-opacity shadow-sm">

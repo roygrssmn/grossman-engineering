@@ -9,3 +9,10 @@ I approached this PoC as a "stress test" for the technology. Instead of just sho
 ## The Hard Truths
 
 Back in 2024, the ecosystem was significantly less stable than it is today in 2026. We struggled with inconsistent context retrieval and model hallucinations that were difficult to mitigate with the tools available at the time. This PoC taught us that **while the "hype" was high, the architecture required for true production-grade reliability was not yet mature.**
+
+
+> ### PoC Specifications
+> 
+> * **Models:** OpenAI GPT-4
+> * **Data Source:** Google Workspace (Technical Docs)
+> * **AI Orchestration:** Dify
