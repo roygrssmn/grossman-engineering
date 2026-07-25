@@ -1,4 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Roy Grossman</title>
   <rect width="100" height="100" rx="22" fill="#09090b" />
-  <text x="50" y="68" font-family="Georgia, serif" font-size="56" font-weight="normal" fill="#fcfbf9" text-anchor="middle">Q</text>
+  <rect x="3" y="3" width="94" height="94" rx="19" fill="none" stroke="#27272a" stroke-width="2" />
+  <text x="48" y="72" font-family="Georgia, 'Times New Roman', serif" font-size="64" fill="#fafaf9" text-anchor="middle">R</text>
+  <circle cx="76" cy="74" r="4" fill="#a1a1aa" />
 </svg>
