@@ -1,11 +1,27 @@
-## The Backstory
+## The context
 
-At previous organizations, legacy processes or a lack of automation created significant bottlenecks. We were catching bugs too late, often after they reached production. These long cycles kept the organization trapped in four-week release windows that slowed down feature delivery.
+At Wooga, I joined a product organisation serving more than 1.5 million daily active users. Quality needed to operate at product scale without becoming a separate gate at the end of delivery.
 
-## My Philosophy in Action
+As Director of QA Engineering, I grew the QA organisation from one person to 20 and helped establish an embedded model of roughly one QA specialist to five engineers. The aim was not to create a larger testing department; it was to make quality a shared engineering responsibility.
 
-I engineered modern automation frameworks designed to support both development and production environments. By "Shifting Left" and moving testing into the earliest stages of the Software Development Life Cycle (SDLC), we ensured that bugs were identified long before deployment, creating a technical safety net that empowered developers to ship with confidence and reduced the cost of failure.
+## What I changed
 
-## The Hard Truths
+I led the company-wide quality and automation strategy, connecting team design with practical improvements to tooling and delivery:
 
-The real impact was cultural: we cut our release cycles from four weeks to two while drastically increasing system trust. I learned that the hardest part isn't the code, but shifting the mindset to treat quality as a core feature rather than a final hurdle.
+- Embedded quality expertise inside product teams
+- Expanded automation across the delivery pipeline
+- Moved feedback earlier through stronger development and CI practices
+- Built leadership and career structures as the QA organisation grew
+
+## The outcome
+
+The release pipeline moved from roughly four weeks to two. That result came from a broader organisational effort; my contribution was leading the quality and automation strategy and building the capability needed to sustain it.
+
+The lasting lesson was that quality scales through ownership, systems, and feedback loops—not through a larger final checkpoint.
+
+> ### Evidence
+>
+> * **QA organisation:** 1 → 20
+> * **Product reach:** 1.5M+ daily active users
+> * **Release pipeline:** approximately 4 weeks → 2
+> * **Operating model:** embedded quality expertise in product teams

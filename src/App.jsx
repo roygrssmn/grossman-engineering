@@ -6,6 +6,18 @@ import ProjectView from './ProjectView.jsx';
 import Footer from './Footer.jsx';
 import Modals from './Modals.jsx';
 import NotFoundView from './NotFoundView.jsx';
+import { localize } from './selected_impact/projects.js';
+
+function getInitialPath() {
+    const path = window.location.pathname;
+    const parts = path.split('/').filter(Boolean);
+    if (parts[0] === 'en' || parts[0] === 'de') return path;
+
+    const preferredLanguage = localStorage.getItem('language') || 'en';
+    const localizedPath = `/${preferredLanguage}${path === '/' ? '' : path}`;
+    window.history.replaceState({}, '', localizedPath);
+    return localizedPath;
+}
 
 export default function App() {
     const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -15,10 +27,10 @@ export default function App() {
 
     const [activeModal, setActiveModal] = useState(null); // 'impressum', 'privacy', or null
 
-    const [currentPath, setCurrentPath] = useState(window.location.pathname);
+    const [currentPath, setCurrentPath] = useState(getInitialPath);
 
     const [language, setLanguage] = useState(() => {
-        const parts = window.location.pathname.split('/').filter(Boolean);
+        const parts = currentPath.split('/').filter(Boolean);
         if (parts[0] === 'en' || parts[0] === 'de') {
             return parts[0];
         }
@@ -37,16 +49,6 @@ export default function App() {
         window.addEventListener('popstate', onLocationChange);
         return () => window.removeEventListener('popstate', onLocationChange);
     }, []);
-
-    // Redirect to language-prefixed URL if missing
-    useEffect(() => {
-        const parts = currentPath.split('/').filter(Boolean);
-        if (parts[0] !== 'en' && parts[0] !== 'de') {
-            const newPath = `/${language}${currentPath === '/' ? '' : currentPath}`;
-            window.history.replaceState({}, '', newPath);
-            setCurrentPath(newPath);
-        }
-    }, [currentPath, language]);
 
     useEffect(() => {
         if (isDarkMode) {
@@ -71,21 +73,21 @@ export default function App() {
 
     // SEO: Dynamic Title, Meta Description & Canonical URL
     useEffect(() => {
-        let title = 'Roey Grossman | The Agentic Architect';
-        let desc = 'The Quality-First Agentic Architect: Building for Enterprise-Grade AI Reliability. Bridging the gap between Quality Assurance, technical strategy, and AI.';
+        let title = 'Roey Grossman | Engineering & Quality Leader · Applied AI';
+        let desc = 'Engineering and quality leader with 15+ years across software delivery, automation, and people leadership, now applying production discipline to AI.';
         let ogType = 'website';
         
         if (language === 'de') {
-            title = 'Roey Grossman | Der Agentic Architect';
-            desc = 'Der qualitätsorientierte Agentic Architect: Aufbau von auf Unternehmensniveau zuverlässiger KI. Ich schließe die Lücke zwischen Qualitätssicherung, technischer Strategie und KI.';
+            title = 'Roey Grossman | Engineering & Quality Leader · Applied AI';
+            desc = 'Engineering- und Quality-Leader mit mehr als 15 Jahren Erfahrung in Softwareentwicklung, Automatisierung und Personalführung – heute mit Fokus auf Applied AI.';
         }
 
         if (routePath.startsWith('/project/')) {
             const key = routePath.replace('/project/', '');
             if (projectData[key]) {
-                title = `${projectData[key].title} | Roey Grossman`;
-                desc = projectData[key].summary;
-                    ogType = 'article';
+                title = `${localize(projectData[key].title, language)} | Roey Grossman`;
+                desc = localize(projectData[key].summary, language);
+                ogType = 'article';
             }
         } else if (routePath !== '/') {
             title = 'Page Not Found | Roey Grossman';
@@ -109,12 +111,12 @@ export default function App() {
         setMetaTag('property', 'og:description', desc);
         setMetaTag('property', 'og:type', ogType);
         setMetaTag('property', 'og:url', `https://agenticarchitect.io${currentPath}`);
-        setMetaTag('property', 'og:image', 'https://agenticarchitect.io/og-image.jpg'); // Ensure you upload an og-image.jpg to your public folder
+        setMetaTag('property', 'og:image', 'https://agenticarchitect.io/og-image.png');
 
         setMetaTag('name', 'twitter:card', 'summary_large_image');
         setMetaTag('name', 'twitter:title', title);
         setMetaTag('name', 'twitter:description', desc);
-        setMetaTag('name', 'twitter:image', 'https://agenticarchitect.io/og-image.jpg');
+        setMetaTag('name', 'twitter:image', 'https://agenticarchitect.io/og-image.png');
 
         let canonicalLink = document.querySelector("link[rel='canonical']");
         if (!canonicalLink) {

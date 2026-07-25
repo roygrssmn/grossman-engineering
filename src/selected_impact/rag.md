@@ -1,18 +1,27 @@
-## The Backstory
+## The question
 
-In 2024, the potential of Retrieval-Augmented Generation (RAG) was clear, but the implementation was still in its infancy. I led a Proof of Concept (PoC) to explore how AI could interact with internal technical documentation. The goal was to demonstrate capabilities and identify the gaps between experimental AI and enterprise-grade reliability.
+In 2024, I led a proof of concept to test whether retrieval-augmented generation could make internal technical documentation easier to use. The goal was not to claim a production AI system; it was to learn where the approach worked and where it failed before a larger investment.
 
-## My Philosophy in Action
+## The approach
 
-I approached this PoC as a "stress test" for the technology. Instead of just showing what worked, I focused on identifying where the system failed. By applying a QA mindset to the AI orchestration layer, I established early guardrails to measure the accuracy of the outputs. This experiment served as a strategic guide for future AI investments.
+I treated the prototype as an evaluation problem rather than a polished demo. We connected technical documentation from Google Workspace to an orchestration layer using Dify and OpenAI GPT-4, then examined retrieval quality, answer grounding, and failure patterns.
 
-## The Hard Truths
+Bringing a quality-engineering mindset to the work changed the questions:
 
-Back in 2024, the ecosystem was significantly less stable than it is today in 2026. We struggled with inconsistent context retrieval and model hallucinations that were difficult to mitigate with the tools available at the time. This PoC taught us that **while the "hype" was high, the architecture required for true production-grade reliability was not yet mature.**
+- Could we tell when the relevant context was missing?
+- Were answers grounded in the retrieved source?
+- Which failures could guardrails catch, and which remained ambiguous?
+- What evidence would be needed before production use?
 
+## The result
 
-> ### PoC Specifications
-> 
+The proof of concept demonstrated useful potential, but also exposed inconsistent retrieval and hallucinations that the available tooling did not reliably mitigate. That was the valuable outcome: a clearer boundary between a convincing prototype and a system ready for operational trust.
+
+This early work now informs my deeper study of AI evaluation, data quality, and production guardrails.
+
+> ### Scope
+>
+> * **Type:** Proof of concept, not a production deployment
 > * **Models:** OpenAI GPT-4
-> * **Data Source:** Google Workspace (Technical Docs)
-> * **AI Orchestration:** Dify
+> * **Data source:** internal technical documentation
+> * **Orchestration:** Dify

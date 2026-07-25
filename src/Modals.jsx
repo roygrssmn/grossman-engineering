@@ -16,14 +16,14 @@ export default function Modals({ activeModal, setActiveModal, language }) {
                     {activeModal === 'impressum' ? (
                         language === 'en' ? (
                             <>
-                                <p><strong className="text-zinc-900 dark:text-zinc-50">Information according to § 5 TMG</strong></p>
+                                <p><strong className="text-zinc-900 dark:text-zinc-50">Information according to § 5 DDG</strong></p>
                                 <p>{contactInfo.name}<br/>{contactInfo.street}<br/>{contactInfo.zipCity}<br/>Germany</p>
                                 <p><strong className="text-zinc-900 dark:text-zinc-50">Contact</strong></p>
                                 <p>Phone: {contactInfo.phone}<br/>Email: {contactInfo.email}</p>
                             </>
                         ) : (
                             <>
-                                <p><strong className="text-zinc-900 dark:text-zinc-50">Angaben gemäß § 5 TMG</strong></p>
+                                <p><strong className="text-zinc-900 dark:text-zinc-50">Angaben gemäß § 5 DDG</strong></p>
                                 <p>{contactInfo.name}<br/>{contactInfo.street}<br/>{contactInfo.zipCity}<br/>Deutschland</p>
                                 <p><strong className="text-zinc-900 dark:text-zinc-50">Kontakt</strong></p>
                                 <p>Telefon: {contactInfo.phone}<br/>E-Mail: {contactInfo.email}</p>

@@ -1,18 +1,23 @@
 import ReactMarkdown from 'react-markdown';
+import { localize } from './selected_impact/projects.js';
 
 export default function ProjectView({ activeProject, navigate, language }) {
+    const title = localize(activeProject.title, language);
+    const role = localize(activeProject.role, language);
+    const content = localize(activeProject.content, language);
+
     return (
         <main className="flex-grow flex-col pt-32 px-6 md:px-12 lg:px-24 pb-16 md:pb-32 max-w-4xl mx-auto w-full">
             <a href={`/${language}`} onClick={(e) => navigate('/', e)} className="mb-12 text-sm font-medium text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors flex items-center gap-2 group w-fit">
                 <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:-translate-x-1 transition-transform"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
-                Back to Overview
+                {language === 'en' ? 'Back to overview' : 'Zurück zur Übersicht'}
             </a>
             
             <div className="flex items-center gap-4 mb-6">
-                <span className="text-xs font-semibold px-3 py-1 bg-stone-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-100 rounded-full">{activeProject.role}</span>
+                <span className="text-xs font-semibold px-3 py-1 bg-stone-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-100 rounded-full">{role}</span>
             </div>
             
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight mb-8 text-zinc-900 dark:text-zinc-50">{activeProject.title}</h1>
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight mb-8 text-zinc-900 dark:text-zinc-50">{title}</h1>
             
             <div className="flex flex-wrap gap-2 mb-12 border-b border-stone-200 dark:border-zinc-800 pb-12">
                 {activeProject.tags.map(tag => (
@@ -22,15 +27,33 @@ export default function ProjectView({ activeProject, navigate, language }) {
             <article className="text-zinc-600 dark:text-zinc-300 leading-relaxed max-w-none text-lg">
                 <ReactMarkdown
                     components={{
-                        h2: ({node, ...props}) => <h2 className="font-serif text-2xl mt-8 mb-4 font-medium text-zinc-900 dark:text-zinc-50" {...props} />,
-                        p: ({node, ...props}) => <p className="mb-4" {...props} />,
-                        h3: ({node, ...props}) => <h3 className="font-mono text-lg font-medium mb-4 text-zinc-900 dark:text-zinc-50 border-b border-stone-200 dark:border-zinc-800 pb-2" {...props} />,
-                        ul: ({node, ...props}) => <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-4 text-sm text-zinc-600 dark:text-zinc-400" {...props} />,
-                        strong: ({node, ...props}) => <strong className="text-zinc-900 dark:text-zinc-100" {...props} />,
-                        blockquote: ({node, ...props}) => <div className="mt-12 p-6 bg-stone-50 dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 rounded-xl" {...props} />
+                        h2: ({ node, ...props }) => {
+                            void node;
+                            return <h2 className="font-serif text-2xl mt-8 mb-4 font-medium text-zinc-900 dark:text-zinc-50" {...props} />;
+                        },
+                        p: ({ node, ...props }) => {
+                            void node;
+                            return <p className="mb-4" {...props} />;
+                        },
+                        h3: ({ node, ...props }) => {
+                            void node;
+                            return <h3 className="font-mono text-lg font-medium mb-4 text-zinc-900 dark:text-zinc-50 border-b border-stone-200 dark:border-zinc-800 pb-2" {...props} />;
+                        },
+                        ul: ({ node, ...props }) => {
+                            void node;
+                            return <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-4 text-sm text-zinc-600 dark:text-zinc-400" {...props} />;
+                        },
+                        strong: ({ node, ...props }) => {
+                            void node;
+                            return <strong className="text-zinc-900 dark:text-zinc-100" {...props} />;
+                        },
+                        blockquote: ({ node, ...props }) => {
+                            void node;
+                            return <div className="mt-12 p-6 bg-stone-50 dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 rounded-xl" {...props} />;
+                        }
                     }}
                 >
-                    {activeProject.content}
+                    {content}
                 </ReactMarkdown>
             </article>
             {activeProject.links && activeProject.links.length > 0 && (
@@ -42,7 +65,7 @@ export default function ProjectView({ activeProject, navigate, language }) {
                             ) : (
                                 <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                             )}
-                            {link.label}
+                            {localize(link.label, language)}
                         </a>
                     ))}
                 </div>
