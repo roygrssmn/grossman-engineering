@@ -1,13 +1,13 @@
 export const competenciesData = [
     {
-        id: 'ai-engineering',
+        id: 'engineering-leadership',
         title: {
-            en: 'AI Engineering',
-            de: 'KI-Engineering'
+            en: 'Engineering & People Leadership',
+            de: 'Engineering- & Teamführung'
         },
         description: {
-            en: 'Applying rigorous verification logic to AI pipelines. Engineering fault-tolerant workflows and security guardrails to ensure AI solutions deliver reliable, safe, and scalable results in enterprise environments.',
-            de: 'Anwendung präziser Verifizierungslogik auf KI-Pipelines. Entwicklung fehlertoleranter Workflows und Sicherheits-Guardrails, um sicherzustellen, dass KI-Lösungen in Unternehmensumgebungen zuverlässige, sichere und skalierbare Ergebnisse liefern.'
+            en: 'Growing multidisciplinary teams, creating clear ownership, and connecting technical decisions to product outcomes. I focus on giving people the context, coaching, and working agreements they need to do strong work together.',
+            de: 'Multidisziplinäre Teams entwickeln, klare Verantwortung schaffen und technische Entscheidungen mit Produktergebnissen verbinden. Mein Fokus liegt auf dem Kontext, Coaching und den Arbeitsvereinbarungen, die Menschen für gute gemeinsame Arbeit brauchen.'
         }
     },
     {
@@ -17,19 +17,19 @@ export const competenciesData = [
             de: 'Qualitätsarchitektur'
         },
         description: {
-            en: 'Implementing \'Shift Left\' strategies, integrated test automation, and optimized CI/CD pipelines to ensure scalable infrastructure remains resilient during high-velocity deployments.',
-            de: 'Durch die Implementierung von "Shift-Left"-Strategien, integrierter Testautomatisierung und optimierten CI/CD-Pipelines stelle ich sicher, dass skalierbare Infrastrukturen auch bei High-Velocity-Deployments belastbar bleiben.'
+            en: 'Designing automation, CI/CD, and quality practices that make delivery faster without treating reliability as a final gate. This includes scaling a QA organisation from 1 to 20 and helping reduce a release pipeline from four weeks to two.',
+            de: 'Automatisierung, CI/CD und Qualitätspraktiken so gestalten, dass Teams schneller liefern können, ohne Zuverlässigkeit zur letzten Hürde zu machen. Dazu gehören der Aufbau einer QA-Organisation von 1 auf 20 und die Verkürzung einer Release-Pipeline von vier auf zwei Wochen.'
         }
     },
     {
-        id: 'technical-leadership',
+        id: 'applied-ai',
         title: {
-            en: 'Technical Leadership',
-            de: 'Technische Führung'
+            en: 'Applied AI & Data Systems',
+            de: 'Applied AI & Datensysteme'
         },
         description: {
-            en: '15+ years of experience leading engineering organizations and aligning technical roadmaps with stakeholder objectives. I prioritize a culture of technical ownership and mentorship, leading by example and scaling high-performance teams.',
-            de: 'Über 15 Jahre Erfahrung in der Leitung von Engineering-Organisationen und der Ausrichtung technischer Roadmaps an Stakeholder-Zielen. Ich setze auf eine Kultur der technischen Eigenverantwortung und des Mentorings, gehe mit gutem Beispiel voran und skaliere Hochleistungsteams.'
+            en: 'My current focus: building hands-on depth in evaluation, data quality, guardrails, and AI-assisted operations. I am applying that work through formal AI Engineering study, a RAG reliability proof of concept, and Demo Radar.',
+            de: 'Mein aktueller Fokus: praktische Tiefe in Evaluation, Datenqualität, Guardrails und KI-gestützten Betriebsabläufen aufbauen. Diese Arbeit verbinde ich mit dem AI-Engineering-Programm, einem RAG-Reliability-PoC und Demo Radar.'
         }
     }
 ];

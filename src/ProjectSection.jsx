@@ -8,7 +8,7 @@ export default function ProjectSection({ language, projectData, navigate }) {
     const projectScrollRefWeb = useRef(null);
 
     // Prepare project chunks for pagination
-    const projectEntries = Object.entries(projectData);
+    const projectEntries = Object.entries(projectData).filter(([, project]) => !project.archived);
     const mobileChunks = [];
     for (let i = 0; i < projectEntries.length; i += 1) {
         mobileChunks.push(projectEntries.slice(i, i + 1));
@@ -37,7 +37,7 @@ export default function ProjectSection({ language, projectData, navigate }) {
     };
 
     return (
-        <section id="portfolio" className="mb-20 md:mb-32">
+        <section id="portfolio" className="scroll-mt-28 mb-20 md:mb-32">
             <h2 className="font-serif text-3xl mb-8 md:mb-12 border-b border-stone-200 dark:border-zinc-800 pb-4 text-zinc-900 dark:text-zinc-50">
                 {language === 'en' ? 'Selected Impact' : 'Ausgewählte Erfolge'}
             </h2>

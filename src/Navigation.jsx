@@ -3,12 +3,17 @@ export default function Navigation({ view, navigate, language, toggleLanguage, i
     return (
         <nav className="fixed top-0 w-full z-40 px-6 py-5 md:px-12 lg:px-24 border-b border-stone-200 dark:border-zinc-800 backdrop-blur-md bg-white/80 dark:bg-zinc-950/80 flex justify-between items-center">
             <a href={`/${language}`} onClick={(e) => navigate('/', e)} className="font-serif text-xl tracking-tight font-medium hover:opacity-80 transition-opacity">
-                AgenticArchitect.io
+                Roey Grossman
             </a>
             <div className="flex items-center gap-6">
                 {view === 'main' && (
                     <div className="hidden md:flex gap-6 text-sm font-medium text-zinc-600 dark:text-zinc-300">
-                        <a href="#contact" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Contact</a>
+                        <a href="#portfolio" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
+                            {language === 'en' ? 'Work' : 'Projekte'}
+                        </a>
+                        <a href="#contact" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
+                            {language === 'en' ? 'Contact' : 'Kontakt'}
+                        </a>
                     </div>
                 )}
                 <button onClick={toggleLanguage} className="text-xs font-semibold text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors" aria-label="Toggle Language">

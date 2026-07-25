@@ -1,6 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { competenciesData } from './areas_of_expertise/competencies.js';
-import { Cpu, Layers, Users } from 'lucide-react';
+import { BrainCircuit, Layers, Users } from 'lucide-react';
+
+function CompetencyIcon({ id }) {
+    const props = { className: 'w-6 h-6 mb-4 text-zinc-900 dark:text-zinc-50', strokeWidth: 1.5 };
+    if (id === 'engineering-leadership') return <Users {...props} />;
+    if (id === 'quality-architecture') return <Layers {...props} />;
+    return <BrainCircuit {...props} />;
+}
 
 export default function ExpertiseSection({ language }) {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -58,9 +65,7 @@ export default function ExpertiseSection({ language }) {
                     {competenciesData.map(comp => (
                         <div key={comp.id} className="flex-shrink-0 w-full snap-start snap-always px-6">
                             <div className="text-left">
-                                {comp.id === 'ai-engineering' && <Cpu className="w-6 h-6 mb-4 text-zinc-900 dark:text-zinc-50" strokeWidth={1.5} />}
-                                {comp.id === 'quality-architecture' && <Layers className="w-6 h-6 mb-4 text-zinc-900 dark:text-zinc-50" strokeWidth={1.5} />}
-                                {comp.id === 'technical-leadership' && <Users className="w-6 h-6 mb-4 text-zinc-900 dark:text-zinc-50" strokeWidth={1.5} />}
+                                <CompetencyIcon id={comp.id} />
                                 <h3 className="font-medium text-lg mb-3 text-zinc-900 dark:text-zinc-50">{comp.title[language]}</h3>
                                 <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
                                     {comp.description[language]}
@@ -101,9 +106,7 @@ export default function ExpertiseSection({ language }) {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                     {competenciesData.map(comp => (
                         <div key={comp.id}>
-                            {comp.id === 'ai-engineering' && <Cpu className="w-6 h-6 mb-4 text-zinc-900 dark:text-zinc-50" strokeWidth={1.5} />}
-                            {comp.id === 'quality-architecture' && <Layers className="w-6 h-6 mb-4 text-zinc-900 dark:text-zinc-50" strokeWidth={1.5} />}
-                            {comp.id === 'technical-leadership' && <Users className="w-6 h-6 mb-4 text-zinc-900 dark:text-zinc-50" strokeWidth={1.5} />}
+                            <CompetencyIcon id={comp.id} />
                             <h3 className="font-medium text-lg mb-3 text-zinc-900 dark:text-zinc-50">{comp.title[language]}</h3>
                             <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
                                 {comp.description[language]}
