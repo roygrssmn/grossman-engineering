@@ -1,27 +1,31 @@
-## The question
+## The Backstory
 
-In 2024, I led a proof of concept to test whether retrieval-augmented generation could make internal technical documentation easier to use. The goal was not to claim a production AI system; it was to learn where the approach worked and where it failed before a larger investment.
+In 2024, the potential of Retrieval-Augmented Generation was clear, but the implementation patterns were still immature. I led a proof of concept to explore how AI could work with internal technical documentation.
 
-## The approach
+The goal was not to present a production system. It was to demonstrate the potential, expose the weak points, and understand what evidence we would need before making a larger investment.
 
-I treated the prototype as an evaluation problem rather than a polished demo. We connected technical documentation from Google Workspace to an orchestration layer using Dify and OpenAI GPT-4, then examined retrieval quality, answer grounding, and failure patterns.
+## My Philosophy in Action
 
-Bringing a quality-engineering mindset to the work changed the questions:
+I approached the proof of concept as a stress test rather than a polished demo. We connected technical documentation from Google Workspace through Dify to OpenAI GPT-4, then examined retrieval quality, source grounding, and failure patterns.
 
-- Could we tell when the relevant context was missing?
-- Were answers grounded in the retrieved source?
-- Which failures could guardrails catch, and which remained ambiguous?
-- What evidence would be needed before production use?
+Applying a QA mindset changed the focus from “Can it answer?” to better questions:
 
-## The result
+- Can we tell when the relevant context is missing?
+- Is the answer grounded in the retrieved source?
+- Which failures can a guardrail catch?
+- What would we need to measure before trusting this in production?
 
-The proof of concept demonstrated useful potential, but also exposed inconsistent retrieval and hallucinations that the available tooling did not reliably mitigate. That was the valuable outcome: a clearer boundary between a convincing prototype and a system ready for operational trust.
+The aim was to make the gap between experimental AI and operational confidence visible.
 
-This early work now informs my deeper study of AI evaluation, data quality, and production guardrails.
+## The Hard Truths
 
-> ### Scope
+We encountered inconsistent retrieval and hallucinations that the available tooling could not reliably mitigate. The prototype was convincing when it worked, but the failures were difficult to predict and explain.
+
+That was the useful result. The proof of concept showed both the opportunity and the limits, and it reinforced a principle I still use: an AI demo earns attention; a production system has to earn trust.
+
+> ### PoC specifications
 >
-> * **Type:** Proof of concept, not a production deployment
-> * **Models:** OpenAI GPT-4
-> * **Data source:** internal technical documentation
+> * **Type:** Proof of concept, Exploratory Concepts
+> * **Model:** OpenAI GPT-4
+> * **Data source:** Google Workspace technical documentation
 > * **Orchestration:** Dify

@@ -10,7 +10,7 @@ Ich leitete die unternehmensweite Qualitäts- und Automatisierungsstrategie und 
 
 - Qualitätsexpertise direkt in Produktteams verankert
 - Automatisierung entlang der Delivery-Pipeline ausgebaut
-- Feedback durch bessere Entwicklungs- und CI-Praktiken nach vorne verlagert
+- **Shift Left** vorangetrieben, indem Feedback durch bessere Entwicklung, Testbarkeit und CI-Praktiken nach vorne verlagert wurde
 - Führungs- und Entwicklungsstrukturen für die wachsende QA-Organisation aufgebaut
 
 ## Das Ergebnis

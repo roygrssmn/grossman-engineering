@@ -18,10 +18,19 @@ Ich verantworte die Arbeit End-to-End: Produktentscheidungen, Architektur, Imple
 
 Öffentliche Daten sind nicht sauber. Orte können unvollständig sein, Routen werden als Text geliefert, Einträge ändern sich und Geocoding kann mehrdeutig sein. Die anspruchsvolle Arbeit besteht nicht darin, Marker zu zeichnen, sondern die Quelle korrekt abzubilden, Unsicherheit sichtbar zu machen und den Dienst nützlich zu halten.
 
-In diesem Projekt verbinde ich meine Erfahrung in Delivery und Qualität mit vertiefter praktischer Arbeit an Datensystemen und KI-gestützten Betriebsabläufen.
+## Wo KI einen echten Beitrag leistet
+
+Ich nutze KI für Support-Aufgaben, bei denen sie wiederholte Recherche reduzieren kann, ohne selbst zur Quelle der Wahrheit zu werden:
+
+- **Themen-Tags:** Eindeutige Fälle werden zuerst durch deterministische Regeln bearbeitet. Für die übrigen Demonstrationen schlägt KI maximal zwei Tags aus einem kleinen, freigegebenen Katalog vor. Nur Vorschläge mit hoher Konfidenz können die automatischen Prüfungen passieren; alle anderen bleiben zur manuellen Prüfung.
+- **Schwierige Routen:** Wenn der Parser oder Geocoder am ursprünglichen Routentext der Polizei scheitert, erhält die KI den Quelltext, die aktuellen Wegpunkte und die Fehlerdetails. Sie schlägt eine korrigierte, geordnete Liste von Ankerpunkten vor. Anschließend validiert die normale Pipeline mit OpenStreetMap und OpenRouteService das Ergebnis.
+- **Guardrails:** Zuerst kommt der Dry Run, geplante Automatisierung ist standardmäßig deaktiviert, mehrdeutige Fälle erfordern eine Prüfung und jede angewandte Entscheidung wird protokolliert. Die KI darf Adresstext vorschlagen, schreibt aber keine endgültigen Koordinaten.
+
+Das ist die Art von AI Engineering, die ich vertiefen möchte: eine klar begrenzte Aufgabe, explizite Validierung und ein sicherer Weg zurück zum Menschen, wenn die Konfidenz nicht ausreicht.
 
 > ### Status
 >
 > * **Live:** [demo-radar.com](https://demo-radar.com)
 > * **Einordnung:** Unabhängiges Civic-Information-Produkt auf Basis offizieller öffentlicher Daten
 > * **Verantwortung:** Produkt, Architektur, Delivery, Qualität und Betrieb
+> * **Repository:** Privat; Architektur- und Code-Walkthrough auf Anfrage möglich

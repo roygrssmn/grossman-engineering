@@ -10,4 +10,10 @@
   <url><loc>https://agenticarchitect.io/de/project/developer-platform</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://agenticarchitect.io/en/project/rag</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://agenticarchitect.io/de/project/rag</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://agenticarchitect.io/en/archive</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://agenticarchitect.io/de/archive</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://agenticarchitect.io/en/project/leadership</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://agenticarchitect.io/de/project/leadership</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://agenticarchitect.io/en/project/homelab</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://agenticarchitect.io/de/project/homelab</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
 </urlset>

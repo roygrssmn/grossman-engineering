@@ -7,9 +7,9 @@ export default function ProjectCard({ projectKey, project, language, navigate })
 
     return (
         <a href={`/${language}/project/${projectKey}`} onClick={(e) => navigate(`/project/${projectKey}`, e)} className="group bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 p-8 md:p-10 rounded-xl hover:border-zinc-400 dark:hover:border-zinc-500 transition-all cursor-pointer shadow-sm hover:shadow-md flex flex-col h-full">
-            <div className="flex justify-between items-start mb-6">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 mb-6">
                 <h3 className="font-serif text-2xl text-zinc-900 dark:text-zinc-50 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{title}</h3>
-                <span className="text-xs font-semibold px-3 py-1 bg-stone-50 dark:bg-zinc-950 border border-stone-200 dark:border-zinc-800 rounded-full text-zinc-900 dark:text-zinc-50 whitespace-nowrap ml-4">{role}</span>
+                <span className="self-start text-xs font-semibold px-3 py-1 bg-stone-50 dark:bg-zinc-950 border border-stone-200 dark:border-zinc-800 rounded-full text-zinc-900 dark:text-zinc-50 sm:whitespace-nowrap">{role}</span>
             </div>
             <p className="text-zinc-600 dark:text-zinc-300 mb-8 leading-relaxed flex-grow">
                 {summary}

@@ -6,8 +6,8 @@ export const competenciesData = [
             de: 'Engineering- & Teamführung'
         },
         description: {
-            en: 'Growing teams, creating clear ownership, and connecting technical decisions to product outcomes. At Architrave, I led two multidisciplinary product teams totalling 10 people across backend, frontend, DevOps, and QA.',
-            de: 'Teams entwickeln, klare Verantwortung schaffen und technische Entscheidungen mit Produktergebnissen verbinden. Bei Architrave leitete ich zwei multidisziplinäre Produktteams mit insgesamt zehn Mitarbeitenden aus Backend, Frontend, DevOps und QA.'
+            en: 'Growing multidisciplinary teams, creating clear ownership, and connecting technical decisions to product outcomes. I focus on giving people the context, coaching, and working agreements they need to do strong work together.',
+            de: 'Multidisziplinäre Teams entwickeln, klare Verantwortung schaffen und technische Entscheidungen mit Produktergebnissen verbinden. Mein Fokus liegt auf dem Kontext, Coaching und den Arbeitsvereinbarungen, die Menschen für gute gemeinsame Arbeit brauchen.'
         }
     },
     {

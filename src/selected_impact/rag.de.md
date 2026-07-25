@@ -1,27 +1,31 @@
-## Die Fragestellung
+## Die Vorgeschichte
 
-2024 leitete ich einen Proof of Concept, um zu testen, ob Retrieval-Augmented Generation interne technische Dokumentation leichter nutzbar machen kann. Das Ziel war nicht, ein produktives KI-System zu behaupten, sondern vor einer größeren Investition zu verstehen, wo der Ansatz funktioniert und wo er scheitert.
+2024 war das Potenzial von Retrieval-Augmented Generation bereits deutlich, während die Umsetzungsmuster noch wenig ausgereift waren. Ich leitete einen Proof of Concept, um zu untersuchen, wie KI mit interner technischer Dokumentation arbeiten kann.
 
-## Der Ansatz
+Das Ziel war nicht, ein produktives System zu präsentieren. Wir wollten das Potenzial zeigen, Schwachstellen sichtbar machen und verstehen, welche Nachweise vor einer größeren Investition notwendig wären.
 
-Ich behandelte den Prototyp als Evaluationsproblem statt als polierte Demo. Wir verbanden technische Dokumentation aus Google Workspace über Dify mit OpenAI GPT-4 und untersuchten Retrieval-Qualität, Quellenbindung und Fehlermuster.
+## Meine Arbeitsweise
 
-Der Blick aus dem Quality Engineering veränderte die Fragen:
+Ich behandelte den Proof of Concept als Stresstest und nicht als polierte Demo. Wir verbanden technische Dokumentation aus Google Workspace über Dify mit OpenAI GPT-4 und untersuchten Retrieval-Qualität, Quellenbindung und Fehlermuster.
+
+Der Blick aus dem Quality Engineering verschob den Fokus von „Kann das System antworten?“ zu besseren Fragen:
 
 - Können wir erkennen, wenn relevanter Kontext fehlt?
-- Sind Antworten in den gefundenen Quellen verankert?
-- Welche Fehler können Guardrails erkennen und welche bleiben mehrdeutig?
-- Welche Nachweise wären vor einem Produktiveinsatz notwendig?
+- Ist die Antwort in der gefundenen Quelle verankert?
+- Welche Fehler können Guardrails erkennen?
+- Was müssten wir messen, bevor wir dem System im Produktivbetrieb vertrauen?
 
-## Das Ergebnis
+Ziel war, die Lücke zwischen experimenteller KI und operativer Sicherheit sichtbar zu machen.
 
-Der Proof of Concept zeigte nützliches Potenzial, machte aber auch inkonsistentes Retrieval und Halluzinationen sichtbar, die sich mit den damaligen Werkzeugen nicht zuverlässig begrenzen ließen. Genau das war das wertvolle Ergebnis: eine klarere Grenze zwischen einem überzeugenden Prototyp und einem System, dem man im Betrieb vertrauen kann.
+## Die unbequemen Erkenntnisse
 
-Diese frühe Arbeit prägt heute meine vertiefte Beschäftigung mit AI-Evaluation, Datenqualität und Produktions-Guardrails.
+Wir stießen auf inkonsistentes Retrieval und Halluzinationen, die sich mit den verfügbaren Werkzeugen nicht zuverlässig begrenzen ließen. Der Prototyp überzeugte, wenn er funktionierte; seine Fehler waren jedoch schwer vorherzusagen und zu erklären.
 
-> ### Umfang
+Genau das war das wertvolle Ergebnis. Der Proof of Concept zeigte sowohl die Chance als auch die Grenzen und bestätigte einen Grundsatz, den ich weiterhin nutze: Eine KI-Demo verdient Aufmerksamkeit; ein produktives System muss sich Vertrauen erarbeiten.
+
+> ### PoC-Spezifikationen
 >
-> * **Typ:** Proof of Concept, kein Produktiveinsatz
-> * **Modelle:** OpenAI GPT-4
-> * **Datenquelle:** interne technische Dokumentation
+> * **Typ:** Proof of Concept
+> * **Modell:** OpenAI GPT-4
+> * **Datenquelle:** technische Dokumentation aus Google Workspace
 > * **Orchestrierung:** Dify

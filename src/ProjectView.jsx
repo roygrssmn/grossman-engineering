@@ -41,7 +41,7 @@ export default function ProjectView({ activeProject, navigate, language }) {
                         },
                         ul: ({ node, ...props }) => {
                             void node;
-                            return <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-4 text-sm text-zinc-600 dark:text-zinc-400" {...props} />;
+                            return <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-4 my-6 text-sm text-zinc-600 dark:text-zinc-400" {...props} />;
                         },
                         strong: ({ node, ...props }) => {
                             void node;

@@ -10,7 +10,7 @@ I led the company-wide quality and automation strategy, connecting team design w
 
 - Embedded quality expertise inside product teams
 - Expanded automation across the delivery pipeline
-- Moved feedback earlier through stronger development and CI practices
+- Advanced **Shift Left** by moving feedback earlier through stronger development, testability, and CI practices
 - Built leadership and career structures as the QA organisation grew
 
 ## The outcome

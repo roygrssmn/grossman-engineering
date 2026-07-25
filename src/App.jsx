@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { projectData } from './selected_impact/projects.js';
 import Navigation from './Navigation.jsx';
 import MainView from './MainView.jsx';
+import ArchiveView from './ArchiveView.jsx';
 import ProjectView from './ProjectView.jsx';
 import Footer from './Footer.jsx';
 import Modals from './Modals.jsx';
@@ -82,7 +83,14 @@ export default function App() {
             desc = 'Engineering- und Quality-Leader mit mehr als 15 Jahren Erfahrung in Softwareentwicklung, Automatisierung und Personalführung – heute mit Fokus auf Applied AI.';
         }
 
-        if (routePath.startsWith('/project/')) {
+        if (routePath === '/archive') {
+            title = language === 'en'
+                ? 'Impact Archive | Roey Grossman'
+                : 'Projektarchiv | Roey Grossman';
+            desc = language === 'en'
+                ? 'Earlier engineering leadership work and technical experiments by Roey Grossman.'
+                : 'Frühere Engineering-Führungsarbeit und technische Experimente von Roey Grossman.';
+        } else if (routePath.startsWith('/project/')) {
             const key = routePath.replace('/project/', '');
             if (projectData[key]) {
                 title = `${localize(projectData[key].title, language)} | Roey Grossman`;
@@ -176,6 +184,8 @@ export default function App() {
 
     if (routePath === '/') {
         view = 'main';
+    } else if (routePath === '/archive') {
+        view = 'archive';
     } else if (routePath.startsWith('/project/')) {
         const key = routePath.replace('/project/', '');
         if (projectData[key]) {
@@ -200,12 +210,14 @@ export default function App() {
             />
             
             {view === 'main' && <MainView language={language} projectData={projectData} navigate={navigate} />}
+
+            {view === 'archive' && <ArchiveView language={language} projectData={projectData} navigate={navigate} />}
             
             {view === 'project' && activeProject && <ProjectView activeProject={activeProject} navigate={navigate} language={language} />}
             
             {view === '404' && <NotFoundView navigate={navigate} language={language} />}
             
-            <Footer currentYear={currentYear} setActiveModal={setActiveModal} language={language} />
+            <Footer currentYear={currentYear} setActiveModal={setActiveModal} language={language} navigate={navigate} />
             
             <Modals activeModal={activeModal} setActiveModal={setActiveModal} language={language} />
         </div>
