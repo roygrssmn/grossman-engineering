@@ -9,6 +9,8 @@ import Modals from './Modals.jsx';
 import NotFoundView from './NotFoundView.jsx';
 import { localize } from './selected_impact/projects.js';
 
+const SITE_URL = 'https://grossman.engineering';
+
 function getInitialPath() {
     const path = window.location.pathname;
     const parts = path.split('/').filter(Boolean);
@@ -118,13 +120,14 @@ export default function App() {
         setMetaTag('property', 'og:title', title);
         setMetaTag('property', 'og:description', desc);
         setMetaTag('property', 'og:type', ogType);
-        setMetaTag('property', 'og:url', `https://agenticarchitect.io${currentPath}`);
-        setMetaTag('property', 'og:image', 'https://agenticarchitect.io/og-image.png');
+        setMetaTag('property', 'og:url', `${SITE_URL}${currentPath}`);
+        setMetaTag('property', 'og:image', `${SITE_URL}/og-image.png`);
 
         setMetaTag('name', 'twitter:card', 'summary_large_image');
+        setMetaTag('name', 'twitter:url', `${SITE_URL}${currentPath}`);
         setMetaTag('name', 'twitter:title', title);
         setMetaTag('name', 'twitter:description', desc);
-        setMetaTag('name', 'twitter:image', 'https://agenticarchitect.io/og-image.png');
+        setMetaTag('name', 'twitter:image', `${SITE_URL}/og-image.png`);
 
         let canonicalLink = document.querySelector("link[rel='canonical']");
         if (!canonicalLink) {
@@ -132,7 +135,7 @@ export default function App() {
             canonicalLink.setAttribute("rel", "canonical");
             document.head.appendChild(canonicalLink);
         }
-        canonicalLink.setAttribute("href", `https://agenticarchitect.io${currentPath}`);
+        canonicalLink.setAttribute("href", `${SITE_URL}${currentPath}`);
 
         // Add alternate language tags for SEO
         const addAlternateLink = (lang, path) => {
@@ -143,7 +146,7 @@ export default function App() {
                 link.setAttribute("hreflang", lang);
                 document.head.appendChild(link);
             }
-            link.setAttribute("href", `https://agenticarchitect.io${path}`);
+            link.setAttribute("href", `${SITE_URL}${path}`);
         };
         addAlternateLink('en', `/en${routePath === '/' ? '' : routePath}`);
         addAlternateLink('de', `/de${routePath === '/' ? '' : routePath}`);
