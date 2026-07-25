@@ -1,6 +1,6 @@
-# The Agentic Architect
+# Grossman Engineering
 
-Personal portfolio website for Roey Grossman. Built with React 19, Vite, and Tailwind CSS v4. The site features a clean, responsive design, dark mode, English/German bilingual support, and a custom lightweight single-page routing system optimized for static hosting on Cloudflare Pages.
+Personal portfolio website for Roey Grossman at [grossman.engineering](https://grossman.engineering). Built with React 19, Vite, and Tailwind CSS v4. The site features a clean, responsive design, dark mode, English/German bilingual support, and a custom lightweight single-page routing system optimized for Cloudflare Workers.
 
 ## 🚀 How to Run
 
@@ -27,7 +27,7 @@ Ensure you have [Node.js](https://nodejs.org/) installed.
 ## 📁 Project Structure
 
 ```text
-agentic-architect/
+grossman-engineering/
 ├── public/                     # Static assets (favicon, robots.txt, sitemap.xml, _redirects)
 ├── src/
 │   ├── selected_impact/           # Case study data and content
