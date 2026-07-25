@@ -45,7 +45,7 @@ export const projectData = {
             en: demoRadarEn,
             de: demoRadarDe
         },
-        readTime: 4
+        readTime: 7
     },
     framework: {
         title: {
@@ -66,7 +66,7 @@ export const projectData = {
             en: frameworkEn,
             de: frameworkDe
         },
-        readTime: 3
+        readTime: 4
     },
     'developer-platform': {
         title: {
@@ -87,7 +87,7 @@ export const projectData = {
             en: jfrogEn,
             de: jfrogDe
         },
-        readTime: 2
+        readTime: 5
     },
     rag: {
         title: {
@@ -108,7 +108,7 @@ export const projectData = {
             en: ragEn,
             de: ragDe
         },
-        readTime: 3
+        readTime: 5
     },
     leadership: {
         archived: true,
@@ -130,7 +130,7 @@ export const projectData = {
             en: leadershipEn,
             de: leadershipDe
         },
-        readTime: 2
+        readTime: 4
     },
     homelab: {
         archived: true,
@@ -152,6 +152,6 @@ export const projectData = {
             en: homelabEn,
             de: homelabDe
         },
-        readTime: 2
+        readTime: 4
     }
 };
