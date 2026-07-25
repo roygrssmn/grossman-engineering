@@ -1,6 +1,6 @@
 # Grossman Engineering
 
-Personal portfolio website for Roey Grossman at [grossman.engineering](https://grossman.engineering). Built with React 19, Vite, and Tailwind CSS v4. The site features a clean, responsive design, dark mode, English/German bilingual support, and a custom lightweight single-page routing system optimized for Cloudflare Workers.
+Personal portfolio website for Roy Grossman at [grossman.engineering](https://grossman.engineering). Built with React 19, Vite, and Tailwind CSS v4. The site features a clean, responsive design, dark mode, English/German bilingual support, and a custom lightweight single-page routing system optimized for Cloudflare Workers.
 
 ## 🚀 How to Run
 

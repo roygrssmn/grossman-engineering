@@ -76,31 +76,31 @@ export default function App() {
 
     // SEO: Dynamic Title, Meta Description & Canonical URL
     useEffect(() => {
-        let title = 'Roey Grossman | Engineering & Quality Leader · Applied AI';
+        let title = 'Roy Grossman | Engineering & Quality Leader · Applied AI';
         let desc = 'Engineering and quality leader with 15+ years across software delivery, automation, and people leadership, now applying production discipline to AI.';
         let ogType = 'website';
         
         if (language === 'de') {
-            title = 'Roey Grossman | Engineering & Quality Leader · Applied AI';
+            title = 'Roy Grossman | Engineering & Quality Leader · Applied AI';
             desc = 'Engineering- und Quality-Leader mit mehr als 15 Jahren Erfahrung in Softwareentwicklung, Automatisierung und Personalführung – heute mit Fokus auf Applied AI.';
         }
 
         if (routePath === '/archive') {
             title = language === 'en'
-                ? 'Impact Archive | Roey Grossman'
-                : 'Projektarchiv | Roey Grossman';
+                ? 'Impact Archive | Roy Grossman'
+                : 'Projektarchiv | Roy Grossman';
             desc = language === 'en'
-                ? 'Earlier engineering leadership work and technical experiments by Roey Grossman.'
-                : 'Frühere Engineering-Führungsarbeit und technische Experimente von Roey Grossman.';
+                ? 'Earlier engineering leadership work and technical experiments by Roy Grossman.'
+                : 'Frühere Engineering-Führungsarbeit und technische Experimente von Roy Grossman.';
         } else if (routePath.startsWith('/project/')) {
             const key = routePath.replace('/project/', '');
             if (projectData[key]) {
-                title = `${localize(projectData[key].title, language)} | Roey Grossman`;
+                title = `${localize(projectData[key].title, language)} | Roy Grossman`;
                 desc = localize(projectData[key].summary, language);
                 ogType = 'article';
             }
         } else if (routePath !== '/') {
-            title = 'Page Not Found | Roey Grossman';
+            title = 'Page Not Found | Roy Grossman';
         }
         
         document.title = title;

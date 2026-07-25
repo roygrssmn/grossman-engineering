@@ -1,6 +1,6 @@
 export default function HeroSection({ language }) {
     const copy = language === 'en' ? {
-        eyebrow: 'Roey Grossman · Berlin · Engineering & Quality Leader · Applied AI',
+        eyebrow: 'Roy Grossman · Berlin · Engineering & Quality Leader · Applied AI',
         headline: 'I build reliable software, grow engineering teams, and integrate AI people can trust.',
         introduction: 'Engineering and quality leader with 15+ years across software delivery, automation, and people leadership. I’ve scaled teams, shortened release cycles, and supported products used at significant scale. Now I’m deepening my AI engineering practice through formal study and hands-on product work, including Demo Radar.',
         work: 'View selected work',
@@ -13,7 +13,7 @@ export default function HeroSection({ language }) {
             ['Developer platform scale', '1B monthly downloads']
         ]
     } : {
-        eyebrow: 'Roey Grossman · Berlin · Engineering- & Quality-Leader · Applied AI',
+        eyebrow: 'Roy Grossman · Berlin · Engineering- & Quality-Leader · Applied AI',
         headline: [
             'Ich entwickle zuverlässige Software,',
             'stärke Engineering-Teams',
