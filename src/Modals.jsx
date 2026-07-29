@@ -33,21 +33,27 @@ export default function Modals({ activeModal, setActiveModal, language }) {
                         language === 'en' ? (
                             <>
                                 <h3 className="font-medium text-lg mt-6 mb-2 text-zinc-900 dark:text-zinc-50">1. Privacy at a Glance</h3>
-                                <p>This website does not collect any personal data through trackers, analytics tools, or cookies. It is purely for the provision of information.</p>
+                                <p>This website uses cookie-free Cloudflare Web Analytics to understand aggregated page usage and performance. It does not use cookies or local storage to track individual visitors.</p>
                                 <h3 className="font-medium text-lg mt-6 mb-2 text-zinc-900 dark:text-zinc-50">2. Data Controller</h3>
                                 <p>{contactInfo.legalName}<br/>{contactInfo.street}<br/>{contactInfo.zipCity}<br/>{contactInfo.email}</p>
                                 <h3 className="font-medium text-lg mt-6 mb-2 text-zinc-900 dark:text-zinc-50">3. Website Provision and Hosting</h3>
-                                <p>We host our website on Cloudflare Pages. The provider is Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA (hereinafter: Cloudflare).</p>
+                                <p>We host our website using Cloudflare Workers. The provider is Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA (hereinafter: Cloudflare).</p>
                                 <p>When you visit our website, Cloudflare automatically logs server-side connection data as our hosting provider. This is technically necessary to deliver the website and guarantee its security.</p>
+                                <h3 className="font-medium text-lg mt-6 mb-2 text-zinc-900 dark:text-zinc-50">4. Cloudflare Web Analytics</h3>
+                                <p>Cloudflare Web Analytics uses a JavaScript beacon to collect aggregated page-view and performance metrics. According to Cloudflare, the service does not collect or use visitors’ personal data and does not track individual users across websites.</p>
+                                <p>More information is available in <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" className="underline hover:text-zinc-900 dark:hover:text-zinc-50">Cloudflare’s Privacy Policy</a>.</p>
                             </>
                         ) : (
                             <>
                                 <h3 className="font-medium text-lg mt-6 mb-2 text-zinc-900 dark:text-zinc-50">1. Datenschutz auf einen Blick</h3>
-                                <p>Diese Website erfasst keine personenbezogenen Daten durch Tracker, Analyse-Tools oder Cookies. Sie dient rein der Informationsbereitstellung.</p>
+                                <p>Diese Website verwendet die cookie-freie Lösung Cloudflare Web Analytics, um aggregierte Seitenaufrufe und Leistungsdaten zu verstehen. Dabei werden weder Cookies noch lokaler Speicher zur Verfolgung einzelner Besucher eingesetzt.</p>
                                 <h3 className="font-medium text-lg mt-6 mb-2 text-zinc-900 dark:text-zinc-50">2. Verantwortliche Stelle</h3>
                                 <p>{contactInfo.legalName}<br/>{contactInfo.street}<br/>{contactInfo.zipCity}<br/>{contactInfo.email}</p>
                                 <h3 className="font-medium text-lg mt-6 mb-2 text-zinc-900 dark:text-zinc-50">3. Bereitstellung der Website und Hosting</h3>
-                                <p>Wir hosten unsere Website bei Cloudflare Pages. Anbieter ist die Cloudflare, Inc. Wenn Sie unsere Website besuchen, erfasst Cloudflare als unser Hostinganbieter serverseitig Verbindungsdaten.</p>
+                                <p>Wir hosten unsere Website mit Cloudflare Workers. Anbieter ist Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA (nachfolgend: Cloudflare). Beim Besuch dieser Website erfasst Cloudflare als Hostinganbieter serverseitig technisch notwendige Verbindungsdaten.</p>
+                                <h3 className="font-medium text-lg mt-6 mb-2 text-zinc-900 dark:text-zinc-50">4. Cloudflare Web Analytics</h3>
+                                <p>Cloudflare Web Analytics verwendet ein JavaScript-Beacon, um aggregierte Seitenaufrufe und Leistungsdaten zu erfassen. Laut Cloudflare erhebt oder verwendet der Dienst keine personenbezogenen Daten der Besucher und verfolgt einzelne Nutzer nicht über verschiedene Websites hinweg.</p>
+                                <p>Weitere Informationen finden Sie in der <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" className="underline hover:text-zinc-900 dark:hover:text-zinc-50">Datenschutzerklärung von Cloudflare</a>.</p>
                             </>
                         )
                     )}
