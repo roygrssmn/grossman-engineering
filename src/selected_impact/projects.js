@@ -26,7 +26,7 @@ export const projectData = {
             en: 'Founder & Technical Architect',
             de: 'Gründer & Technical Architect'
         },
-        tags: ['AI-assisted Ops', 'React', 'Postgres', 'Python'],
+        tags: ['Applied AI', 'ML Evaluation', 'Postgres', 'Python'],
         links: [
             {
                 type: 'live',
@@ -38,14 +38,14 @@ export const projectData = {
             }
         ],
         summary: {
-            en: 'A live civic-information product using AI to propose governed topic tags and help repair difficult routes—while deterministic checks and human review remain in control.',
-            de: 'Ein aktives Civic-Information-Produkt, das KI für kontrollierte Themen-Tags und schwierige Routen nutzt – während deterministische Prüfungen und menschliche Kontrolle entscheidend bleiben.'
+            en: 'A live civic-information product using governed AI for tagging and route repair, now adding an evidence-gated ML evaluation path—while deterministic checks and human review remain in control.',
+            de: 'Ein aktives Civic-Information-Produkt mit kontrollierter KI für Tagging und Routenreparatur, ergänzt um eine evidenzbasierte ML-Evaluationsstrecke – während deterministische Prüfungen und menschliche Kontrolle entscheidend bleiben.'
         },
         content: {
             en: demoRadarEn,
             de: demoRadarDe
         },
-        readTime: 7
+        readTime: 9
     },
     framework: {
         title: {
