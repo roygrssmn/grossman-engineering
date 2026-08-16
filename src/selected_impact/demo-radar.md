@@ -28,6 +28,12 @@ I use AI for support tasks where it can reduce repetitive investigation without 
 
 This is the kind of AI engineering I want to practise: a narrow job, explicit validation, and a safe path back to a human when confidence is not enough.
 
+## From fuzzy matching toward evidence-gated ML
+
+Topic tagging began with manual decisions, deterministic rules, and selective LLM suggestions. To reduce repetitive review and future reliance on token-based inference, I built a separate, governed offline evaluation path for a potential ML suggestion service.
+
+Across 2,449 historical events, a title-only recurrence proxy achieved **29.2% precision**. Adding public location and schedule evidence—venue tokens, coarse postcode, weekday, and start time—increased provisional precision to **88.8%**. These features help identify recurring public event series; location and time never determine a political topic tag by themselves.
+
 > ### Status
 >
 > * **Live:** [demo-radar.com](https://demo-radar.com)

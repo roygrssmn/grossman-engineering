@@ -28,6 +28,12 @@ Ich nutze KI für Support-Aufgaben, bei denen sie wiederholte Recherche reduzier
 
 Das ist die Art von AI Engineering, die ich vertiefen möchte: eine klar begrenzte Aufgabe, explizite Validierung und ein sicherer Weg zurück zum Menschen, wenn die Konfidenz nicht ausreicht.
 
+## Vom Fuzzy Matching zu evidenzbasierter ML
+
+Das Tagging begann mit manuellen Entscheidungen, deterministischen Regeln und gezielten LLM-Vorschlägen. Um wiederholte Prüfungen und die künftige Abhängigkeit von tokenbasierter Inferenz zu reduzieren, habe ich eine separate, kontrollierte Offline-Evaluationsstrecke für einen möglichen ML-Suggestion-Service aufgebaut.
+
+Bei 2.449 historischen Veranstaltungen erreichte ein ausschließlich titelbasierter Recurrence-Proxy eine **Präzision von 29,2 %**. Mit öffentlichen Orts- und Terminmerkmalen – Venue-Tokens, grober Postleitzahl, Wochentag und Startzeit – stieg die vorläufige Präzision auf **88,8 %**. Diese Merkmale helfen dabei, wiederkehrende öffentliche Veranstaltungsreihen zu erkennen; Ort und Zeit bestimmen niemals eigenständig ein politisches Themen-Tag.
+
 > ### Status
 >
 > * **Live:** [demo-radar.com](https://demo-radar.com)
