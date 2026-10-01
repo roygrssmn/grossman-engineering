@@ -28,15 +28,36 @@ Ich nutze KI für Support-Aufgaben, bei denen sie wiederholte Recherche reduzier
 
 Das ist die Art von AI Engineering, die ich vertiefen möchte: eine klar begrenzte Aufgabe, explizite Validierung und ein sicherer Weg zurück zum Menschen, wenn die Konfidenz nicht ausreicht.
 
-## Vom Fuzzy Matching zu evidenzbasierter ML
+## DemoLogic: Modelle vergleichen, bevor ein Dienst ausgewählt wird
 
-Das Tagging begann mit manuellen Entscheidungen, deterministischen Regeln und gezielten LLM-Vorschlägen. Um wiederholte Prüfungen und die künftige Abhängigkeit von tokenbasierter Inferenz zu reduzieren, habe ich eine separate, kontrollierte Offline-Evaluationsstrecke für einen möglichen ML-Suggestion-Service aufgebaut.
+DemoLogic ist mein AI-Engineering-Capstone an der neue fische × SPICED Academy und mit Demo Radar verbunden. Ich habe einen separaten, notebookbasierten Evaluationsablauf für Themen-Tag-Vorschläge aufgebaut: mit geprüften Beispielen, festem Datensplit und Trennung nach Veranstaltungsgruppen, um Leakage durch wiederkehrende Demonstrationen zu reduzieren.
+
+- **Einfache Baselines:** Keyword- und Regex-Regeln sowie Wort- und Zeichen-TF-IDF mit logistischer Regression.
+- **Semantisches Modell:** mehrsprachiges mDeBERTa-v3 NLI (`MoritzLaurer/mDeBERTa-v3-base-mnli-xnli`).
+- **Gehostete LLMs:** OpenAI GPT-OSS 20B (`openai/gpt-oss-20b`) über Groq und Qwen3.6 35B A3B FP8 (`Qwen/Qwen3.6-35B-A3B-FP8`) über Hetzner. Groq und Hetzner stellen die Inferenzdienste bereit; die Modellidentitäten werden separat dokumentiert.
+- **Evaluation:** Tagging-Qualität, Abdeckung, Inferenzzeit und Kosten. Die Prüfung der Referenzlabels bleibt vom Modell-Tuning getrennt. Produktionsdaten, Einzelvorhersagen und trainierte private Artefakte bleiben außerhalb veröffentlichter Materialien.
+
+Ein nützliches Ergebnis: Das getestete NLI-Setup lieferte in den Entwicklungsprüfungen weniger brauchbare Vorschläge als Regeln oder TF-IDF. Ich dokumentierte seine Fehler und Grenzen und empfahl, dieses Setup nicht in den Dienst zu integrieren. Das ist ein Befund zu einer Konfiguration, kein Final-Test-Ergebnis und kein Urteil über alle semantischen Modelle.
+
+### Integrationsentwurf: die API-Grenze
+
+Mein Integrationsentwurf sieht Modellinferenz hinter einer API vor, die Vorschläge zurückgibt. Authentifizierung, Staff-Prüfung, Freigabe und Datenbank-Schreibzugriffe bleiben bei Demo Radar. Die Modellauswahl hängt von den Evaluationsergebnissen ab; manuelles Tagging bleibt ein gültiges Ergebnis.
+
+### Früheres Experiment: wiederkehrende Veranstaltungen erkennen
 
 Bei 2.449 historischen Veranstaltungen erreichte ein ausschließlich titelbasierter Recurrence-Proxy eine **Präzision von 29,2 %**. Mit öffentlichen Orts- und Terminmerkmalen – Venue-Tokens, grober Postleitzahl, Wochentag und Startzeit – stieg die vorläufige Präzision auf **88,8 %**. Diese Merkmale helfen dabei, wiederkehrende öffentliche Veranstaltungsreihen zu erkennen; Ort und Zeit bestimmen niemals eigenständig ein politisches Themen-Tag.
+
+Dies sind explorative Ergebnisse zur **Erkennung wiederkehrender Veranstaltungen**, keine Tagging-Genauigkeit und keine DemoLogic-Modellwerte.
+
+## Sicherheit und Betriebsverantwortung
+
+Ich habe Staff-Authentifizierung mit Argon2id-Passwort-Hashing, verpflichtender TOTP-MFA, Wiederherstellungscodes und widerrufbaren serverseitigen Sessions implementiert. Der KI-Support-Workflow umfasst Provider-Pacing, begrenzte Wiederholungsversuche und ein Audit-Protokoll.
+
+Außerdem habe ich nur lesende MCP-Tools mit benannten Authentifizierungs-Tokens, Limits pro Agent und Zugriffsprotokollierung implementiert. Der öffentliche Remote-Endpunkt ist durch eine Release-Freigabe gesperrt; die Implementierung unterstützt private und lokale Nutzung. Monitoring-Konfiguration, Backup-/Restore-Verfahren und Rollback-Dokumentation gehören ebenfalls zur Betriebsarbeit.
 
 > ### Status
 >
 > * **Live:** [demo-radar.com](https://demo-radar.com)
 > * **Einordnung:** Unabhängiges Civic-Information-Produkt auf Basis offizieller öffentlicher Daten
 > * **Verantwortung:** Produkt, Architektur, Delivery, Qualität und Betrieb
-> * **Repository:** Privat; Architektur- und Code-Walkthrough auf Anfrage möglich
+> * **Code und Evaluation:** Walkthroughs zu Architektur, Code und DemoLogic-Experimenten auf Anfrage

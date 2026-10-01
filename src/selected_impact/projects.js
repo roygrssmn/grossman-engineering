@@ -18,6 +18,7 @@ export const localize = (value, language) => {
 
 export const projectData = {
     'demo-radar': {
+        architecture: 'demo-radar',
         title: {
             en: 'Demo Radar',
             de: 'Demo Radar'
@@ -26,7 +27,7 @@ export const projectData = {
             en: 'Founder & Technical Architect',
             de: 'Gründer & Technical Architect'
         },
-        tags: ['Applied AI', 'ML Evaluation', 'Postgres', 'Python'],
+        tags: ['Python / FastAPI', 'Model Evaluation', 'Postgres / PostGIS', 'Security'],
         links: [
             {
                 type: 'live',
@@ -38,8 +39,8 @@ export const projectData = {
             }
         ],
         summary: {
-            en: 'A live civic-information product using governed AI for tagging and route repair, now adding an evidence-gated ML evaluation path—while deterministic checks and human review remain in control.',
-            de: 'Ein aktives Civic-Information-Produkt mit kontrollierter KI für Tagging und Routenreparatur, ergänzt um eine evidenzbasierte ML-Evaluationsstrecke – während deterministische Prüfungen und menschliche Kontrolle entscheidend bleiben.'
+            en: 'A live Python/FastAPI product with guarded AI support, staff security, and end-to-end operational ownership. DemoLogic adds a separate model comparison for topic-tag suggestions.',
+            de: 'Ein aktives Python/FastAPI-Produkt mit kontrolliertem KI-Support, abgesichertem Staff-Zugang und durchgängiger Betriebsverantwortung. DemoLogic ergänzt einen separaten Modellvergleich für Themen-Tag-Vorschläge.'
         },
         content: {
             en: demoRadarEn,
@@ -101,8 +102,8 @@ export const projectData = {
         tags: ['RAG', 'Evaluation', 'Guardrails'],
         links: [],
         summary: {
-            en: 'A 2024 RAG proof of concept treated as a stress test—using a QA mindset to expose the gap between a convincing AI demo and operational trust.',
-            de: 'Ein RAG Proof of Concept aus dem Jahr 2024 als Stresstest – mit einem QA-Blick auf die Lücke zwischen überzeugender KI-Demo und operativem Vertrauen.'
+            en: 'A 2024 GPT-4/Dify proof of concept for internal documentation, examining retrieval, source grounding, and failure cases before considering production use.',
+            de: 'Ein GPT-4/Dify-PoC aus dem Jahr 2024 für interne Dokumentation: Prüfung von Retrieval, Quellenbindung und Fehlerfällen vor einem möglichen Produktiveinsatz.'
         },
         content: {
             en: ragEn,

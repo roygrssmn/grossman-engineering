@@ -1,4 +1,5 @@
 import ReactMarkdown from 'react-markdown';
+import DemoRadarArchitecture from './DemoRadarArchitecture.jsx';
 import { localize } from './selected_impact/projects.js';
 
 export default function ProjectView({ activeProject, navigate, language }) {
@@ -24,6 +25,7 @@ export default function ProjectView({ activeProject, navigate, language }) {
                     <span key={tag} className="text-xs font-semibold px-3 py-1 bg-stone-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-100 rounded">{tag}</span>
                 ))}
             </div>
+            {activeProject.architecture === 'demo-radar' && <DemoRadarArchitecture language={language} />}
             <article className="text-zinc-600 dark:text-zinc-300 leading-relaxed max-w-none text-lg">
                 <ReactMarkdown
                     components={{
@@ -46,6 +48,10 @@ export default function ProjectView({ activeProject, navigate, language }) {
                         strong: ({ node, ...props }) => {
                             void node;
                             return <strong className="text-zinc-900 dark:text-zinc-100" {...props} />;
+                        },
+                        code: ({ node, ...props }) => {
+                            void node;
+                            return <code className="text-[0.85em] [overflow-wrap:anywhere]" {...props} />;
                         },
                         blockquote: ({ node, ...props }) => {
                             void node;
