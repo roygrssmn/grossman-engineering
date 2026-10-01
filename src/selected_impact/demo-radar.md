@@ -28,28 +28,13 @@ I use AI for support tasks where it can reduce repetitive investigation without 
 
 This is the kind of AI engineering I want to practise: a narrow job, explicit validation, and a safe path back to a human when confidence is not enough.
 
-## DemoLogic: compare models before choosing a service
+## DemoLogic: evaluating the AI options
 
-DemoLogic is my AI Engineering capstone at neue fische × SPICED Academy, connected to Demo Radar. I built a separate notebook-based evaluation workflow to compare ways of suggesting topic tags, using reviewed examples, a fixed split, and event-group separation to reduce leakage from recurring demonstrations.
+DemoLogic is my AI Engineering capstone at neue fische × SPICED Academy, connected to Demo Radar. It compares simple rules, classical NLP, semantic models, and hosted LLMs for topic-tag suggestions. The detailed comparison, model identities, and integration design have their own case study.
 
-- **Simple baselines:** keyword and regex rules, plus word and character TF-IDF with logistic regression.
-- **Semantic model:** multilingual mDeBERTa-v3 NLI (`MoritzLaurer/mDeBERTa-v3-base-mnli-xnli`).
-- **Hosted LLMs:** OpenAI GPT-OSS 20B (`openai/gpt-oss-20b`) through Groq, and Qwen3.6 35B A3B FP8 (`Qwen/Qwen3.6-35B-A3B-FP8`) through Hetzner. Groq and Hetzner provide the inference services; the model identities are recorded separately.
-- **Evaluation:** tagging quality, coverage, inference time, and cost, with reference-label review kept separate from model tuning. Production records, row-level predictions, and fitted private artifacts stay out of published material.
+[Read the DemoLogic model evaluation case study](/en/project/demo-logic)
 
-One useful result: the tested NLI setup gave less useful suggestions than rules or TF-IDF on the development checks. I retained its errors and limitations and recommended withholding that setup from service integration. This is evidence about one configuration, not a final-test result or a verdict on all semantic models.
-
-### Integration design: the API boundary
-
-My integration design puts model inference behind an API that returns suggestions. Demo Radar retains authentication, staff review, approval, and database writes. Model selection depends on evaluation evidence; manual tagging remains a valid outcome.
-
-### Earlier experiment: recognising recurring events
-
-Across 2,449 historical events, a title-only recurrence proxy achieved **29.2% precision**. Adding public location and schedule evidence—venue tokens, coarse postcode, weekday, and start time—increased provisional precision to **88.8%**. These features help identify recurring public event series; location and time never determine a political topic tag by themselves.
-
-These are exploratory **event-recurrence matching results**, not topic-tagging accuracy or DemoLogic model scores.
-
-## Security and operational ownership
+## Operating the product
 
 I built staff authentication with Argon2id password hashing, mandatory TOTP MFA, recovery codes, and revocable server-side sessions. The AI support workflow has provider pacing, bounded retries, and an audit trail.
 
@@ -60,4 +45,4 @@ I also implemented read-only MCP tools with named-token authentication, per-agen
 > * **Live:** [demo-radar.com](https://demo-radar.com)
 > * **Scope:** Independent civic-information product using official public data
 > * **Ownership:** Product, architecture, delivery, quality, and operations
-> * **Code and evaluation:** Architecture, code, and DemoLogic experiment walkthroughs available on request
+> * **Code and evaluation:** Architecture and code walkthroughs available on request

@@ -1,11 +1,13 @@
 import ReactMarkdown from 'react-markdown';
 import DemoRadarArchitecture from './DemoRadarArchitecture.jsx';
 import { localize } from './selected_impact/projects.js';
+import { estimateReadingTime } from './selected_impact/readingTime.js';
 
 export default function ProjectView({ activeProject, navigate, language }) {
     const title = localize(activeProject.title, language);
     const role = localize(activeProject.role, language);
     const content = localize(activeProject.content, language);
+    const readTime = estimateReadingTime(content);
 
     return (
         <main className="flex-grow flex-col pt-32 px-6 md:px-12 lg:px-24 pb-16 md:pb-32 max-w-4xl mx-auto w-full">
@@ -14,15 +16,18 @@ export default function ProjectView({ activeProject, navigate, language }) {
                 {language === 'en' ? 'Back to overview' : 'Zurück zur Übersicht'}
             </a>
             
-            <div className="flex items-center gap-4 mb-6">
+            <div className="flex flex-wrap items-center gap-4 mb-6">
                 <span className="text-xs font-semibold px-3 py-1 bg-stone-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-100 rounded-full">{role}</span>
+                <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
+                    {language === 'en' ? `${readTime} min read` : `${readTime} Min. Lesezeit`}
+                </span>
             </div>
             
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight mb-8 text-zinc-900 dark:text-zinc-50">{title}</h1>
             
             <div className="flex flex-wrap gap-2 mb-12 border-b border-stone-200 dark:border-zinc-800 pb-12">
                 {activeProject.tags.map(tag => (
-                    <span key={tag} className="text-xs font-semibold px-3 py-1 bg-stone-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-100 rounded">{tag}</span>
+                    <span key={localize(tag, 'en')} className="text-xs font-semibold px-3 py-1 bg-stone-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-100 rounded">{localize(tag, language)}</span>
                 ))}
             </div>
             {activeProject.architecture === 'demo-radar' && <DemoRadarArchitecture language={language} />}
@@ -48,6 +53,22 @@ export default function ProjectView({ activeProject, navigate, language }) {
                         strong: ({ node, ...props }) => {
                             void node;
                             return <strong className="text-zinc-900 dark:text-zinc-100" {...props} />;
+                        },
+                        a: ({ node, href, ...props }) => {
+                            void node;
+                            const internalPath = href?.match(/^\/(?:en|de)(\/project\/[^?#]+)$/)?.[1];
+                            return (
+                                <a
+                                    href={href}
+                                    onClick={internalPath ? (event) => {
+                                        if (event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
+                                            navigate(internalPath, event);
+                                        }
+                                    } : undefined}
+                                    className="font-medium underline underline-offset-4 text-zinc-900 dark:text-zinc-100 hover:text-blue-600 dark:hover:text-blue-400"
+                                    {...props}
+                                />
+                            );
                         },
                         code: ({ node, ...props }) => {
                             void node;

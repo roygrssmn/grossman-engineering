@@ -1,5 +1,7 @@
 import demoRadarEn from './demo-radar.md?raw';
 import demoRadarDe from './demo-radar.de.md?raw';
+import demoLogicEn from './demo-logic.md?raw';
+import demoLogicDe from './demo-logic.de.md?raw';
 import frameworkEn from './framework.md?raw';
 import frameworkDe from './framework.de.md?raw';
 import jfrogEn from './jfrog.md?raw';
@@ -27,7 +29,11 @@ export const projectData = {
             en: 'Founder & Technical Architect',
             de: 'Gründer & Technical Architect'
         },
-        tags: ['Python / FastAPI', 'Model Evaluation', 'Postgres / PostGIS', 'Security'],
+        tags: [
+            { en: 'Product Architecture', de: 'Produktarchitektur' },
+            { en: 'Applied AI', de: 'Angewandte KI' },
+            { en: 'Reliable Operations', de: 'Zuverlässiger Betrieb' }
+        ],
         links: [
             {
                 type: 'live',
@@ -39,14 +45,25 @@ export const projectData = {
             }
         ],
         summary: {
-            en: 'A live Python/FastAPI product with guarded AI support, staff security, and end-to-end operational ownership. DemoLogic adds a separate model comparison for topic-tag suggestions.',
-            de: 'Ein aktives Python/FastAPI-Produkt mit kontrolliertem KI-Support, abgesichertem Staff-Zugang und durchgängiger Betriebsverantwortung. DemoLogic ergänzt einen separaten Modellvergleich für Themen-Tag-Vorschläge.'
+            en: 'A live civic-information product built with React, TypeScript, and Python. I own its product decisions, architecture, delivery, and operations, with guarded AI support for tagging and route repair.',
+            de: 'Ein aktives Civic-Information-Produkt mit React, TypeScript und Python. Ich verantworte Produktentscheidungen, Architektur, Delivery und Betrieb, mit kontrolliertem KI-Support für Tagging und Routenreparatur.'
         },
         content: {
             en: demoRadarEn,
             de: demoRadarDe
+        }
+    },
+    'demo-logic': {
+        detailOnly: true,
+        title: { en: 'DemoLogic: Model Evaluation', de: 'DemoLogic: Modellevaluation' },
+        role: { en: 'AI Engineering Capstone', de: 'KI-Engineering-Capstone' },
+        tags: ['Model Evaluation', 'NLP', 'Hosted LLMs', 'Python'],
+        links: [],
+        summary: {
+            en: 'Comparing rules, TF-IDF, multilingual semantic models, and hosted LLMs for Demo Radar topic-tag suggestions, with explicit evaluation and review boundaries.',
+            de: 'Vergleich von Regeln, TF-IDF, mehrsprachigen semantischen Modellen und gehosteten LLMs für Demo-Radar-Themen-Tags, mit klaren Grenzen für Evaluation und Prüfung.'
         },
-        readTime: 9
+        content: { en: demoLogicEn, de: demoLogicDe }
     },
     framework: {
         title: {
@@ -66,8 +83,7 @@ export const projectData = {
         content: {
             en: frameworkEn,
             de: frameworkDe
-        },
-        readTime: 4
+        }
     },
     'developer-platform': {
         title: {
@@ -87,8 +103,7 @@ export const projectData = {
         content: {
             en: jfrogEn,
             de: jfrogDe
-        },
-        readTime: 5
+        }
     },
     rag: {
         title: {
@@ -97,7 +112,7 @@ export const projectData = {
         },
         role: {
             en: 'AI Evaluation & Quality',
-            de: 'AI-Evaluation & Qualität'
+            de: 'KI-Evaluation & Qualität'
         },
         tags: ['RAG', 'Evaluation', 'Guardrails'],
         links: [],
@@ -108,8 +123,7 @@ export const projectData = {
         content: {
             en: ragEn,
             de: ragDe
-        },
-        readTime: 5
+        }
     },
     leadership: {
         archived: true,
@@ -130,8 +144,7 @@ export const projectData = {
         content: {
             en: leadershipEn,
             de: leadershipDe
-        },
-        readTime: 4
+        }
     },
     homelab: {
         archived: true,
@@ -143,7 +156,7 @@ export const projectData = {
             en: 'Systems & AI Experimentation',
             de: 'System- & KI-Experimente'
         },
-        tags: ['Local AI', 'Docker', 'Self-hosting'],
+        tags: [{ en: 'Local AI', de: 'Lokale KI' }, 'Docker', 'Self-hosting'],
         links: [],
         summary: {
             en: 'A private environment for experimenting with self-hosting, automation, local AI, and the operational trade-offs of owning the full stack.',
@@ -152,7 +165,6 @@ export const projectData = {
         content: {
             en: homelabEn,
             de: homelabDe
-        },
-        readTime: 4
+        }
     }
 };

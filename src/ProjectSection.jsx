@@ -8,7 +8,7 @@ export default function ProjectSection({ language, projectData, navigate }) {
     const projectScrollRefWeb = useRef(null);
 
     // Prepare project chunks for pagination
-    const projectEntries = Object.entries(projectData).filter(([, project]) => !project.archived);
+    const projectEntries = Object.entries(projectData).filter(([, project]) => !project.archived && !project.detailOnly);
     const mobileChunks = [];
     for (let i = 0; i < projectEntries.length; i += 1) {
         mobileChunks.push(projectEntries.slice(i, i + 1));
