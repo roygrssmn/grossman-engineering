@@ -13,16 +13,16 @@ export default function HeroSection({ language }) {
             ['Developer platform scale', '1B monthly downloads']
         ]
     } : {
-        eyebrow: 'Roy Grossman · Berlin · Engineering- & Quality-Leader · Applied AI',
+        eyebrow: 'Roy Grossman · Berlin · Engineering- & Quality-Leader · Angewandte KI',
         headline: [
             'Ich entwickle zuverlässige Software,',
             'stärke Engineering-Teams',
             'und mache KI vertrauenswürdig.'
         ],
-        introduction: 'Engineering- und Quality-Leader mit mehr als 15 Jahren Erfahrung in Softwareentwicklung, Automatisierung und Personalführung. Ich habe Teams skaliert, Release-Zyklen verkürzt und Produkte mit großer Reichweite unterstützt. Heute vertiefe ich meine AI-Engineering-Praxis durch eine fundierte Weiterbildung und eigene Produktarbeit, darunter Demo Radar.',
+        introduction: 'Engineering- und Quality-Leader mit mehr als 15 Jahren Erfahrung in Softwareentwicklung, Automatisierung und Personalführung. Ich habe Teams skaliert, Release-Zyklen verkürzt und Produkte mit großer Reichweite unterstützt. Heute vertiefe ich meine KI-Engineering-Praxis durch eine fundierte Weiterbildung und eigene Produktarbeit, darunter Demo Radar.',
         work: 'Ausgewählte Projekte',
         contact: 'Kontakt aufnehmen',
-        focus: 'Demo Radar End-to-End entwickeln und das AI-Engineering-Programm an der School of Data & AI — neue fische × SPICED Academy absolvieren, voraussichtlich bis Februar 2027.',
+        focus: 'Demo Radar End-to-End entwickeln und das KI-Engineering-Programm an der School of Data & AI — neue fische × SPICED Academy absolvieren, voraussichtlich bis Februar 2027.',
         proof: [
             ['QA-Organisation', '1 → 20'],
             ['Produktreichweite', '1,5 Mio.+ tägliche Nutzer'],

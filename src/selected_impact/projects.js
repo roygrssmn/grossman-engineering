@@ -1,5 +1,7 @@
 import demoRadarEn from './demo-radar.md?raw';
 import demoRadarDe from './demo-radar.de.md?raw';
+import demoLogicEn from './demo-logic.md?raw';
+import demoLogicDe from './demo-logic.de.md?raw';
 import frameworkEn from './framework.md?raw';
 import frameworkDe from './framework.de.md?raw';
 import jfrogEn from './jfrog.md?raw';
@@ -18,6 +20,7 @@ export const localize = (value, language) => {
 
 export const projectData = {
     'demo-radar': {
+        architecture: 'demo-radar',
         title: {
             en: 'Demo Radar',
             de: 'Demo Radar'
@@ -26,7 +29,11 @@ export const projectData = {
             en: 'Founder & Technical Architect',
             de: 'Gründer & Technical Architect'
         },
-        tags: ['Applied AI', 'ML Evaluation', 'Postgres', 'Python'],
+        tags: [
+            { en: 'Product Architecture', de: 'Produktarchitektur' },
+            { en: 'Applied AI', de: 'Angewandte KI' },
+            { en: 'Reliable Operations', de: 'Zuverlässiger Betrieb' }
+        ],
         links: [
             {
                 type: 'live',
@@ -38,14 +45,25 @@ export const projectData = {
             }
         ],
         summary: {
-            en: 'A live civic-information product using governed AI for tagging and route repair, now adding an evidence-gated ML evaluation path—while deterministic checks and human review remain in control.',
-            de: 'Ein aktives Civic-Information-Produkt mit kontrollierter KI für Tagging und Routenreparatur, ergänzt um eine evidenzbasierte ML-Evaluationsstrecke – während deterministische Prüfungen und menschliche Kontrolle entscheidend bleiben.'
+            en: 'A live civic-information product built with React, TypeScript, and Python. I own its product decisions, architecture, delivery, and operations, with guarded AI support for tagging and route repair.',
+            de: 'Ein aktives Civic-Information-Produkt mit React, TypeScript und Python. Ich verantworte Produktentscheidungen, Architektur, Delivery und Betrieb, mit kontrolliertem KI-Support für Tagging und Routenreparatur.'
         },
         content: {
             en: demoRadarEn,
             de: demoRadarDe
+        }
+    },
+    'demo-logic': {
+        detailOnly: true,
+        title: { en: 'DemoLogic: Model Evaluation', de: 'DemoLogic: Modellevaluation' },
+        role: { en: 'AI Engineering Capstone', de: 'KI-Engineering-Capstone' },
+        tags: ['Model Evaluation', 'NLP', 'Hosted LLMs', 'Python'],
+        links: [],
+        summary: {
+            en: 'Comparing rules, TF-IDF, multilingual semantic models, and hosted LLMs for Demo Radar topic-tag suggestions, with explicit evaluation and review boundaries.',
+            de: 'Vergleich von Regeln, TF-IDF, mehrsprachigen semantischen Modellen und gehosteten LLMs für Demo-Radar-Themen-Tags, mit klaren Grenzen für Evaluation und Prüfung.'
         },
-        readTime: 9
+        content: { en: demoLogicEn, de: demoLogicDe }
     },
     framework: {
         title: {
@@ -65,8 +83,7 @@ export const projectData = {
         content: {
             en: frameworkEn,
             de: frameworkDe
-        },
-        readTime: 4
+        }
     },
     'developer-platform': {
         title: {
@@ -86,8 +103,7 @@ export const projectData = {
         content: {
             en: jfrogEn,
             de: jfrogDe
-        },
-        readTime: 5
+        }
     },
     rag: {
         title: {
@@ -96,19 +112,18 @@ export const projectData = {
         },
         role: {
             en: 'AI Evaluation & Quality',
-            de: 'AI-Evaluation & Qualität'
+            de: 'KI-Evaluation & Qualität'
         },
         tags: ['RAG', 'Evaluation', 'Guardrails'],
         links: [],
         summary: {
-            en: 'A 2024 RAG proof of concept treated as a stress test—using a QA mindset to expose the gap between a convincing AI demo and operational trust.',
-            de: 'Ein RAG Proof of Concept aus dem Jahr 2024 als Stresstest – mit einem QA-Blick auf die Lücke zwischen überzeugender KI-Demo und operativem Vertrauen.'
+            en: 'A 2024 GPT-4/Dify proof of concept for internal documentation, examining retrieval, source grounding, and failure cases before considering production use.',
+            de: 'Ein GPT-4/Dify-PoC aus dem Jahr 2024 für interne Dokumentation: Prüfung von Retrieval, Quellenbindung und Fehlerfällen vor einem möglichen Produktiveinsatz.'
         },
         content: {
             en: ragEn,
             de: ragDe
-        },
-        readTime: 5
+        }
     },
     leadership: {
         archived: true,
@@ -129,8 +144,7 @@ export const projectData = {
         content: {
             en: leadershipEn,
             de: leadershipDe
-        },
-        readTime: 4
+        }
     },
     homelab: {
         archived: true,
@@ -142,7 +156,7 @@ export const projectData = {
             en: 'Systems & AI Experimentation',
             de: 'System- & KI-Experimente'
         },
-        tags: ['Local AI', 'Docker', 'Self-hosting'],
+        tags: [{ en: 'Local AI', de: 'Lokale KI' }, 'Docker', 'Self-hosting'],
         links: [],
         summary: {
             en: 'A private environment for experimenting with self-hosting, automation, local AI, and the operational trade-offs of owning the full stack.',
@@ -151,7 +165,6 @@ export const projectData = {
         content: {
             en: homelabEn,
             de: homelabDe
-        },
-        readTime: 4
+        }
     }
 };

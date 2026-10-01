@@ -25,11 +25,11 @@ export const competenciesData = [
         id: 'applied-ai',
         title: {
             en: 'Applied AI & Data Systems',
-            de: 'Applied AI & Datensysteme'
+            de: 'Angewandte KI & Datensysteme'
         },
         description: {
             en: 'My current focus: building hands-on depth in evaluation, data quality, guardrails, and AI-assisted operations. I am applying that work through formal AI Engineering study, a RAG reliability proof of concept, and Demo Radar.',
-            de: 'Mein aktueller Fokus: praktische Tiefe in Evaluation, Datenqualität, Guardrails und KI-gestützten Betriebsabläufen aufbauen. Diese Arbeit verbinde ich mit dem AI-Engineering-Programm, einem RAG-Reliability-PoC und Demo Radar.'
+            de: 'Mein aktueller Fokus: praktische Tiefe in Evaluation, Datenqualität, Guardrails und KI-gestützten Betriebsabläufen aufbauen. Diese Arbeit verbinde ich mit dem KI-Engineering-Programm, einem RAG-Reliability-PoC und Demo Radar.'
         }
     }
 ];

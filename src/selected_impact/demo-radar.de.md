@@ -26,17 +26,23 @@ Ich nutze KI für Support-Aufgaben, bei denen sie wiederholte Recherche reduzier
 - **Schwierige Routen:** Wenn der Parser oder Geocoder am ursprünglichen Routentext der Polizei scheitert, erhält die KI den Quelltext, die aktuellen Wegpunkte und die Fehlerdetails. Sie schlägt eine korrigierte, geordnete Liste von Ankerpunkten vor. Anschließend validiert die normale Pipeline mit OpenStreetMap und OpenRouteService das Ergebnis.
 - **Guardrails:** Zuerst kommt der Dry Run, geplante Automatisierung ist standardmäßig deaktiviert, mehrdeutige Fälle erfordern eine Prüfung und jede angewandte Entscheidung wird protokolliert. Die KI darf Adresstext vorschlagen, schreibt aber keine endgültigen Koordinaten.
 
-Das ist die Art von AI Engineering, die ich vertiefen möchte: eine klar begrenzte Aufgabe, explizite Validierung und ein sicherer Weg zurück zum Menschen, wenn die Konfidenz nicht ausreicht.
+Das ist die Art von KI-Engineering, die ich vertiefen möchte: eine klar begrenzte Aufgabe, explizite Validierung und ein sicherer Weg zurück zum Menschen, wenn die Konfidenz nicht ausreicht.
 
-## Vom Fuzzy Matching zu evidenzbasierter ML
+## DemoLogic: die KI-Optionen evaluieren
 
-Das Tagging begann mit manuellen Entscheidungen, deterministischen Regeln und gezielten LLM-Vorschlägen. Um wiederholte Prüfungen und die künftige Abhängigkeit von tokenbasierter Inferenz zu reduzieren, habe ich eine separate, kontrollierte Offline-Evaluationsstrecke für einen möglichen ML-Suggestion-Service aufgebaut.
+DemoLogic ist mein KI-Engineering-Capstone an der neue fische × SPICED Academy und mit Demo Radar verbunden. Es vergleicht einfache Regeln, klassische NLP-Verfahren, semantische Modelle und gehostete LLMs für Themen-Tag-Vorschläge. Der detaillierte Vergleich, die Modellidentitäten und der Integrationsentwurf haben eine eigene Case Study.
 
-Bei 2.449 historischen Veranstaltungen erreichte ein ausschließlich titelbasierter Recurrence-Proxy eine **Präzision von 29,2 %**. Mit öffentlichen Orts- und Terminmerkmalen – Venue-Tokens, grober Postleitzahl, Wochentag und Startzeit – stieg die vorläufige Präzision auf **88,8 %**. Diese Merkmale helfen dabei, wiederkehrende öffentliche Veranstaltungsreihen zu erkennen; Ort und Zeit bestimmen niemals eigenständig ein politisches Themen-Tag.
+[Die DemoLogic-Case-Study zur Modellevaluation lesen](/de/project/demo-logic)
+
+## Das Produkt betreiben
+
+Ich habe Staff-Authentifizierung mit Argon2id-Passwort-Hashing, verpflichtender TOTP-MFA, Wiederherstellungscodes und widerrufbaren serverseitigen Sessions implementiert. Der KI-Support-Workflow umfasst Provider-Pacing, begrenzte Wiederholungsversuche und ein Audit-Protokoll.
+
+Außerdem habe ich nur lesende MCP-Tools mit benannten Authentifizierungs-Tokens, Limits pro Agent und Zugriffsprotokollierung implementiert. Der öffentliche Remote-Endpunkt ist durch eine Release-Freigabe gesperrt; die Implementierung unterstützt private und lokale Nutzung. Monitoring-Konfiguration, Backup-/Restore-Verfahren und Rollback-Dokumentation gehören ebenfalls zur Betriebsarbeit.
 
 > ### Status
 >
 > * **Live:** [demo-radar.com](https://demo-radar.com)
 > * **Einordnung:** Unabhängiges Civic-Information-Produkt auf Basis offizieller öffentlicher Daten
 > * **Verantwortung:** Produkt, Architektur, Delivery, Qualität und Betrieb
-> * **Repository:** Privat; Architektur- und Code-Walkthrough auf Anfrage möglich
+> * **Code und Evaluation:** Architektur- und Code-Walkthroughs auf Anfrage

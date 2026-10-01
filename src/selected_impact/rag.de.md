@@ -4,7 +4,7 @@
 
 Das Ziel war nicht, ein produktives System zu präsentieren. Wir wollten das Potenzial zeigen, Schwachstellen sichtbar machen und verstehen, welche Nachweise vor einer größeren Investition notwendig wären.
 
-## Meine Arbeitsweise
+## Was ich evaluiert habe
 
 Ich behandelte den Proof of Concept als Stresstest und nicht als polierte Demo. Wir verbanden technische Dokumentation aus Google Workspace über Dify mit OpenAI GPT-4 und untersuchten Retrieval-Qualität, Quellenbindung und Fehlermuster.
 
@@ -15,13 +15,13 @@ Der Blick aus dem Quality Engineering verschob den Fokus von „Kann das System 
 - Welche Fehler können Guardrails erkennen?
 - Was müssten wir messen, bevor wir dem System im Produktivbetrieb vertrauen?
 
-Ziel war, die Lücke zwischen experimenteller KI und operativer Sicherheit sichtbar zu machen.
+Mein Beitrag war die Leitung des PoC sowie die Untersuchung von Retrieval-Qualität, Quellenbindung und Fehlerfällen. Die Arbeit betraf interne technische Dokumentation und die Nachweise, die für eine Produktionsentscheidung erforderlich wären.
 
-## Die unbequemen Erkenntnisse
+## Erkenntnisse und Grenzen
 
 Wir stießen auf inkonsistentes Retrieval und Halluzinationen, die sich mit den verfügbaren Werkzeugen nicht zuverlässig begrenzen ließen. Der Prototyp überzeugte, wenn er funktionierte; seine Fehler waren jedoch schwer vorherzusagen und zu erklären.
 
-Genau das war das wertvolle Ergebnis. Der Proof of Concept zeigte sowohl die Chance als auch die Grenzen und bestätigte einen Grundsatz, den ich weiterhin nutze: Eine KI-Demo verdient Aufmerksamkeit; ein produktives System muss sich Vertrauen erarbeiten.
+Das Ergebnis war eine explorative Bewertung des Potenzials und seiner Zuverlässigkeitsgrenzen. Ich ordne die Arbeit als PoC-Erfahrung ein; sie belegt kein produktiv eingesetztes RAG-System und keine Nutzung im Produktionsbetrieb.
 
 > ### PoC-Spezifikationen
 >

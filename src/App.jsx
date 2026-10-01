@@ -81,8 +81,8 @@ export default function App() {
         let ogType = 'website';
         
         if (language === 'de') {
-            title = 'Roy Grossman | Engineering & Quality Leader · Applied AI';
-            desc = 'Engineering- und Quality-Leader mit mehr als 15 Jahren Erfahrung in Softwareentwicklung, Automatisierung und Personalführung – heute mit Fokus auf Applied AI.';
+            title = 'Roy Grossman | Engineering & Quality Leader · Angewandte KI';
+            desc = 'Engineering- und Quality-Leader mit mehr als 15 Jahren Erfahrung in Softwareentwicklung, Automatisierung und Personalführung – heute mit Fokus auf angewandter KI.';
         }
 
         if (routePath === '/archive') {
@@ -116,6 +116,7 @@ export default function App() {
             tag.setAttribute('content', content);
         };
         
+        setMetaTag('name', 'title', title);
         setMetaTag('name', 'description', desc);
         setMetaTag('property', 'og:title', title);
         setMetaTag('property', 'og:description', desc);

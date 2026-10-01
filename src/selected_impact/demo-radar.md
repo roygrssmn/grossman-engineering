@@ -28,15 +28,21 @@ I use AI for support tasks where it can reduce repetitive investigation without 
 
 This is the kind of AI engineering I want to practise: a narrow job, explicit validation, and a safe path back to a human when confidence is not enough.
 
-## From fuzzy matching toward evidence-gated ML
+## DemoLogic: evaluating the AI options
 
-Topic tagging began with manual decisions, deterministic rules, and selective LLM suggestions. To reduce repetitive review and future reliance on token-based inference, I built a separate, governed offline evaluation path for a potential ML suggestion service.
+DemoLogic is my AI Engineering capstone at neue fische × SPICED Academy, connected to Demo Radar. It compares simple rules, classical NLP, semantic models, and hosted LLMs for topic-tag suggestions. The detailed comparison, model identities, and integration design have their own case study.
 
-Across 2,449 historical events, a title-only recurrence proxy achieved **29.2% precision**. Adding public location and schedule evidence—venue tokens, coarse postcode, weekday, and start time—increased provisional precision to **88.8%**. These features help identify recurring public event series; location and time never determine a political topic tag by themselves.
+[Read the DemoLogic model evaluation case study](/en/project/demo-logic)
+
+## Operating the product
+
+I built staff authentication with Argon2id password hashing, mandatory TOTP MFA, recovery codes, and revocable server-side sessions. The AI support workflow has provider pacing, bounded retries, and an audit trail.
+
+I also implemented read-only MCP tools with named-token authentication, per-agent rate limits, and access logging. The public remote endpoint is disabled behind a release gate; the implementation supports private/local use. Monitoring configuration, backup/restore procedures, and rollback documentation form part of the operational work.
 
 > ### Status
 >
 > * **Live:** [demo-radar.com](https://demo-radar.com)
 > * **Scope:** Independent civic-information product using official public data
 > * **Ownership:** Product, architecture, delivery, quality, and operations
-> * **Repository:** Private; an architecture and code walkthrough is available on request
+> * **Code and evaluation:** Architecture and code walkthroughs available on request
