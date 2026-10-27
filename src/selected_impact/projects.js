@@ -6,8 +6,8 @@ import frameworkEn from './framework.md?raw';
 import frameworkDe from './framework.de.md?raw';
 import jfrogEn from './jfrog.md?raw';
 import jfrogDe from './jfrog.de.md?raw';
-import ragEn from './rag.md?raw';
-import ragDe from './rag.de.md?raw';
+import ragEn from '../archived_impact/rag.md?raw';
+import ragDe from '../archived_impact/rag.de.md?raw';
 import homelabEn from '../archived_impact/homelab.md?raw';
 import homelabDe from '../archived_impact/homelab.de.md?raw';
 import leadershipEn from '../archived_impact/leadership.md?raw';
@@ -24,6 +24,14 @@ export const projectData = {
         title: {
             en: 'Demo Radar',
             de: 'Demo Radar'
+        },
+        cardTitle: {
+            en: 'From messy public data to a live product',
+            de: 'Von öffentlichen Rohdaten zum Live-Produkt'
+        },
+        cardEyebrow: {
+            en: 'Demo Radar · Product Ownership',
+            de: 'Demo Radar · Produktverantwortung'
         },
         role: {
             en: 'Founder & Technical Architect',
@@ -45,25 +53,13 @@ export const projectData = {
             }
         ],
         summary: {
-            en: 'A live civic-information product built with React, TypeScript, and Python. I own its product decisions, architecture, delivery, and operations, with guarded AI support for tagging and route repair.',
-            de: 'Ein aktives Civic-Information-Produkt mit React, TypeScript und Python. Ich verantworte Produktentscheidungen, Architektur, Delivery und Betrieb, mit kontrolliertem KI-Support für Tagging und Routenreparatur.'
+            en: 'A civic-information platform I designed, built and operate—from geospatial data and architecture to delivery and support.',
+            de: 'Ich konzipiere, entwickle und betreibe eine Plattform für öffentliche Versammlungsdaten – von Geodaten und Architektur bis zu Auslieferung und Support.'
         },
         content: {
             en: demoRadarEn,
             de: demoRadarDe
         }
-    },
-    'demo-logic': {
-        detailOnly: true,
-        title: { en: 'DemoLogic: Model Evaluation', de: 'DemoLogic: Modellevaluation' },
-        role: { en: 'AI Engineering Capstone', de: 'KI-Engineering-Capstone' },
-        tags: ['Model Evaluation', 'NLP', 'Hosted LLMs', 'Python'],
-        links: [],
-        summary: {
-            en: 'Comparing rules, TF-IDF, multilingual semantic models, and hosted LLMs for Demo Radar topic-tag suggestions, with explicit evaluation and review boundaries.',
-            de: 'Vergleich von Regeln, TF-IDF, mehrsprachigen semantischen Modellen und gehosteten LLMs für Demo-Radar-Themen-Tags, mit klaren Grenzen für Evaluation und Prüfung.'
-        },
-        content: { en: demoLogicEn, de: demoLogicDe }
     },
     framework: {
         title: {
@@ -78,12 +74,41 @@ export const projectData = {
         links: [],
         summary: {
             en: 'Scaled a QA organisation from 1 to 20 and advanced Shift Left through a company-wide quality and automation strategy, helping shorten the release pipeline from four weeks to two.',
-            de: 'Aufbau einer QA-Organisation von 1 auf 20 und Verankerung von Shift Left durch eine unternehmensweite Qualitäts- und Automatisierungsstrategie – mit einer Verkürzung der Release-Pipeline von vier auf zwei Wochen.'
+            de: 'Aufbau einer QA-Organisation von 1 auf 20 und Verankerung von Shift Left durch eine unternehmensweite Qualitäts- und Automatisierungsstrategie – als Beitrag zur Verkürzung der Release-Pipeline von vier auf zwei Wochen.'
         },
         content: {
             en: frameworkEn,
             de: frameworkDe
         }
+    },
+    'demo-logic': {
+        title: { en: 'DemoLogic', de: 'DemoLogic' },
+        cardTitle: {
+            en: 'Choosing the model, building the service',
+            de: 'Das Modell auswählen, den Service bauen'
+        },
+        cardEyebrow: {
+            en: 'DemoLogic · AI Service Engineering',
+            de: 'DemoLogic · KI-Service-Engineering'
+        },
+        role: { en: 'AI Service Engineering', de: 'KI-Service-Engineering' },
+        tags: [
+            { en: 'Model & Provider Evaluation', de: 'Modell- & Anbieterbewertung' },
+            { en: 'AI Services', de: 'KI-Services' },
+            { en: 'Quality & Review Effort', de: 'Qualität & Prüfaufwand' }
+        ],
+        links: [
+            {
+                type: 'github',
+                url: 'https://github.com/demo-radar/demo-radar-logic',
+                label: { en: 'Explore the code', de: 'Code ansehen' }
+            }
+        ],
+        summary: {
+            en: 'Comparing models and providers, measuring quality and review effort, and integrating the selected approach into staff workflows.',
+            de: 'Modelle und Anbieter vergleichen, Qualität und Prüfaufwand messen und den gewählten Ansatz in die Arbeitsabläufe der Mitarbeitenden integrieren.'
+        },
+        content: { en: demoLogicEn, de: demoLogicDe }
     },
     'developer-platform': {
         title: {
@@ -106,6 +131,7 @@ export const projectData = {
         }
     },
     rag: {
+        archived: true,
         title: {
             en: 'RAG Reliability Proof of Concept',
             de: 'RAG-Reliability Proof of Concept'

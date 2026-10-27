@@ -1,26 +1,44 @@
-## Modelle für Themen-Tag-Vorschläge vergleichen
+## Backoffice-Arbeit unterstützen
 
-DemoLogic ist mein KI-Engineering-Capstone an der neue fische × SPICED Academy und mit Demo Radar verbunden. Ich habe einen separaten, notebookbasierten Evaluationsablauf für Themen-Tag-Vorschläge aufgebaut: mit geprüften Beispielen, festem Datensplit und Trennung nach Veranstaltungsgruppen, um Leakage durch wiederkehrende Demonstrationen zu reduzieren.
+Ich habe DemoLogic für das Backoffice meines eigenen Civic-Information-Produkts Demo Radar entwickelt und bereitgestellt. Dabei verglich ich Modelle und Anbieter und maß die Qualität der Vorschläge sowie den Prüfaufwand.
 
-- **Einfache Baselines:** Keyword- und Regex-Regeln sowie Wort- und Zeichen-TF-IDF mit logistischer Regression.
-- **Semantisches Modell:** mehrsprachiges mDeBERTa-v3 NLI (`MoritzLaurer/mDeBERTa-v3-base-mnli-xnli`).
-- **Gehostete LLMs:** OpenAI GPT-OSS 20B (`openai/gpt-oss-20b`) über Groq und Qwen3.6 35B A3B FP8 (`Qwen/Qwen3.6-35B-A3B-FP8`) über Hetzner. Groq und Hetzner stellen die Inferenzdienste bereit; die Modellidentitäten werden separat dokumentiert.
-- **Evaluation:** Tagging-Qualität, Abdeckung, Inferenzzeit und Kosten. Die Prüfung der Referenzlabels bleibt vom Modell-Tuning getrennt. Produktionsdaten, Einzelvorhersagen und trainierte private Artefakte bleiben außerhalb veröffentlichter Materialien.
+Der Service schlägt Themen-Tags vor und erstellt deutsche Tagesberichtsentwürfe. Demo Radar übernimmt Prüfung, Übersetzung und Veröffentlichung.
 
-Ein nützliches Ergebnis: Das getestete NLI-Setup lieferte in den Entwicklungsprüfungen weniger brauchbare Vorschläge als Regeln oder TF-IDF. Ich dokumentierte seine Fehler und Grenzen und empfahl, dieses Setup nicht in den Dienst zu integrieren. Das ist ein Befund zu einer Konfiguration, kein Final-Test-Ergebnis und kein Urteil über alle semantischen Modelle.
+## Modelle und Anbieter vergleichen
 
-### Integrationsentwurf: die API-Grenze
+Ich verglich Keyword- und Regex-Regeln, TF-IDF-Klassifikatoren mit logistischer Regression, mehrsprachige NLI und gehostete Sprachmodelle. Zu den gehosteten Experimenten gehörten GPT-OSS über Groq, Qwen über Hetzner und Gemini über Google. Modell und Anbieter wurden getrennt dokumentiert, zusammen mit Einstellungen, Antwortzeit und geschätzten Kosten.
 
-Mein Integrationsentwurf sieht Modellinferenz hinter einer API vor, die Vorschläge zurückgibt. Authentifizierung, Staff-Prüfung, Freigabe und Datenbank-Schreibzugriffe bleiben bei Demo Radar. Die Modellauswahl hängt von den Evaluationsergebnissen ab; manuelles Tagging bleibt ein gültiges Ergebnis.
+Wiederkehrende Veranstaltungsgruppen blieben bei der Datenaufteilung zusammen, um Leakage zu reduzieren. Ich maß Präzision, Recall, Vorschlagsabdeckung und die vollständige Übereinstimmung der Tag-Sets. Fehler und Enthaltungen blieben sichtbar. Referenzprüfung und Modell-Tuning fanden in getrennten Phasen statt; ihre Grenzen wurden dokumentiert.
 
-### Früheres Demo-Radar-Experiment: wiederkehrende Veranstaltungen erkennen
+## Wie die Ergebnisse meine Entscheidungen geprägt haben
 
-Bei 2.449 historischen Veranstaltungen erreichte ein ausschließlich titelbasierter Recurrence-Proxy eine **Präzision von 29,2 %**. Mit öffentlichen Orts- und Terminmerkmalen – Venue-Tokens, grober Postleitzahl, Wochentag und Startzeit – stieg die vorläufige Präzision auf **88,8 %**. Diese Merkmale helfen dabei, wiederkehrende öffentliche Veranstaltungsreihen zu erkennen; Ort und Zeit bestimmen niemals eigenständig ein politisches Themen-Tag.
+Im ursprünglichen **Finalvergleich mit 121 Veranstaltungsgruppen** lag der F1-Wert bei **33,7 % für Regex, 39,7 % für TF-IDF und 65,5 % für Qwen**. Kein Kandidat erfüllte gleichzeitig die Projektziele von 80 % Präzision, 80 % Recall und 95 % Abdeckung.
 
-Dies sind explorative Ergebnisse zur **Erkennung wiederkehrender Veranstaltungen**, keine Tagging-Genauigkeit und keine DemoLogic-Modellwerte.
+Nach weiterer Entwicklung der Bewertungsrichtlinie erreichte Qwen in einer separaten **Prüfung mit 34 neuen Fällen 87,0 % Präzision und 73,4 % Recall**, Gemini **87,5 % Präzision und 76,6 % Recall**. Beide erreichten 97,1 % Abdeckung, verfehlten aber das Recall-Ziel. Es handelt sich um getrennte Studien, keine durchgehende Verbesserungskurve. Die Referenzen stammen von einer Person und erforderten teilweise Interpretation oder zusätzlichen Kontext.
+
+Ich entschied mich für Vorschläge mit verpflichtender menschlicher Freigabe und setzte Qwen über Hetzner ein. Gemini bleibt für die hier beschriebene produktive Konfiguration ein Forschungsvergleich. Die [Evaluationsberichte](https://github.com/demo-radar/demo-radar-logic/blob/main/docs/results/README.md) erläutern Ergebnisse und Grenzen.
+
+## Produktivität und Qualität messen
+
+Schnelle Inferenz belegt keine Zeitersparnis im Arbeitsablauf. In einem **Praxistest mit 20 Fällen** verglich ich manuelles Tagging mit der Prüfung vorbereiteter KI-Vorschläge. Aktive Prüfzeit, Korrekturen und ungeklärte Fälle wurden getrennt von der Modellantwortzeit erfasst.
+
+Die kleinen, unterschiedlichen Fallgruppen und mögliche Lerneffekte ließen keinen belastbaren Nachweis einer Zeitersparnis zu. Das ist ein relevantes Ergebnis: Der Nutzen eines Services muss sich auch an erledigter Arbeit und Prüfaufwand messen lassen. Der [Testbericht](https://github.com/demo-radar/demo-radar-logic/blob/main/docs/results/practical-trial.md) hält das Ergebnis fest.
+
+## Von Experimenten zum integrierten Service
+
+Ich habe DemoLogic als privaten, authentifizierten Service neben Demo Radar bereitgestellt. Er validiert Anfragen und Antworten, speichert Ergebnisse und Nutzungsdaten und erhält den Wiederherstellungszustand über Neustarts hinweg. Stabile Anfragekennungen ermöglichen den Abruf gespeicherter Antworten ohne erneuten Modellaufruf; bei unklarem Ausgang pausiert die Verarbeitung zur Prüfung.
+
+Demo Radar verantwortet Veranstaltungsauswahl, Berechtigungen, Hintergrundaufgaben und Veröffentlichung. DemoLogic übernimmt Inferenz und Entwurfserstellung. Mitarbeitende geben Vorschläge vor der Veröffentlichung frei. So bleiben Modelländerungen von Anwendungsberechtigungen und redaktionellen Entscheidungen getrennt.
+
+## Öffentlicher Code und Reproduzierbarkeit
+
+Das [öffentliche Repository](https://github.com/demo-radar/demo-radar-logic) enthält Service-Code, Notebooks, Methodik und aggregierte Ergebnisse. Der [synthetische API-Durchlauf](https://github.com/demo-radar/demo-radar-logic/blob/main/docs/reproducibility.md) prüft Authentifizierung, Vorschläge, Berichtsentwürfe, Ergebniswiederverwendung und Wiederherstellung nach Neustarts – ohne Provider-Zugangsdaten oder private Daten.
+
+Der Durchlauf demonstriert Softwareverhalten. Zur Reproduktion der Forschungswerte werden der private Datensatz, Referenzlabels und gespeicherte Modellantworten benötigt.
 
 > ### Projektkontext
 >
-> * **Einordnung:** KI-Engineering-Capstone mit Bezug zu Demo Radar
-> * **Code und Evaluation:** Experiment-Walkthrough auf Anfrage
+> * **Hintergrund:** Eigenständiges Projekt, entstanden aus meinem KI-Engineering-Capstone an der neue fische × SPICED Academy (Abschluss im Oktober 2026)
+> * **Umsetzung:** Privater KI-Service in Demo Radar; menschliche Freigabe bleibt erhalten
+> * **Code und Evaluation:** [Öffentliches Repository und Berichte](https://github.com/demo-radar/demo-radar-logic)
 > * **Verwandte Arbeit:** [Demo Radar: Produkt, Architektur und Betrieb](/de/project/demo-radar)

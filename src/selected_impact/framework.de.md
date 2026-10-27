@@ -2,7 +2,7 @@
 
 Bei Wooga arbeitete ich in einer Produktorganisation mit mehr als 1,5 Millionen täglich aktiven Nutzern. Qualität musste in diesem Maßstab funktionieren, ohne zu einer separaten Hürde am Ende der Delivery zu werden.
 
-Als Director of QA Engineering baute ich die QA-Organisation von einer auf 20 Personen aus und etablierte ein eingebettetes Modell von ungefähr einer QA-Fachkraft pro fünf Engineers. Das Ziel war nicht eine größere Testabteilung, sondern gemeinsame Verantwortung für Qualität.
+Als Director of QA Engineering baute ich die QA-Organisation von einer auf 20 Personen aus und half dabei, ein eingebettetes Modell von ungefähr einer QA-Fachkraft pro fünf Engineers zu etablieren. Das Ziel war nicht eine größere Testabteilung, sondern gemeinsame Verantwortung für Qualität.
 
 ## Was ich verändert habe
 

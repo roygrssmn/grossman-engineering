@@ -20,23 +20,26 @@ Public data is messy. Locations may be incomplete, routes arrive as text, record
 
 ## Where AI earns its place
 
-I use AI for support tasks where it can reduce repetitive investigation without becoming the source of truth:
+I integrate AI into back-office tasks where suggestions can support staff decisions:
 
-- **Topic tags:** deterministic rules handle clear cases first. AI proposes up to two tags from a small, approved catalog for the remaining demonstrations. Only high-confidence suggestions can pass the automated gates; everything else stays review-only.
-- **Difficult routes:** when raw police route text breaks the parser or geocoder, AI receives the source text, current waypoints, and failure details. It proposes a corrected, ordered anchor list. The normal OpenStreetMap and OpenRouteService pipeline then validates the result.
-- **Guardrails:** dry-run comes first, scheduled automation is disabled by default, ambiguous cases require review, and every applied decision has an audit trail. AI may suggest address text, but it does not write final coordinates.
+- **Topic tags:** DemoLogic proposes up to two tags from an approved catalog. Staff review suggestions before publication; reuse for recurring events requires explicit approval.
+- **Daily briefings:** DemoLogic prepares German drafts from selected event records. Demo Radar handles staff review, DeepL translation, and publication in both languages.
+- **Difficult routes:** separate from DemoLogic, I built route-assistance tooling that prepares source text, waypoints, and failure details for a language model to propose corrections. The manual workflow requires review and a dry run before import. The existing OpenStreetMap and OpenRouteService pipeline then processes the reviewed anchors.
+- **Guardrails:** model output is validated, staff decisions are recorded, and applied changes have an audit trail. Route assistance may suggest address text, but it does not write final coordinates.
 
-This is the kind of AI engineering I want to practise: a narrow job, explicit validation, and a safe path back to a human when confidence is not enough.
+The engineering work connects inference to an existing product workflow: clear responsibilities, explicit review, and recovery when an external request fails or its outcome is uncertain.
 
-## DemoLogic: evaluating the AI options
+## DemoLogic: AI Service Engineering
 
-DemoLogic is my AI Engineering capstone at neue fische × SPICED Academy, connected to Demo Radar. It compares simple rules, classical NLP, semantic models, and hosted LLMs for topic-tag suggestions. The detailed comparison, model identities, and integration design have their own case study.
+I designed and deployed DemoLogic as a private AI service integrated with Demo Radar’s back office. I compared models and providers, evaluated suggestion quality, and measured the review effort needed to turn suggestions into approved work. Those findings shaped a workflow that retains staff approval.
 
-[Read the DemoLogic model evaluation case study](/en/project/demo-logic)
+[Read the DemoLogic case study](/en/project/demo-logic)
 
 ## Operating the product
 
 I built staff authentication with Argon2id password hashing, mandatory TOTP MFA, recovery codes, and revocable server-side sessions. The AI support workflow has provider pacing, bounded retries, and an audit trail.
+
+DemoLogic retains request identities, saved answers, and recovery state across restarts. Demo Radar can retrieve a known result without another model call. An uncertain outcome pauses work for investigation rather than triggering a blind resend. The product backend owns permissions and publication; the AI service owns inference and draft preparation.
 
 I also implemented read-only MCP tools with named-token authentication, per-agent rate limits, and access logging. The public remote endpoint is disabled behind a release gate; the implementation supports private/local use. Monitoring configuration, backup/restore procedures, and rollback documentation form part of the operational work.
 
@@ -46,3 +49,4 @@ I also implemented read-only MCP tools with named-token authentication, per-agen
 > * **Scope:** Independent civic-information product using official public data
 > * **Ownership:** Product, architecture, delivery, quality, and operations
 > * **Code and evaluation:** Architecture and code walkthroughs available on request
+> * **AI service:** [Public DemoLogic code and evaluation](https://github.com/demo-radar/demo-radar-logic)

@@ -6,7 +6,7 @@ export default function DemoRadarArchitecture({ language }) {
             ['Python / FastAPI', 'PostgreSQL / PostGIS and Redis'],
             ['React / TypeScript', 'Searchable list, map, and routes']
         ],
-        review: 'AI support → dry run → validation and confidence gates → staff review for ambiguous cases',
+        review: 'DemoLogic → validated suggestions and briefing drafts → staff review → approved publication',
         boundary: 'Applied changes are audited. The backend owns writes; AI does not set final coordinates.'
     } : {
         title: 'Demo Radar: Daten- und Prüfablauf',
@@ -15,7 +15,7 @@ export default function DemoRadarArchitecture({ language }) {
             ['Python / FastAPI', 'PostgreSQL / PostGIS und Redis'],
             ['React / TypeScript', 'Durchsuchbare Liste, Karte und Routen']
         ],
-        review: 'KI-Support → Dry Run → Validierung und Konfidenzprüfungen → Staff-Prüfung bei mehrdeutigen Fällen',
+        review: 'DemoLogic → validierte Vorschläge und Berichtsentwürfe → menschliche Prüfung → freigegebene Veröffentlichung',
         boundary: 'Änderungen werden protokolliert. Das Backend schreibt Daten; KI setzt keine endgültigen Koordinaten.'
     };
 
