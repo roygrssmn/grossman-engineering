@@ -38,7 +38,7 @@ export default function Modals({ activeModal, setActiveModal, language }) {
                                 <p>{contactInfo.legalName}<br/>{contactInfo.street}<br/>{contactInfo.zipCity}<br/>{contactInfo.email}</p>
                                 <h3 className="font-medium text-lg mt-6 mb-2 text-zinc-900 dark:text-zinc-50">3. Website Provision and Hosting</h3>
                                 <p>We host our website using Cloudflare Workers. The provider is Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA (hereinafter: Cloudflare).</p>
-                                <p>When you visit our website, Cloudflare automatically logs server-side connection data as our hosting provider. This is technically necessary to deliver the website and guarantee its security.</p>
+                                <p>When you visit our website, Cloudflare automatically logs server-side connection data as our hosting provider. This supports website delivery and security.</p>
                                 <h3 className="font-medium text-lg mt-6 mb-2 text-zinc-900 dark:text-zinc-50">4. Cloudflare Web Analytics</h3>
                                 <p>Cloudflare Web Analytics uses a JavaScript beacon to collect aggregated page-view and performance metrics. According to Cloudflare, the service does not collect or use visitors’ personal data and does not track individual users across websites.</p>
                                 <p>More information is available in <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" className="underline hover:text-zinc-900 dark:hover:text-zinc-50">Cloudflare’s Privacy Policy</a>.</p>

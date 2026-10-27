@@ -20,23 +20,26 @@ Ich verantworte die Arbeit End-to-End: Produktentscheidungen, Architektur, Imple
 
 ## Wo KI einen echten Beitrag leistet
 
-Ich nutze KI für Support-Aufgaben, bei denen sie wiederholte Recherche reduzieren kann, ohne selbst zur Quelle der Wahrheit zu werden:
+Ich integriere KI in Backoffice-Aufgaben, bei denen Vorschläge die Entscheidungen der Mitarbeitenden unterstützen können:
 
-- **Themen-Tags:** Eindeutige Fälle werden zuerst durch deterministische Regeln bearbeitet. Für die übrigen Demonstrationen schlägt KI maximal zwei Tags aus einem kleinen, freigegebenen Katalog vor. Nur Vorschläge mit hoher Konfidenz können die automatischen Prüfungen passieren; alle anderen bleiben zur manuellen Prüfung.
-- **Schwierige Routen:** Wenn der Parser oder Geocoder am ursprünglichen Routentext der Polizei scheitert, erhält die KI den Quelltext, die aktuellen Wegpunkte und die Fehlerdetails. Sie schlägt eine korrigierte, geordnete Liste von Ankerpunkten vor. Anschließend validiert die normale Pipeline mit OpenStreetMap und OpenRouteService das Ergebnis.
-- **Guardrails:** Zuerst kommt der Dry Run, geplante Automatisierung ist standardmäßig deaktiviert, mehrdeutige Fälle erfordern eine Prüfung und jede angewandte Entscheidung wird protokolliert. Die KI darf Adresstext vorschlagen, schreibt aber keine endgültigen Koordinaten.
+- **Themen-Tags:** DemoLogic schlägt maximal zwei Tags aus einem freigegebenen Katalog vor. Mitarbeitende prüfen Vorschläge vor der Veröffentlichung; die Wiederverwendung für wiederkehrende Veranstaltungen erfordert eine ausdrückliche Freigabe.
+- **Tagesberichte:** DemoLogic erstellt deutsche Entwürfe aus ausgewählten Veranstaltungsdaten. Demo Radar übernimmt Prüfung, DeepL-Übersetzung und Veröffentlichung in beiden Sprachen.
+- **Schwierige Routen:** Unabhängig von DemoLogic habe ich Werkzeuge für die Routenassistenz entwickelt, die Quelltext, Wegpunkte und Fehlerdetails für Korrekturvorschläge durch ein Sprachmodell aufbereiten. Der manuelle Ablauf erfordert eine Prüfung und einen Dry Run vor dem Import. Anschließend verarbeitet die bestehende Pipeline mit OpenStreetMap und OpenRouteService die geprüften Ankerpunkte.
+- **Guardrails:** Modellausgaben werden validiert, Prüfentscheidungen erfasst und angewandte Änderungen protokolliert. Die Routenassistenz darf Adresstext vorschlagen, schreibt aber keine endgültigen Koordinaten.
 
-Das ist die Art von KI-Engineering, die ich vertiefen möchte: eine klar begrenzte Aufgabe, explizite Validierung und ein sicherer Weg zurück zum Menschen, wenn die Konfidenz nicht ausreicht.
+Die Engineering-Arbeit verbindet Inferenz mit einem bestehenden Produktablauf: klare Zuständigkeiten, ausdrückliche Freigabe und Wiederherstellung, wenn eine externe Anfrage fehlschlägt oder ihr Ausgang unklar bleibt.
 
-## DemoLogic: die KI-Optionen evaluieren
+## DemoLogic: KI-Service-Engineering
 
-DemoLogic ist mein KI-Engineering-Capstone an der neue fische × SPICED Academy und mit Demo Radar verbunden. Es vergleicht einfache Regeln, klassische NLP-Verfahren, semantische Modelle und gehostete LLMs für Themen-Tag-Vorschläge. Der detaillierte Vergleich, die Modellidentitäten und der Integrationsentwurf haben eine eigene Case Study.
+Ich habe DemoLogic als privaten KI-Service entwickelt und in das Backoffice von Demo Radar integriert. Ich verglich Modelle und Anbieter, bewertete die Vorschlagsqualität und maß den Prüfaufwand bis zur freigegebenen Arbeit. Die Ergebnisse prägten einen Arbeitsablauf mit menschlicher Freigabe.
 
-[Die DemoLogic-Case-Study zur Modellevaluation lesen](/de/project/demo-logic)
+[Die DemoLogic-Case-Study lesen](/de/project/demo-logic)
 
 ## Das Produkt betreiben
 
 Ich habe Staff-Authentifizierung mit Argon2id-Passwort-Hashing, verpflichtender TOTP-MFA, Wiederherstellungscodes und widerrufbaren serverseitigen Sessions implementiert. Der KI-Support-Workflow umfasst Provider-Pacing, begrenzte Wiederholungsversuche und ein Audit-Protokoll.
+
+DemoLogic erhält Anfragekennungen, gespeicherte Antworten und den Wiederherstellungszustand über Neustarts hinweg. Demo Radar kann ein bekanntes Ergebnis ohne erneuten Modellaufruf abrufen. Bei unklarem Ausgang pausiert die Verarbeitung zur Prüfung, statt die Anfrage blind zu wiederholen. Das Produkt-Backend verantwortet Berechtigungen und Veröffentlichung; der KI-Service übernimmt Inferenz und Entwurfserstellung.
 
 Außerdem habe ich nur lesende MCP-Tools mit benannten Authentifizierungs-Tokens, Limits pro Agent und Zugriffsprotokollierung implementiert. Der öffentliche Remote-Endpunkt ist durch eine Release-Freigabe gesperrt; die Implementierung unterstützt private und lokale Nutzung. Monitoring-Konfiguration, Backup-/Restore-Verfahren und Rollback-Dokumentation gehören ebenfalls zur Betriebsarbeit.
 
@@ -46,3 +49,4 @@ Außerdem habe ich nur lesende MCP-Tools mit benannten Authentifizierungs-Tokens
 > * **Einordnung:** Unabhängiges Civic-Information-Produkt auf Basis offizieller öffentlicher Daten
 > * **Verantwortung:** Produkt, Architektur, Delivery, Qualität und Betrieb
 > * **Code und Evaluation:** Architektur- und Code-Walkthroughs auf Anfrage
+> * **KI-Service:** [Öffentlicher DemoLogic-Code und Evaluation](https://github.com/demo-radar/demo-radar-logic)

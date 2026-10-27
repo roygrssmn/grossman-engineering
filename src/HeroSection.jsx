@@ -2,10 +2,11 @@ export default function HeroSection({ language }) {
     const copy = language === 'en' ? {
         eyebrow: 'Roy Grossman · Berlin · Engineering & Quality Leader · Applied AI',
         headline: 'I build reliable software, grow engineering teams, and integrate AI people can trust.',
-        introduction: 'Engineering and quality leader with 15+ years across software delivery, automation, and people leadership. I’ve scaled teams, shortened release cycles, and supported products used at significant scale. Now I’m deepening my AI engineering practice through formal study and hands-on product work, including Demo Radar.',
+        introduction: 'Engineering and quality leader with 15+ years of experience growing teams and improving software delivery. Today I also build and operate AI-enabled products. Through Demo Radar and DemoLogic, I connect model evaluation, software architecture, and production delivery—with the same attention to evidence, ownership, and failure handling that shapes my leadership work.',
         work: 'View selected work',
         contact: 'Get in touch',
-        focus: 'Building Demo Radar end to end and completing the AI Engineering programme at School of Data & AI — neue fische × SPICED Academy, expected February 2027.',
+        focus: 'AI Engineering capstone completed in October 2026. Now studying Machine Learning Engineering at neue fische × SPICED Academy while continuing to develop Demo Radar and DemoLogic.',
+        proofHeading: 'Experience across previous roles',
         proof: [
             ['QA organisation', '1 → 20'],
             ['Product reach', '1.5M+ daily users'],
@@ -19,10 +20,11 @@ export default function HeroSection({ language }) {
             'stärke Engineering-Teams',
             'und mache KI vertrauenswürdig.'
         ],
-        introduction: 'Engineering- und Quality-Leader mit mehr als 15 Jahren Erfahrung in Softwareentwicklung, Automatisierung und Personalführung. Ich habe Teams skaliert, Release-Zyklen verkürzt und Produkte mit großer Reichweite unterstützt. Heute vertiefe ich meine KI-Engineering-Praxis durch eine fundierte Weiterbildung und eigene Produktarbeit, darunter Demo Radar.',
+        introduction: 'Engineering- und Quality-Leader mit mehr als 15 Jahren Erfahrung im Teamaufbau und in der Softwareentwicklung. Heute entwickle und betreibe ich auch Produkte mit KI-Funktionen. Mit Demo Radar und DemoLogic verbinde ich Modellevaluation, Softwarearchitektur und Produktivbetrieb – mit demselben Blick auf belastbare Ergebnisse, klare Verantwortung und den Umgang mit Fehlern wie in meiner Führungsarbeit.',
         work: 'Ausgewählte Projekte',
         contact: 'Kontakt aufnehmen',
-        focus: 'Demo Radar End-to-End entwickeln und das KI-Engineering-Programm an der School of Data & AI — neue fische × SPICED Academy absolvieren, voraussichtlich bis Februar 2027.',
+        focus: 'KI-Engineering-Capstone im Oktober 2026 abgeschlossen. Jetzt Weiterbildung in Machine Learning Engineering an der neue fische × SPICED Academy und Weiterentwicklung von Demo Radar und DemoLogic.',
+        proofHeading: 'Erfahrung aus früheren Rollen',
         proof: [
             ['QA-Organisation', '1 → 20'],
             ['Produktreichweite', '1,5 Mio.+ tägliche Nutzer'],
@@ -36,10 +38,10 @@ export default function HeroSection({ language }) {
             <p className="text-sm font-medium tracking-wide text-zinc-600 dark:text-zinc-300 uppercase mb-4">
                 {copy.eyebrow}
             </p>
-            <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl leading-[1.08] tracking-tight mb-8 text-zinc-900 dark:text-zinc-50 break-words hyphens-auto">
+            <h1 className={`font-serif text-5xl ${language === 'de' ? 'md:text-[clamp(2.5rem,5vw,4.25rem)]' : 'md:text-6xl lg:text-7xl'} leading-[1.08] tracking-tight mb-8 text-zinc-900 dark:text-zinc-50 break-words hyphens-auto`}>
                 {Array.isArray(copy.headline)
                     ? copy.headline.map((line) => (
-                        <span key={line} className="md:block md:whitespace-nowrap">
+                        <span key={line} className="md:block">
                             {line}{' '}
                         </span>
                     ))
@@ -56,13 +58,16 @@ export default function HeroSection({ language }) {
                     {copy.contact}
                 </a>
             </div>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-6 mt-12 py-7 border-y border-stone-200 dark:border-zinc-800">
-                {copy.proof.map(([label, value]) => (
-                    <div key={label}>
-                        <p className="font-serif text-2xl text-zinc-900 dark:text-zinc-50 mb-1">{value}</p>
-                        <p className="text-xs font-medium uppercase tracking-wide text-zinc-500 dark:text-zinc-400">{label}</p>
-                    </div>
-                ))}
+            <div className="mt-12 py-7 border-y border-stone-200 dark:border-zinc-800">
+                <p className="text-xs font-semibold uppercase tracking-wide text-zinc-600 dark:text-zinc-300 mb-5">{copy.proofHeading}</p>
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-6">
+                    {copy.proof.map(([label, value]) => (
+                        <div key={label}>
+                            <p className="font-serif text-2xl text-zinc-900 dark:text-zinc-50 mb-1">{value}</p>
+                            <p className="text-xs font-medium uppercase tracking-wide text-zinc-500 dark:text-zinc-400">{label}</p>
+                        </div>
+                    ))}
+                </div>
             </div>
             <p className="mt-7 max-w-3xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
                 <span className="font-semibold text-zinc-900 dark:text-zinc-100">{language === 'en' ? 'Current focus:' : 'Aktueller Fokus:'}</span>{' '}
