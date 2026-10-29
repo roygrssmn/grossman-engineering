@@ -1,6 +1,7 @@
 import HeroSection from './HeroSection.jsx';
 import ExpertiseSection from './ExpertiseSection.jsx';
 import ProjectSection from './ProjectSection.jsx';
+import EngineeringProjectsSection from './EngineeringProjectsSection.jsx';
 import ContactSection from './ContactSection.jsx';
 
 export default function MainView({ language, projectData, navigate }) {
@@ -9,6 +10,7 @@ export default function MainView({ language, projectData, navigate }) {
             <HeroSection language={language} />
             <ExpertiseSection language={language} />
             <ProjectSection language={language} projectData={projectData} navigate={navigate} />
+            <EngineeringProjectsSection language={language} />
             <ContactSection language={language} />
         </main>
     );

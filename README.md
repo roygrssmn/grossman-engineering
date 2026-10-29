@@ -52,6 +52,7 @@ To quickly update the content of your site without digging through complex UI co
 
 * **Personal Info & Social Links:** Edit `src/contactInfo.jsx`. This will automatically update your email, address, GitHub, and LinkedIn links everywhere across the site (including the Impressum and Privacy Policy).
 * **Core Competencies:** Edit `src/areas_of_expertise/competencies.jsx` to update the titles and descriptions (both EN and DE) of your main skills.
+* **Engineering Projects:** Edit `src/EngineeringProjectsSection.jsx` for the English/German course-project summary, technology tags and repository link. This small section appears after Selected Impact without changing its project carousel.
 * **Translations:** Most static text translations (like headings and buttons) are handled inline using ternary operators (e.g., `language === 'en' ? 'English' : 'German'`) inside components like `MainView.jsx`, `Footer.jsx`, and `Modals.jsx`.
 
 ## ➕ How to Add a New Case Study
