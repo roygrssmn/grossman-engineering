@@ -42,7 +42,7 @@ export default function EngineeringProjectsSection({ language }) {
                     ))}
                 </ul>
                 <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-5">{copy.limitation}</p>
-                <a href="https://github.com/roy-nfisch/mle-refactoring-project" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-medium underline underline-offset-4 text-zinc-900 dark:text-zinc-100 hover:text-blue-600 dark:hover:text-blue-400">
+                <a href="https://github.com/roy-nfisch/king-county-house-price-app" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-medium underline underline-offset-4 text-zinc-900 dark:text-zinc-100 hover:text-blue-600 dark:hover:text-blue-400">
                     {copy.link}
                     <span aria-hidden="true">↗</span>
                 </a>
