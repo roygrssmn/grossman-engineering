@@ -50,7 +50,8 @@ export default function EngineeringProjectsSection({ language }) {
         {
             id: 'nyc-taxi',
             ...(taxiContent[language] ?? taxiContent.en),
-            technologies: ['Python', 'pandas', 'PyArrow', 'Prefect', 'Docker', 'pytest'],
+            technologies: ['Python', 'Batch ETL', 'Data Quality', 'Prefect', 'Docker', 'Automated Testing'],
+            stack: language === 'de' ? 'Kompetenzen und Technologien' : 'Skills and technologies',
             url: 'https://github.com/roy-nfisch/nyc-taxi-revenue-data-pipeline',
         },
     ];
@@ -67,7 +68,7 @@ export default function EngineeringProjectsSection({ language }) {
                         <h3 className="font-serif text-2xl leading-snug text-zinc-900 dark:text-zinc-50 mb-4">{project.title}</h3>
                         <p className="text-zinc-600 dark:text-zinc-300 leading-relaxed mb-3">{project.summary}</p>
                         <p className="text-zinc-600 dark:text-zinc-300 leading-relaxed mb-6">{project.focus}</p>
-                        <ul aria-label={copy.stack} className="flex flex-wrap gap-2 mb-6">
+                        <ul aria-label={project.stack ?? copy.stack} className="flex flex-wrap gap-2 mb-6">
                             {project.technologies.map(technology => (
                                 <li key={technology} className="text-xs font-semibold text-zinc-800 dark:text-zinc-100 bg-stone-100 dark:bg-zinc-800 px-2 py-1 rounded">{technology}</li>
                             ))}
