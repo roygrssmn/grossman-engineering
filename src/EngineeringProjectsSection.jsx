@@ -26,13 +26,13 @@ const technologies = ['Python', 'scikit-learn', 'Pydantic', 'FastAPI', 'Streamli
 const taxiContent = {
     en: {
         title: 'A data pipeline built for reruns and failures',
-        summary: 'I built a small Python pipeline that turns NYC Green Taxi records into daily revenue reports.',
+        summary: 'As part of my Machine Learning Engineering course, I built a Python batch data pipeline that turns NYC Green Taxi records into daily revenue reports.',
         focus: 'The focus was reliable processing: checked downloads, clear data rules and reports that can be rebuilt without doubling the results. Prefect makes each stage visible, and Docker keeps the setup repeatable.',
         limitation: 'A neue fische course project using historical public data, not a live taxi service.',
     },
     de: {
         title: 'Eine Datenpipeline für Wiederholungen und Fehlerfälle',
-        summary: 'Ich habe eine kleine Python-Pipeline gebaut, die aus NYC-Green-Taxi-Daten tägliche Umsatzberichte erstellt.',
+        summary: 'Im Rahmen meines Machine-Learning-Engineering-Kurses habe ich eine Python-Batch-Datenpipeline gebaut, die aus NYC-Green-Taxi-Daten tägliche Umsatzberichte erstellt.',
         focus: 'Im Mittelpunkt stand die zuverlässige Verarbeitung: geprüfte Downloads, klare Datenregeln und Berichte, die sich ohne doppelte Ergebnisse neu erstellen lassen. Prefect macht die einzelnen Schritte sichtbar, Docker sorgt für eine wiederholbare Ausführung.',
         limitation: 'Ein Kursprojekt bei neue fische mit historischen öffentlichen Daten, kein Live-Taxidienst.',
     },
