@@ -26,14 +26,14 @@ const technologies = ['Python', 'scikit-learn', 'Pydantic', 'FastAPI', 'Streamli
 const taxiContent = {
     en: {
         title: 'A data pipeline built for reruns and failures',
-        summary: 'As part of my Machine Learning Engineering course, I built a Python batch data pipeline that turns NYC Green Taxi records into daily revenue reports.',
-        focus: 'The focus was reliable processing: checked downloads, clear data rules and reports that can be rebuilt without doubling the results. Prefect makes each stage visible, and Docker keeps the setup repeatable.',
+        summary: 'As part of my MLE course, I built a taxi revenue pipeline with Python ETL and DuckDB/SQL ELT.',
+        focus: 'I compared the trade-offs of adding a database. Both paths produced matching daily reports across reruns, with Prefect, Docker and automated checks.',
         limitation: 'A neue fische course project using historical public data, not a live taxi service.',
     },
     de: {
         title: 'Eine Datenpipeline für Wiederholungen und Fehlerfälle',
-        summary: 'Im Rahmen meines Machine-Learning-Engineering-Kurses habe ich eine Python-Batch-Datenpipeline gebaut, die aus NYC-Green-Taxi-Daten tägliche Umsatzberichte erstellt.',
-        focus: 'Im Mittelpunkt stand die zuverlässige Verarbeitung: geprüfte Downloads, klare Datenregeln und Berichte, die sich ohne doppelte Ergebnisse neu erstellen lassen. Prefect macht die einzelnen Schritte sichtbar, Docker sorgt für eine wiederholbare Ausführung.',
+        summary: 'Im Rahmen meines MLE-Kurses habe ich eine Taxi-Umsatzpipeline mit Python-ETL und DuckDB/SQL-ELT gebaut.',
+        focus: 'Ich habe die Vor- und Nachteile einer Datenbank verglichen. Beide Wege lieferten auch bei Wiederholungen dieselben Tagesberichte – mit Prefect, Docker und automatisierten Tests.',
         limitation: 'Ein Kursprojekt bei neue fische mit historischen öffentlichen Daten, kein Live-Taxidienst.',
     },
 };
@@ -50,7 +50,7 @@ export default function EngineeringProjectsSection({ language }) {
         {
             id: 'nyc-taxi',
             ...(taxiContent[language] ?? taxiContent.en),
-            technologies: ['Python', 'Batch ETL', 'Data Quality', 'Prefect', 'Docker', 'Automated Testing'],
+            technologies: ['Python', 'Batch ETL / ELT', 'DuckDB / SQL', 'Data Quality', 'Prefect', 'Docker', 'Automated Testing'],
             stack: language === 'de' ? 'Kompetenzen und Technologien' : 'Skills and technologies',
             url: 'https://github.com/roy-nfisch/nyc-taxi-revenue-data-pipeline',
         },
