@@ -23,30 +23,64 @@ const content = {
 
 const technologies = ['Python', 'scikit-learn', 'Pydantic', 'FastAPI', 'Streamlit', 'pytest', 'Docker'];
 
+const taxiContent = {
+    en: {
+        title: 'A data pipeline built for reruns and failures',
+        summary: 'As part of my MLE course, I built a taxi revenue pipeline with Python ETL and DuckDB/SQL ELT.',
+        focus: 'I compared the trade-offs of adding a database. Both paths produced matching daily reports across reruns, with Prefect, Docker and automated checks.',
+        limitation: 'A neue fische course project using historical public data, not a live taxi service.',
+    },
+    de: {
+        title: 'Eine Datenpipeline für Wiederholungen und Fehlerfälle',
+        summary: 'Im Rahmen meines MLE-Kurses habe ich eine Taxi-Umsatzpipeline mit Python-ETL und DuckDB/SQL-ELT gebaut.',
+        focus: 'Ich habe die Vor- und Nachteile einer Datenbank verglichen. Beide Wege lieferten auch bei Wiederholungen dieselben Tagesberichte – mit Prefect, Docker und automatisierten Tests.',
+        limitation: 'Ein Kursprojekt bei neue fische mit historischen öffentlichen Daten, kein Live-Taxidienst.',
+    },
+};
+
 export default function EngineeringProjectsSection({ language }) {
     const copy = content[language] ?? content.en;
+    const projects = [
+        {
+            id: 'king-county',
+            ...copy,
+            technologies,
+            url: 'https://github.com/roy-nfisch/king-county-house-price-app',
+        },
+        {
+            id: 'nyc-taxi',
+            ...(taxiContent[language] ?? taxiContent.en),
+            technologies: ['Python', 'Batch ETL / ELT', 'DuckDB / SQL', 'Data Quality', 'Prefect', 'Docker', 'Automated Testing'],
+            stack: language === 'de' ? 'Kompetenzen und Technologien' : 'Skills and technologies',
+            url: 'https://github.com/roy-nfisch/nyc-taxi-revenue-data-pipeline',
+        },
+    ];
 
     return (
         <section id="engineering-projects" aria-labelledby="engineering-projects-heading" className="scroll-mt-28 mb-20 md:mb-32">
             <h2 id="engineering-projects-heading" className="font-serif text-3xl mb-8 md:mb-12 border-b border-stone-200 dark:border-zinc-800 pb-4 text-zinc-900 dark:text-zinc-50">
                 {copy.heading}
             </h2>
-            <article className="bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 rounded-xl p-6 md:p-8">
-                <p className="text-xs font-semibold tracking-wide uppercase text-zinc-600 dark:text-zinc-300 mb-4">{copy.context}</p>
-                <h3 className="font-serif text-2xl leading-snug text-zinc-900 dark:text-zinc-50 mb-4">{copy.title}</h3>
-                <p className="text-zinc-600 dark:text-zinc-300 leading-relaxed mb-3">{copy.summary}</p>
-                <p className="text-zinc-600 dark:text-zinc-300 leading-relaxed mb-6">{copy.focus}</p>
-                <ul aria-label={copy.stack} className="flex flex-wrap gap-2 mb-6">
-                    {technologies.map(technology => (
-                        <li key={technology} className="text-xs font-semibold text-zinc-800 dark:text-zinc-100 bg-stone-100 dark:bg-zinc-800 px-2 py-1 rounded">{technology}</li>
-                    ))}
-                </ul>
-                <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-5">{copy.limitation}</p>
-                <a href="https://github.com/roy-nfisch/king-county-house-price-app" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-medium underline underline-offset-4 text-zinc-900 dark:text-zinc-100 hover:text-blue-600 dark:hover:text-blue-400">
-                    {copy.link}
-                    <span aria-hidden="true">↗</span>
-                </a>
-            </article>
+            <div className="space-y-6">
+                {projects.map(project => (
+                    <article key={project.id} className="bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 rounded-xl p-6 md:p-8">
+                        <p className="text-xs font-semibold tracking-wide uppercase text-zinc-600 dark:text-zinc-300 mb-4">{copy.context}</p>
+                        <h3 className="font-serif text-2xl leading-snug text-zinc-900 dark:text-zinc-50 mb-4">{project.title}</h3>
+                        <p className="text-zinc-600 dark:text-zinc-300 leading-relaxed mb-3">{project.summary}</p>
+                        <p className="text-zinc-600 dark:text-zinc-300 leading-relaxed mb-6">{project.focus}</p>
+                        <ul aria-label={project.stack ?? copy.stack} className="flex flex-wrap gap-2 mb-6">
+                            {project.technologies.map(technology => (
+                                <li key={technology} className="text-xs font-semibold text-zinc-800 dark:text-zinc-100 bg-stone-100 dark:bg-zinc-800 px-2 py-1 rounded">{technology}</li>
+                            ))}
+                        </ul>
+                        <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-5">{project.limitation}</p>
+                        <a href={project.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-medium underline underline-offset-4 text-zinc-900 dark:text-zinc-100 hover:text-blue-600 dark:hover:text-blue-400">
+                            {copy.link}
+                            <span aria-hidden="true">↗</span>
+                        </a>
+                    </article>
+                ))}
+            </div>
         </section>
     );
 }
